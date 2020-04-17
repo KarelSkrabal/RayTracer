@@ -1,6 +1,3 @@
-## RayTracer
-
-# Task
 # Raytracer using C#
  
 Implement a simple raytracer using C#. Divide project into two parts --
