@@ -52,5 +52,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VectorExample\TIHUNTERLIB\TIHUNTERLIB.csproj">
+      <Project>{fb3d2d94-607c-41ea-842e-685e7be36aa5}</Project>
+      <Name>TIHUNTERLIB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RayTracerLib\RayTracerLib.csproj">
+      <Project>{755637df-b2eb-40ed-a2f0-ffe23a3bc9cc}</Project>
+      <Name>RayTracerLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

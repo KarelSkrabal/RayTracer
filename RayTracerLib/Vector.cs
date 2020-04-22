@@ -9,8 +9,11 @@ namespace RayTracerLib
     public struct Vector
     {
         double x;
+        public double X => x;
         double y;
+        public double Y => y;
         double z;
+        public double Z => z;
 
         public Vector(double x, double y, double z)
         {

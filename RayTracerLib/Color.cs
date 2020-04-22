@@ -9,53 +9,56 @@ namespace RayTracerLib
     public class Color
     {
         double r;
-        double R
+        public double R
         {
-            get
+            get => r;
+            set
             {
-                int rvalue = (int)(255 * r);
+                int rvalue = (int)(/*255 * */value);
                 rvalue = rvalue > 255 ? 255 : rvalue;
-                return rvalue < 0 ? 0 : rvalue;
+                r = rvalue < 0 ? 0 : rvalue;
             }
         }
         double g;
-        double G
+        public double G
         {
-            get
+            get => g;
+            set
             {
-                int gvalue = (int)(255 * g);
+                int gvalue = (int)(/*255 * */value);
                 gvalue = gvalue > 255 ? 255 : gvalue;
-                return gvalue < 0 ? 0 : gvalue;
+                g = gvalue < 0 ? 0 : gvalue;
             }
         }
         double b;
-        double B
+        public double B
         {
-            get
+            get => b;
+            set
             {
-                int bvalue = (int)(255 * b);
+                int bvalue = (int)(/*255 * */value);
                 bvalue = bvalue > 255 ? 255 : bvalue;
-                return bvalue < 0 ? 0 : bvalue;
+                b = bvalue < 0 ? 0 : bvalue;
             }
         }
         public Color()
         {
-            r = 0.0;
-            g = 0.0;
-            b = 0.0;
+            R = 0.0;
+            G = 0.0;
+            B = 0.0;
         }
         public Color(double r, double g, double b)
         {
-            this.r = r;
-            this.g = g;
-            this.b = b;
+            R = r;
+            G = g;
+            B = b;
         }
 
         public Color(Color color)
         {
-            r = color.r;
-            g = color.g;
-            b = color.b;
+            R = color.r;
+            G = color.g;
+            B = color.b;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace RayTracer
         public MainWindow()
         {
             InitializeComponent();
-            Testtext.Text = new RayTracerLib.RayTracer().GetMessage();
+            //Testtext.Text = new RayTracerLib.RayTracer().GetMessage();
         }
         //https://stackoverflow.com/questions/12764259/not-clear-unsafe-code-in-draw-pixel-method
         public void DrawRectangle(WriteableBitmap writeableBitmap, int left, int top, int width, int height, System.Windows.Media.Color color)

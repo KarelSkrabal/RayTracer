@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerLib", "RayTracerLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackGroundDrawer", "BackGroundDrawer\BackGroundDrawer.csproj", "{DAAB8E8D-A181-412E-BD15-F0E79FD72A45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIHUNTERLIB", "..\VectorExample\TIHUNTERLIB\TIHUNTERLIB.csproj", "{FB3D2D94-607C-41EA-842E-685E7BE36AA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DAAB8E8D-A181-412E-BD15-F0E79FD72A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAAB8E8D-A181-412E-BD15-F0E79FD72A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAAB8E8D-A181-412E-BD15-F0E79FD72A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB3D2D94-607C-41EA-842E-685E7BE36AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB3D2D94-607C-41EA-842E-685E7BE36AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB3D2D94-607C-41EA-842E-685E7BE36AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB3D2D94-607C-41EA-842E-685E7BE36AA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
