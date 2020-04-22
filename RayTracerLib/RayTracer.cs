@@ -22,14 +22,15 @@ namespace RayTracerLib
         public Color[,] RayTrace()
         {
             //defining the result
-            Color[,] ret = new Color[canvasWidth, canvasHeight];
+            Color[,] ret = new Color[canvasWidth+1, canvasHeight+1];
 
             System.Drawing.Bitmap newBitmap = new System.Drawing.Bitmap(150, 150, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             Graphics g = Graphics.FromImage(newBitmap);
 
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(0, 0, canvasWidth, canvasHeight/* 150, 150*/);
             ArrayList obj3dArrayList = new ArrayList();
-            obj3dArrayList.Add(new RayTracerLib.Sphere(0.0, 0.0, 90.0, 70.0, new Color (250.0,100.0,0.0)/*250.0, 100.0, 0.0*/));
+            obj3dArrayList.Add(new RayTracerLib.Sphere(0.0, 0.0, 90.0, 40.0, new Color (250.0,100.0,0.0)/*250.0, 100.0, 0.0*/));
+            obj3dArrayList.Add(new RayTracerLib.Sphere(100.0, 100.0, 90.0, 30.0, new Color(255.0, 0.0, 100.0)/*250.0, 100.0, 0.0*/));
             //Graphics graphics = g;
             //Eye position
             //double px = 0.0;
@@ -121,6 +122,7 @@ namespace RayTracerLib
                             }
                         }
                         double cost = RayTracerLib.Sphere.GetCosAngleV1V2(lv.X/*lvx*/, lv.Y/*lvy*/, lv.Z/*lvz*/, itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz);
+                        cost = Vector.GetCosAngleV1V2(lv.X/*lvx*/, lv.Y/*lvy*/, lv.Z/*lvz*/, itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz);
                         if (cost < 0)
                             cost = 0;
                         double fact = 1.0;
