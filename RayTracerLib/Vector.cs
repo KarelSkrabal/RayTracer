@@ -40,8 +40,8 @@ namespace RayTracerLib
         {
             return System.Math.Sqrt(vx * vx + vy * vy + vz * vz);
         }
-        public static double GetCosAngleV1V2(double v1x, double v1y, double v1z,
-                                             double v2x, double v2y, double v2z)
+        public static double GetCosAngleV1V2(Vector v1/*double v1x, double v1y, double v1z*/,
+                                             Vector v2/*double v2x, double v2y, double v2z*/)
         {
             /* incident angle
              intersection pt (i)
@@ -54,10 +54,10 @@ namespace RayTracerLib
             nx = ix - cx;
             ny = iy - cy;
             nz = iz - cz;
-
             cos(t) = (v.w) / (|v|.|w|)
             */
-            return (v1x * v2x + v1y * v2y + v1z * v2z) / (modv(v1x, v1y, v1z) * modv(v2x, v2y, v2z));
+            //return (v1x * v2x + v1y * v2y + v1z * v2z) / (modv(v1x, v1y, v1z) * modv(v2x, v2y, v2z));
+            return (v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z) / (modv(v1.X, v1.Y, v1.Z) * modv(v2.X, v2.Y, v2.Z));
         }
 
         public static Vector operator +(Vector v1, Vector v2) => new Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);

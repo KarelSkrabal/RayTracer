@@ -81,25 +81,25 @@ namespace RayTracerLib
             }
             return t;
         }
-        public static double GetCosAngleV1V2(double v1x, double v1y, double v1z,
-                                             double v2x, double v2y, double v2z)
-        {
-            /* incident angle
-             intersection pt (i)
-            double ix, iy, iz;
-            ix = px+t*vx;
-            iy = py+t*vy;
-            iz = pz+t*vz;
-            normal at i
-            double nx, ny, nz;
-            nx = ix - cx;
-            ny = iy - cy;
-            nz = iz - cz;
+        //public static double GetCosAngleV1V2(double v1x, double v1y, double v1z,
+        //                                     double v2x, double v2y, double v2z)
+        //{
+        //    /* incident angle
+        //     intersection pt (i)
+        //    double ix, iy, iz;
+        //    ix = px+t*vx;
+        //    iy = py+t*vy;
+        //    iz = pz+t*vz;
+        //    normal at i
+        //    double nx, ny, nz;
+        //    nx = ix - cx;
+        //    ny = iy - cy;
+        //    nz = iz - cz;
 
-            cos(t) = (v.w) / (|v|.|w|)
-            */
-            return (v1x * v2x + v1y * v2y + v1z * v2z) / (modv(v1x, v1y, v1z) *
-                   modv(v2x, v2y, v2z));
-        }
+        //    cos(t) = (v.w) / (|v|.|w|)
+        //    */
+        //    return (v1x * v2x + v1y * v2y + v1z * v2z) / (modv(v1x, v1y, v1z) *
+        //           modv(v2x, v2y, v2z));
+        //}
     }
 }

@@ -30,7 +30,7 @@ namespace RayTracerLib
             System.Drawing.Rectangle rect = new System.Drawing.Rectangle(0, 0, canvasWidth, canvasHeight/* 150, 150*/);
             ArrayList obj3dArrayList = new ArrayList();
             obj3dArrayList.Add(new RayTracerLib.Sphere(0.0, 0.0, 90.0, 40.0, new Color (250.0,100.0,0.0)/*250.0, 100.0, 0.0*/));
-            obj3dArrayList.Add(new RayTracerLib.Sphere(100.0, 100.0, 90.0, 30.0, new Color(255.0, 0.0, 100.0)/*250.0, 100.0, 0.0*/));
+            //obj3dArrayList.Add(new RayTracerLib.Sphere(100.0, 100.0, 90.0, 30.0, new Color(255.0, 0.0, 100.0)/*250.0, 100.0, 0.0*/));
             //Graphics graphics = g;
             //Eye position
             //double px = 0.0;
@@ -65,7 +65,8 @@ namespace RayTracerLib
                     //double vx = x - px, vy = y - py, vz = -pz;
                     double vx = x - p.X, vy = y - p.Y, vz = -p.Z;
                     //magnitude of the direction vector of the ray
-                    double mod_v = RayTracerLib.Sphere.modv(vx, vy, vz);
+                    //double mod_v = RayTracerLib.Sphere.modv(vx, vy, vz);
+                    double mod_v = Vector.modv(vx, vy, vz);
                     //normalizing the direction vector of the ray
                     vx = vx / mod_v;
                     vy = vy / mod_v;
@@ -121,8 +122,9 @@ namespace RayTracerLib
                                 }
                             }
                         }
-                        double cost = RayTracerLib.Sphere.GetCosAngleV1V2(lv.X/*lvx*/, lv.Y/*lvy*/, lv.Z/*lvz*/, itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz);
-                        cost = Vector.GetCosAngleV1V2(lv.X/*lvx*/, lv.Y/*lvy*/, lv.Z/*lvz*/, itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz);
+                        //double cost = RayTracerLib.Sphere.GetCosAngleV1V2(lv.X/*lvx*/, lv.Y/*lvy*/, lv.Z/*lvz*/, itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz);
+                        Vector eyeVector = new Vector(itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz);
+                        double cost = Vector.GetCosAngleV1V2(lv,eyeVector /*itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz*/);
                         if (cost < 0)
                             cost = 0;
                         double fact = 1.0;
