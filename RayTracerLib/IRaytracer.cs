@@ -17,7 +17,7 @@ namespace RayTracerLib
         /// </summary>
         RayTracerLib.Vector lp { get; set; }
         /// <summary>
-        /// Light direction
+        /// Light direction (vector)
         /// </summary>
         RayTracerLib.Vector lv { get; set; }
         //light color
@@ -30,7 +30,7 @@ namespace RayTracerLib
         /// </summary>
         int canvasHeight { get; set; }
         /// <summary>
-        /// 
+        /// Ray tracing, outputs array of colors for all pixels on canvas
         /// </summary>
         Color[,] RayTrace();
     }

@@ -14,33 +14,34 @@ namespace BackGroundDrawer
 {
     class Program
     {
-        private static string _filePath = @"c:\Users\k.skrabal\Documents\test.png";
+        private static string _filePath = @"c:\Users\k.skrabal\Documents\testBackGround.png";
         private static IRaTracer _rayTracer;
         public static IRaTracer rayTracer { get; set; }
+        private static RayTracerLib.Color[,] pixels;
 
         static void Main(string[] args)
         {
-            //DrawPicture1();
             rayTracer = new RayTracerLib.RayTracer();
             rayTracer.canvasHeight = 150;
             rayTracer.canvasWidth = 150;
             rayTracer.lp = new RayTracerLib.Vector(100.0, 100.0, 200.0);
             rayTracer.lv = new RayTracerLib.Vector(-1.0, -1.0, -1.0);
             rayTracer.p = new RayTracerLib.Vector(0.0, 0.0, 500.0);
-            rayTracer.RayTrace();
+            pixels = rayTracer.RayTrace();
+            DrawPicture();
         }
 
         private static void DrawPicture()
         {
-            Bitmap bmp = new Bitmap(1920, 1080);
+            Bitmap bmp = new Bitmap(rayTracer.canvasWidth,rayTracer.canvasHeight);
             Graphics g = Graphics.FromImage(bmp);
-            for (int i = 0; i < 1920; i++)
+            for (int i = 0; i < rayTracer.canvasWidth; i++)
             {
-                for (int y = 0; y < 1080; y++)
+                for (int j = 0; j < rayTracer.canvasHeight; j++)
                 {
-                    var color = System.Drawing.Color.FromArgb(100, 150, 100);
+                    var color = System.Drawing.Color.FromArgb((Byte)pixels[i,j].R, (Byte)pixels[i, j].G, (Byte)pixels[i, j].B);
                     System.Drawing.Brush brush1 = new SolidBrush(color);
-                    g.FillRectangle(brush1, i, y, 1, 1);
+                    g.FillRectangle(brush1, i, j, 1, 1);
                 }
             }
             g.Dispose();
