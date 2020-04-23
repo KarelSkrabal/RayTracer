@@ -60,5 +60,15 @@ namespace RayTracerLib
             G = color.g;
             B = color.b;
         }
+        public static Color GetShedowedColor(bool bShadow, Color color, double cost)
+        {
+            if (cost < 0)
+                cost = 0;
+            double fact = (bShadow == true) ? 0.5 : 1.0;
+            return new Color(
+                color.R * cost * fact,
+                color.G * cost * fact,
+                color.B * cost * fact);
+        }
     }
 }

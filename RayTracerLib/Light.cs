@@ -8,16 +8,18 @@ namespace RayTracerLib
 {
     public class Light
     {
-        Vector v;
+        Vector light;
 
-        public Light() => v = new Vector(0.0, 0.0, 0.0);
+        public Light() => light = new Vector(0.0, 0.0, 0.0);
 
         public Light(double x, double y, double z)
         {
-            v = new Vector(x, y, z);
-            v.normalize();
+            light = new Vector(x, y, z);
+            light.normalize();
         }
 
-        public Light(Light light) => v = new Vector(light.v);
+        public Light(Light light) => this.light = new Vector(light.light);
+
+        //public void 
     }
 }

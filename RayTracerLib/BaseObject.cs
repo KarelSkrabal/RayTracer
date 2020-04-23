@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 namespace RayTracerLib
 {
-    /// <summary>
-    /// Base class of all ray traced shapes
-    /// </summary>
     public class BaseObject
     {
-        protected Vector position;
-        protected Color color;
+        public Vector position { get; set; }
+        public Color color { get; set; }
 
-        /// <summary>
-        /// <para/>Base class constructor of shapes that are ray traced.
-        /// <para/>Class is defined by position vector and color
-        /// </summary>
-        /// <param name="position">Center position</param>
-        /// <param name="color">Color</param>
-        public BaseObject(Vector position, Color color)
+        public BaseObject(Vector p, Color c)
         {
-            this.position = position;
-            this.color = color;
+            position = p;
+            color = c;
         }
 
         /// <summary>
@@ -34,6 +25,14 @@ namespace RayTracerLib
         /// <param name="to">Direction to which the ray's heading </param>
         /// <param name="normal">Normal vector to the ray vector at the intersection point</param>
         /// <returns>Returns true if intersected or false</returns>
-        protected virtual bool isRayIntersected(Vector from, Vector to, ref Vector normal) => true;
+        public virtual bool isRayIntersected(Vector from, Vector to, ref Vector normal) => true;
+
+        public virtual double GetSphereIntersec(Vector from, Vector to)
+            //(/*double cx, double cy, double cz,*/
+            //                 /*double radius,*/ double px, double py, double pz,
+            //                 Vector v/*double vx, double vy, double vz*/)
+        {
+            return 0.0;
+        }
     }
 }

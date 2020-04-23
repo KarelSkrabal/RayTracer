@@ -49,6 +49,7 @@
     <Compile Include="Color.cs" />
     <Compile Include="IRaytracer.cs" />
     <Compile Include="Light.cs" />
+    <Compile Include="LightShadower.cs" />
     <Compile Include="RayTracer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sphere.cs" />

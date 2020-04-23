@@ -29,6 +29,12 @@ namespace RayTracerLib
             z = vector.z;
         }
 
+        public Vector unitVector(double x, double y, double z)
+        {
+            Vector v = new Vector(x,y,z);
+            v.normalize();
+            return v;
+        }
         public void normalize()
         {
             double length = Math.Sqrt(x * x + y * y + z * z);
