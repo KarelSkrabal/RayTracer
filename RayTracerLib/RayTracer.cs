@@ -18,36 +18,27 @@ namespace RayTracerLib
 
         public int canvasWidth { get; set; }
         public int canvasHeight { get; set; }
+        public List<BaseObject> objects { get; set; }
 
-        public Color[,] RayTrace()
+        public void RayTrace(ref Color[,] pixels)
         {
-            //Initializing the result
-            Color[,] ret = InitializeOutput();
-            System.Drawing.Bitmap newBitmap = new System.Drawing.Bitmap(150, 150, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-            Graphics g = Graphics.FromImage(newBitmap);
-            System.Drawing.Rectangle rect = new System.Drawing.Rectangle(0, 0, canvasWidth, canvasHeight/* 150, 150*/);
-            List<BaseObject> objs = new List<BaseObject>();
-            objs.Add(new RayTracerLib.Sphere(100.0, 20.0, 90.0, 50.0, new Color(250.0, 100.0, 0.0)/*250.0, 100.0, 0.0*/));
-            objs.Add(new RayTracerLib.Sphere(0.0, 0.0, 90.0, 40.0, new Color(0.0, 100.0, 0.0)/*250.0, 100.0, 0.0*/));
-            objs.Add(new RayTracerLib.Sphere(50.0, 60.0, 90.0, 40.0, new Color(100.0, 100.0, 100.0)/*250.0, 100.0, 0.0*/));
-            double fMax = canvasWidth/* 150.0*/;
-            for (int i = rect.Left; i <= rect.Right; i++)
+            InitializeOutput(ref pixels);
+            Vector normalVectorAtPoint = new Vector();
+            for (int i = 0; i < canvasWidth; i++)
             {
-                for (int j = rect.Top; j <= rect.Bottom; j++)
+                for (int j = 0; j < canvasHeight; j++)
                 {
-                    double x = RayTracerLib.Sphere.GetCoord(rect.Left, rect.Right, -fMax, fMax, i);
-                    double y = RayTracerLib.Sphere.GetCoord(rect.Top, rect.Bottom, fMax, -fMax, j);
                     double t = 1.0E10;
-                    //creating a unit vector of the ray going from eye to the point on 2Dview
-                    Vector to = new Vector(x - p.X, y - p.Y, -p.Z);
+                    Vector to = new Vector(i/*x*/ - p.X, j/*y*/ - p.Y, -p.Z);
                     to.normalize();
                     bool bShadow = false;
                     BaseObject spherehit1 = null;
-                    for (int k = 0; k < objs.Count; k++)
+                    for (int k = 0; k < objects.Count(); k++)
                     {
-                        BaseObject sphn1 = objs[k];
+                        BaseObject sphn1 = objects[k];
+                        
                         //Generate ray & sphere intersection, ray is originating from eye position through each point in the 2Dview screen, returning 0,1,2
-                        double taux1 = sphn1.GetSphereIntersec(p, to);
+                        double taux1 = sphn1.GetIntersection(p, to, ref normalVectorAtPoint);
                         if (taux1 < 0/*taux < 0*/)
                             continue;
                         if (taux1 > 0 && taux1 < t/*taux > 0 && taux < t*/)
@@ -56,32 +47,28 @@ namespace RayTracerLib
                             spherehit1 = sphn1;
                         }
                     }
-                    System.Drawing.Color color = System.Drawing.Color.FromArgb(255, 255, 255);
                     if (spherehit1 != null/* spherehit != null*/)
                     {
-                        //double itx = p.X/*px*/ + t * vx;
-                        double itx = p.X + t * to.X;
-                        //double ity = p.Y/*py*/ + t * vy;
-                        double ity = p.Y/*py*/ + t * to.Y;
-                        //double itz = p.Z/*pz*/ + t * vz;
-                        double itz = p.Z/*pz*/ + t * to.Z;
+                        ////double itx = p.X/*px*/ + t * vx;
+                        //double itx = p.X + t * to.X;
+                        ////double ity = p.Y/*py*/ + t * vy;
+                        //double ity = p.Y/*py*/ + t * to.Y;
+                        ////double itz = p.Z/*pz*/ + t * vz;
+                        //double itz = p.Z/*pz*/ + t * to.Z;
+
+                        //Vector xx = new Vector(itx, ity, itz);
+                        Vector isIt = p + t * to;
+                        //isIt.normalize();
                         //shadow
-                        //lpx,lpy,lpz .. light position
-                        //this is intersection of which line???????
-                        //double tauxla = RayTracerLib.Sphere.GetSphereIntersec(spherehit.cx, spherehit.cy, spherehit.cz, spherehit.radius,
-                        //    lp.X/*lpx*/, lp.Y/*lpy*/, lp.Z/*lpz*/,
-                        //    itx - lp.X/*lpx*/, ity - lp.Y/*lpy*/, itz - lp.Z/*lpz*/);
-                        double tauxla1 = spherehit1.GetSphereIntersec(lp/*lp.X, lp.Y, lp.Z*/, new Vector(itx - lp.X/*lpx*/, ity - lp.Y/*lpy*/, itz - lp.Z/*lpz*/));
-                        //for (int k = 0; k < (int)obj3dArrayList.Count; k++)
-                        for (int k = 0; k < objs.Count; k++)
+                        //double tauxla1 = spherehit1.GetIntersection(lp/*lp.X, lp.Y, lp.Z*/, new Vector(itx - lp.X/*lpx*/, ity - lp.Y/*lpy*/, itz - lp.Z/*lpz*/), ref normalVectorAtPoint);
+                        double tauxla1 = spherehit1.GetIntersection(lp/*lp.X, lp.Y, lp.Z*/, normalVectorAtPoint);
+                        for (int k = 0; k < objects.Count(); k++)
                         {
-                            BaseObject sphnb1 = objs[k];
+                            BaseObject sphnb1 = objects[k];
                             if (sphnb1 != spherehit1/* sphnb != spherehit*/)
                             {
-                                //double tauxlb = RayTracerLib.Sphere.GetSphereIntersec(sphnb.cx, sphnb.cy, sphnb.cz, sphnb.radius,
-                                //    lp.X/*lpx*/, lp.Y/*lpy*/, lp.Z/*lpz*/,
-                                //    itx - lp.X/*lpx*/, ity - lp.Y/*lpy*/, itz - lp.Z/*lpz*/);
-                                double tauxlb1 = sphnb1.GetSphereIntersec(lp/*lp.X, lp.Y, lp.Z*/, new Vector(itx - lp.X/*lpx*/, ity - lp.Y/*lpy*/, itz - lp.Z/*lpz*/));
+                                //double tauxlb1 = sphnb1.GetIntersection(lp/*lp.X, lp.Y, lp.Z*/, new Vector(itx - lp.X/*lpx*/, ity - lp.Y/*lpy*/, itz - lp.Z/*lpz*/), ref normalVectorAtPoint);
+                                double tauxlb1 = spherehit1.GetIntersection(lp/*lp.X, lp.Y, lp.Z*/, normalVectorAtPoint);
                                 if (tauxlb1 > 0 && tauxla1 < tauxlb1 /*tauxlb > 0 && tauxla < tauxlb*/)
                                 {
                                     bShadow = true;
@@ -90,48 +77,36 @@ namespace RayTracerLib
                             }
                         }
                         //double cost = RayTracerLib.Sphere.GetCosAngleV1V2(lv.X/*lvx*/, lv.Y/*lvy*/, lv.Z/*lvz*/, itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz);
-                        Vector eyeVector = new Vector(itx - spherehit1.position.X/*cx*/, ity - spherehit1.position.Y/*.cy*/, itz - spherehit1.position.Z/*.cz*/);
-                        double cost = Vector.GetCosAngleV1V2(lv, eyeVector /*itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz*/);
-                        if (cost < 0)
-                            cost = 0;
-                        double fact = 1.0;
-                        if (bShadow == true)
-                            fact = 0.5;
-                        else
-                            fact = 1.0;
-                        double rgbR = spherehit1.color.R/* spherehit.clR*/ * cost * fact;
-                        double rgbG = spherehit1.color.G/*spherehit.clG*/ * cost * fact;
-                        double rgbB = spherehit1.color.B/*spherehit.clB */* cost * fact;
-                        color = System.Drawing.Color.FromArgb((int)rgbR, (int)rgbG, (int)rgbB);
-                        System.Drawing.Pen pen = new System.Drawing.Pen(color);
-                        ret[i, j] = Color.GetShedowedColor(bShadow, spherehit1.color, cost);
+                        //Vector eyeVector = new Vector(itx - spherehit1.position.X/*cx*/, ity - spherehit1.position.Y/*.cy*/, itz - spherehit1.position.Z/*.cz*/);
+                        Vector eyeVector1 = new Vector(isIt - spherehit1.position);
+                        double cost = Vector.GetCosAngleV1V2(lv, eyeVector1 /*itx - spherehit.cx, ity - spherehit.cy, itz - spherehit.cz*/);
+                        pixels[i, j] = Color.GetShedowedColor(bShadow, spherehit1.color, cost);
                     }
-                    System.Drawing.Brush brs = new SolidBrush(color);
-                    g.FillRectangle(brs, i, j, 1, 1);
-                    newBitmap.Save(_filePath, System.Drawing.Imaging.ImageFormat.Png);
-                    brs.Dispose();
                 }//lines
             }//columns
-            MemoryStream tempStream = new MemoryStream();
-            newBitmap.Save(tempStream, System.Drawing.Imaging.ImageFormat.Png);
-            return ret;
         }
 
+        public static void DetermineIntensity(Vector lv,Vector v, ref Color c)
+        {
+            c.R = (lv * v) + 0.3;
+            if (c.R < 0)
+                c.R = -c.R;
+            c.G = 0.0;
+            c.B = 0.0;
+        }
         /// <summary>
         /// Initalizing output array of colors by 255,255,255 value
         /// </summary>
-        private Color[,] InitializeOutput()
+        private void InitializeOutput(ref Color[,] pixels)
         {
-            Color[,] ret = new Color[canvasWidth + 1, canvasHeight + 1];
-            for (int i = 0; i < canvasWidth + 1; i++)
+            //Color[,] ret = new Color[canvasWidth + 1, canvasHeight + 1];
+            for (int i = 0; i < canvasWidth; i++)
             {
-                for (int j = 0; j < canvasHeight + 1; j++)
+                for (int j = 0; j < canvasHeight; j++)
                 {
-                    ret[i, j] = new Color(255, 255, 255);
+                    pixels[i, j] = new Color(255, 255, 255);
                 }
             }
-
-            return ret;
         }
 
         //public Color[,] RayTrace()

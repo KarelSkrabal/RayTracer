@@ -17,21 +17,33 @@ namespace BackGroundDrawer
         private static string _filePath = @"c:\Users\k.skrabal\Documents\testBackGround.png";
         private static IRaTracer _rayTracer;
         public static IRaTracer rayTracer { get; set; }
-        private static RayTracerLib.Color[,] pixels;
+        //private static RayTracerLib.Color[,] pixels;
 
         static void Main(string[] args)
         {
             rayTracer = new RayTracerLib.RayTracer();
-            rayTracer.canvasHeight = 150;
-            rayTracer.canvasWidth = 150;
-            rayTracer.lp = new RayTracerLib.Vector(100.0, 100.0, 200.0);
-            rayTracer.lv = new RayTracerLib.Vector(-1.0, -1.0, -1.0);
-            rayTracer.p = new RayTracerLib.Vector(0.0, 0.0, 500.0);
-            pixels = rayTracer.RayTrace();
-            DrawPicture();
+            rayTracer.canvasHeight = 200;
+            rayTracer.canvasWidth = 200;
+            rayTracer.lp = new RayTracerLib.Vector(200.0, 200.0, -100.0);
+            rayTracer.lv = new RayTracerLib.Vector(0.0, -1.0, -1.0);
+            rayTracer.p = new RayTracerLib.Vector(0.0, 200.0, 500.0);
+
+
+            rayTracer.objects = new List<BaseObject>();
+            rayTracer.objects.Add (new RayTracerLib.Sphere(100.0, 100.0, 0.0, 40.0, new RayTracerLib.Color(250.0, 0.0, 50.0)));
+            rayTracer.objects.Add(new RayTracerLib.Sphere(20.0, 20.0, 0.0, 20.0, new RayTracerLib.Color(30.0, 30.0, 200.0)));
+            //RayTracerLib.Vector v0 = new RayTracerLib.Vector(0.0, 0.0, 10.0);
+            //RayTracerLib.Vector v1 = new RayTracerLib.Vector(10.0, 0.0, 10.0);
+            //RayTracerLib.Vector v2 = new RayTracerLib.Vector(0.0, 10.0, 10.0);
+            //rayTracer.objects.Add(new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0)));
+            //RayTracerLib.Triangle tt = new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0));
+
+            RayTracerLib.Color[,] pixels = new RayTracerLib.Color[rayTracer.canvasWidth, rayTracer.canvasHeight];
+            rayTracer.RayTrace(ref pixels);
+            DrawPicture(pixels);
         }
 
-        private static void DrawPicture()
+        private static void DrawPicture(RayTracerLib.Color[,] pixels)
         {
             Bitmap bmp = new Bitmap(rayTracer.canvasWidth,rayTracer.canvasHeight);
             Graphics g = Graphics.FromImage(bmp);

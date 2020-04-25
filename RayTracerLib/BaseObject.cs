@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RayTracerLib
 {
-    public class BaseObject
+    public class BaseObject : IEquatable<BaseObject>
     {
         public Vector position { get; set; }
         public Color color { get; set; }
@@ -27,12 +23,20 @@ namespace RayTracerLib
         /// <returns>Returns true if intersected or false</returns>
         public virtual bool isRayIntersected(Vector from, Vector to, ref Vector normal) => true;
 
-        public virtual double GetSphereIntersec(Vector from, Vector to)
-            //(/*double cx, double cy, double cz,*/
-            //                 /*double radius,*/ double px, double py, double pz,
-            //                 Vector v/*double vx, double vy, double vz*/)
-        {
-            return 0.0;
-        }
+        public virtual double GetIntersection(Vector from, Vector to, ref Vector normalAtPoint) => 0.0;
+        public virtual double GetIntersection(Vector from, Vector to) => 0.0;
+
+        //public override bool Equals(object obj) => (obj is BaseObject) ? this == (BaseObject) obj : false;
+
+        public bool Equals(BaseObject obj) => (obj is BaseObject) ? this == (BaseObject)obj : false;
+
+        //public bool Equals(BaseObject other)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //(/*double cx, double cy, double cz,*/
+        //                 /*double radius,*/ double px, double py, double pz,
+        //                 Vector v/*double vx, double vy, double vz*/)
     }
 }

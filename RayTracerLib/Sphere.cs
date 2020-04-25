@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RayTracerLib
 {
@@ -18,7 +14,7 @@ namespace RayTracerLib
         /// <para/>defined by r radius
         /// <para/>defined by r,g,b color parameters
         /// </summary>
-        public Sphere(double x, double y, double z, double r, /*double clr, double clg, double clb*/Color color) : base(new Vector(x,y,z),color)
+        public Sphere(double x, double y, double z, double r, /*double clr, double clg, double clb*/Color color) : base(new Vector(x, y, z), color)
         {
             cx = x;
             cy = y;
@@ -31,6 +27,9 @@ namespace RayTracerLib
             //clB = clb;
         }
 
+        public bool Equals(Sphere sphere) => cx == sphere.cx && cy == sphere.cy && cz == sphere.cz && radius == sphere.radius;
+
+        public override int GetHashCode() => (int)(cx + cy + cz + radius);
         //public Sphere(BaseObject sphere)
         //{
         //    cx = sphere.position.X;
@@ -60,7 +59,34 @@ namespace RayTracerLib
         //{
         //    return System.Math.Sqrt(vx * vx + vy * vy + vz * vz);
         //}
+        public override double GetIntersection(Vector from, Vector to)
+        {
+            //test
+            // Determine initial position (Ro - Rc) = (origin of ray - sphere center)
+            Vector vec = from - position;
 
+            // Use Rd and vec to determine the b component of the quadratic for
+            // the determinant
+            double b = to * vec;
+
+            // calculate the c component of the quadratic from (Ro-Rc)^2 - (radius of sphere)
+            double c = vec * vec - radius * radius;
+
+            //	calculate the discriminant
+            double d = b * b - c;
+
+            //	if the discriminant < 0 
+            //  there is no intersection, return
+            if (d < 0)
+                return -1;
+
+            // calculate t for the ray
+            double det = Math.Sqrt(d);
+            double t1 = -b - det;
+            double t2 = -b + det;
+
+            return t1 > t2 ? t1 : t2;
+        }
         /// <summary>
         /// Calculates ray and sphere intersection
         /// <para/> cx,cy,cz are sphere's center point
@@ -69,40 +95,60 @@ namespace RayTracerLib
         /// <para/> Can result in 0 intersections, 1 intersection (if tangent) or at most 2 intersections
         /// </summary>
         /// <returns>Can result in 0 intersections, 1 intersection (if tangent) or at most 2 intersections</returns>
-        public override double GetSphereIntersec(Vector from, Vector to)
-            //(/*double cx, double cy, double cz,*/
-            //                 /*double radius,*/ double px, double py, double pz,
-            //                 Vector v/*double vx, double vy, double vz*/)
+        public override double GetIntersection(Vector from, Vector to, ref Vector normalAtPoint)
+        //(/*double cx, double cy, double cz,*/
+        //                 /*double radius,*/ double px, double py, double pz,
+        //                 Vector v/*double vx, double vy, double vz*/)
         {
-            // x-xo 2 + y-yo 2 + z-zo 2 = r 2
-            // x,y,z = p+tv
-            // At2 + Bt + C = 0
-            double A = (to.X * to.X + to.Y * to.Y + to.Z * to.Z);
-            double B = 2.0 * (from.X * to.X + from.Y * to.Y + from.Z * to.Z - to.X * cx - to.Y * cy - to.Z * cz);
-            double C = from.X * from.X - 2 * from.X * cx + cx * cx + from.Y * from.Y - 2 * from.Y * cy + cy * cy + from.Z * from.Z - 2 * from.Z * cz + cz * cz - radius * radius;
+            ////test
+            //// Determine initial position (Ro - Rc) = (origin of ray - sphere center)
+            //Vector vec = from - position;
 
-            //double A = (v.X * v.X + v.Y * v.Y + v.Z * v.Z);
-            //double B = 2.0 * (px * v.X + py * v.Y + pz * v.Z - v.X * cx - v.Y * cy - v.Z * cz);
-            //double C = px * px - 2 * px * cx + cx * cx + py * py - 2 * py * cy + cy * cy + pz * pz - 2 * pz * cz + cz * cz - radius * radius;
-            double D = B * B - 4 * A * C;
-            double t = -1.0;
-            if (D >= 0)
-            {
-                double t1 = (-B - System.Math.Sqrt(D)) / (2.0 * A);
-                double t2 = (-B + System.Math.Sqrt(D)) / (2.0 * A);
-                if (t1 > t2)
-                    t = t1;
-                else
-                    t = t2;
-            }
+            //// Use Rd and vec to determine the b component of the quadratic for
+            //// the determinant
+            //double b = to * vec;
+
+            //// calculate the c component of the quadratic from (Ro-Rc)^2 - (radius of sphere)
+            //double c = vec * vec - radius * radius;
+
+            ////	calculate the discriminant
+            //double d = b * b - c;
+
+            ////	if the discriminant < 0 
+            ////  there is no intersection, return
+            //if (d < 0)
+            //    return -1;
+
+            //// calculate t for the ray
+            //double det = Math.Sqrt(d);
+            //double t1 = -b - det;
+            //double t2 = -b + det;
+
+            //double t = t1 > t2 ? t1 : t2;
+
+
+            //test
+            double t = GetIntersection(from, to);
+
+            // calculate the intersecting vector by substituting t back in
+            Vector v1 = to * t + from;
+            v1 = v1 - position;
+
+            // normalize the vector
+            v1.normalize();
+            normalAtPoint = v1;
+
             return t;
+            //// x-xo 2 + y-yo 2 + z-zo 2 = r 2
+            //// x,y,z = p+tv
+            //// At2 + Bt + C = 0
+            //double A = (to.X * to.X + to.Y * to.Y + to.Z * to.Z);
+            //double B = 2.0 * (from.X * to.X + from.Y * to.Y + from.Z * to.Z - to.X * cx - to.Y * cy - to.Z * cz);
+            //double C = from.X * from.X - 2 * from.X * cx + cx * cx + from.Y * from.Y - 2 * from.Y * cy + cy * cy + from.Z * from.Z - 2 * from.Z * cz + cz * cz - radius * radius;
 
-            //double A = (vx * vx + vy * vy + vz * vz);
-            //double B = 2.0 * (px * vx + py * vy + pz * vz - vx * cx - vy *
-            //           cy - vz * cz);
-            //double C = px * px - 2 * px * cx + cx * cx + py * py - 2 * py *
-            //           cy + cy * cy + pz * pz - 2 * pz * cz + cz * cz -
-            //           radius * radius;
+            ////double A = (v.X * v.X + v.Y * v.Y + v.Z * v.Z);
+            ////double B = 2.0 * (px * v.X + py * v.Y + pz * v.Z - v.X * cx - v.Y * cy - v.Z * cz);
+            ////double C = px * px - 2 * px * cx + cx * cx + py * py - 2 * py * cy + cy * cy + pz * pz - 2 * pz * cz + cz * cz - radius * radius;
             //double D = B * B - 4 * A * C;
             //double t = -1.0;
             //if (D >= 0)
@@ -115,6 +161,25 @@ namespace RayTracerLib
             //        t = t2;
             //}
             //return t;
+
+            ////double A = (vx * vx + vy * vy + vz * vz);
+            ////double B = 2.0 * (px * vx + py * vy + pz * vz - vx * cx - vy *
+            ////           cy - vz * cz);
+            ////double C = px * px - 2 * px * cx + cx * cx + py * py - 2 * py *
+            ////           cy + cy * cy + pz * pz - 2 * pz * cz + cz * cz -
+            ////           radius * radius;
+            ////double D = B * B - 4 * A * C;
+            ////double t = -1.0;
+            ////if (D >= 0)
+            ////{
+            ////    double t1 = (-B - System.Math.Sqrt(D)) / (2.0 * A);
+            ////    double t2 = (-B + System.Math.Sqrt(D)) / (2.0 * A);
+            ////    if (t1 > t2)
+            ////        t = t1;
+            ////    else
+            ////        t = t2;
+            ////}
+            ////return t;
         }
 
         public bool isRayIntersected(Vector from, Vector to, ref Vector normal)

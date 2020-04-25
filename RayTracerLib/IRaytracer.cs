@@ -1,8 +1,5 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RayTracerLib
 {
@@ -29,9 +26,10 @@ namespace RayTracerLib
         /// Height of canvas
         /// </summary>
         int canvasHeight { get; set; }
+        List<BaseObject> objects { get; set; }
         /// <summary>
         /// Ray tracing, outputs array of colors for all pixels on canvas
         /// </summary>
-        Color[,] RayTrace();
+        void RayTrace(ref Color[,] pixels);
     }
 }
