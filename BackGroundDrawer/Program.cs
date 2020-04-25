@@ -39,7 +39,7 @@ namespace BackGroundDrawer
             //RayTracerLib.Triangle tt = new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0));
 
             RayTracerLib.Color[,] pixels = new RayTracerLib.Color[rayTracer.canvasWidth, rayTracer.canvasHeight];
-            rayTracer.RayTrace(ref pixels);
+            rayTracer.RayTraceScene(ref pixels);
             DrawPicture(pixels);
         }
 

@@ -30,6 +30,6 @@ namespace RayTracerLib
         /// <summary>
         /// Ray tracing, outputs array of colors for all pixels on canvas
         /// </summary>
-        void RayTrace(ref Color[,] pixels);
+        void RayTraceScene(ref Color[,] pixels);
     }
 }
