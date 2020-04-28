@@ -22,19 +22,19 @@ namespace BackGroundDrawer
         static void Main(string[] args)
         {
             rayTracer = new RayTracerLib.RayTracer();
-            rayTracer.canvasHeight = 200;
-            rayTracer.canvasWidth = 200;
-            rayTracer.lp = new RayTracerLib.Vector(200.0, 200.0, -100.0);
-            rayTracer.lv = new RayTracerLib.Vector(0.0, -1.0, -1.0);
-            rayTracer.p = new RayTracerLib.Vector(0.0, 200.0, 500.0);
+            rayTracer.canvasHeight = 300;
+            rayTracer.canvasWidth = 300;
+            rayTracer.lp = new RayTracerLib.Vector(0.0, 0.0, 100.0);
+            rayTracer.lv = new RayTracerLib.Vector(-1.0, -1.0, -1.0);
+            rayTracer.p = new RayTracerLib.Vector(0.0, 0.0, 500.0);
 
 
             rayTracer.objects = new List<BaseObject>();
-            rayTracer.objects.Add (new RayTracerLib.Sphere(100.0, 100.0, 0.0, 40.0, new RayTracerLib.Color(250.0, 0.0, 50.0)));
+            rayTracer.objects.Add(new RayTracerLib.Sphere(100.0, 100.0, 0.0, 40.0, new RayTracerLib.Color(250.0, 0.0, 50.0)));
             rayTracer.objects.Add(new RayTracerLib.Sphere(20.0, 20.0, 0.0, 20.0, new RayTracerLib.Color(30.0, 30.0, 200.0)));
-            //RayTracerLib.Vector v0 = new RayTracerLib.Vector(0.0, 0.0, 10.0);
-            //RayTracerLib.Vector v1 = new RayTracerLib.Vector(10.0, 0.0, 10.0);
-            //RayTracerLib.Vector v2 = new RayTracerLib.Vector(0.0, 10.0, 10.0);
+            //RayTracerLib.Vector v0 = new RayTracerLib.Vector(0.0, 0.0, 0.0);
+            //RayTracerLib.Vector v1 = new RayTracerLib.Vector(200.0, 0.0, 0.0);
+            //RayTracerLib.Vector v2 = new RayTracerLib.Vector(0.0, 200.0, 0.0);
             //rayTracer.objects.Add(new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0)));
             //RayTracerLib.Triangle tt = new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0));
 

@@ -15,15 +15,14 @@ namespace RayTracerLib
 
         public void RayTraceScene(ref Color[,] pixels)
         {
-            InitializeOutput(ref pixels);
-            
+            InitializeOutput(ref pixels);            
             for (int i = 0; i < canvasWidth; i++)
             {
                 for (int j = 0; j < canvasHeight; j++)
                 {
                     RayTrace(pixels, i, j);
-                }//lines
-            }//columns
+                }
+            }
         }
 
         private void RayTrace(Color[,] pixels, int i, int j)
@@ -61,8 +60,8 @@ namespace RayTracerLib
                         }
                     }
                 }
-                double cost = Vector.GetCosAngleV1V2(lv, new Vector(hitPoint - obj.position));
-                pixels[i, j] = Color.GetShedowedColor(bShadow, obj.color, cost);
+                double cosAngle = Vector.GetCosAngleV1V2(lv, new Vector(hitPoint - obj.position));
+                pixels[i, j] = Color.GetShedowedColor(bShadow, obj.color, cosAngle);
             }
         }
 
@@ -71,7 +70,6 @@ namespace RayTracerLib
         /// </summary>
         private void InitializeOutput(ref Color[,] pixels)
         {
-            //Color[,] ret = new Color[canvasWidth + 1, canvasHeight + 1];
             for (int i = 0; i < canvasWidth; i++)
             {
                 for (int j = 0; j < canvasHeight; j++)
