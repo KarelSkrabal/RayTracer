@@ -30,6 +30,8 @@ namespace RayTracerLib
 
         public bool Equals(BaseObject obj) => (obj is BaseObject) ? this == (BaseObject)obj : false;
 
+        public new virtual string ToString() => " , position = " + position.ToString() + " , color = " + color.ToString();
+
         //public bool Equals(BaseObject other)
         //{
         //    throw new NotImplementedException();

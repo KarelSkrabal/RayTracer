@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracerApp", "RayTracer\RayTracerApp.csproj", "{9058B35D-C40E-40E0-A033-60E88A808FD9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerLib", "RayTracerLib\RayTracerLib.csproj", "{755637DF-B2EB-40ED-A2F0-FFE23A3BC9CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackGroundDrawer", "BackGroundDrawer\BackGroundDrawer.csproj", "{DAAB8E8D-A181-412E-BD15-F0E79FD72A45}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIHUNTERLIB", "..\VectorExample\TIHUNTERLIB\TIHUNTERLIB.csproj", "{FB3D2D94-607C-41EA-842E-685E7BE36AA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerApp1", "RayTracerApp1\RayTracerApp1.csproj", "{837175FE-B115-46F5-8EAD-C4358BD2B490}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9058B35D-C40E-40E0-A033-60E88A808FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9058B35D-C40E-40E0-A033-60E88A808FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9058B35D-C40E-40E0-A033-60E88A808FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9058B35D-C40E-40E0-A033-60E88A808FD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{755637DF-B2EB-40ED-A2F0-FFE23A3BC9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{755637DF-B2EB-40ED-A2F0-FFE23A3BC9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{755637DF-B2EB-40ED-A2F0-FFE23A3BC9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{FB3D2D94-607C-41EA-842E-685E7BE36AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB3D2D94-607C-41EA-842E-685E7BE36AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB3D2D94-607C-41EA-842E-685E7BE36AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837175FE-B115-46F5-8EAD-C4358BD2B490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837175FE-B115-46F5-8EAD-C4358BD2B490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837175FE-B115-46F5-8EAD-C4358BD2B490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837175FE-B115-46F5-8EAD-C4358BD2B490}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

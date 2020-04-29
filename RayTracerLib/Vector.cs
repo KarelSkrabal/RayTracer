@@ -118,5 +118,7 @@ namespace RayTracerLib
             var rtnvector = new Vector(x, y, z);
             return rtnvector;
         }
+
+        public override string ToString() => "(X = " + X + " , Y = " + Y + " , Z = " + Z + ")";
     }
 }

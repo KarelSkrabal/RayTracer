@@ -64,5 +64,7 @@
                 color.G * cost * fact,
                 color.B * cost * fact);
         }
+
+        public override string ToString() => "RGB(R = " + R + " , G = " + G + " , B = " + B + ")";
     }
 }
