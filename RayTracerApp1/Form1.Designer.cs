@@ -44,7 +44,6 @@
             this.cmdStartRayTracing = new System.Windows.Forms.Button();
             this.cmdStopRayTracing = new System.Windows.Forms.Button();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.lbProgress = new System.Windows.Forms.Label();
             this.lstSphere = new System.Windows.Forms.ListBox();
             this.cmdDeleteSphere = new System.Windows.Forms.Button();
             this.grbSphereSettings = new System.Windows.Forms.GroupBox();
@@ -192,7 +191,7 @@
             // cmdStartRayTracing
             // 
             this.cmdStartRayTracing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cmdStartRayTracing.Location = new System.Drawing.Point(7, 442);
+            this.cmdStartRayTracing.Location = new System.Drawing.Point(7, 387);
             this.cmdStartRayTracing.Name = "cmdStartRayTracing";
             this.cmdStartRayTracing.Size = new System.Drawing.Size(130, 30);
             this.cmdStartRayTracing.TabIndex = 14;
@@ -204,7 +203,7 @@
             // 
             this.cmdStopRayTracing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cmdStopRayTracing.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cmdStopRayTracing.Location = new System.Drawing.Point(143, 442);
+            this.cmdStopRayTracing.Location = new System.Drawing.Point(143, 387);
             this.cmdStopRayTracing.Name = "cmdStopRayTracing";
             this.cmdStopRayTracing.Size = new System.Drawing.Size(130, 30);
             this.cmdStopRayTracing.TabIndex = 15;
@@ -217,15 +216,6 @@
             this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
             this.bw.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bw_ProgressChanged);
             this.bw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
-            // 
-            // lbProgress
-            // 
-            this.lbProgress.AutoSize = true;
-            this.lbProgress.Location = new System.Drawing.Point(742, 428);
-            this.lbProgress.Name = "lbProgress";
-            this.lbProgress.Size = new System.Drawing.Size(46, 17);
-            this.lbProgress.TabIndex = 16;
-            this.lbProgress.Text = "label6";
             // 
             // lstSphere
             // 
@@ -516,7 +506,7 @@
             this.panel1.Controls.Add(this.picScene);
             this.panel1.Location = new System.Drawing.Point(6, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(462, 358);
+            this.panel1.Size = new System.Drawing.Size(462, 303);
             this.panel1.TabIndex = 21;
             // 
             // grbRayTracing
@@ -529,15 +519,16 @@
             this.grbRayTracing.Controls.Add(this.cmdStartRayTracing);
             this.grbRayTracing.Location = new System.Drawing.Point(2, 12);
             this.grbRayTracing.Name = "grbRayTracing";
-            this.grbRayTracing.Size = new System.Drawing.Size(491, 491);
+            this.grbRayTracing.Size = new System.Drawing.Size(491, 436);
             this.grbRayTracing.TabIndex = 22;
             this.grbRayTracing.TabStop = false;
             this.grbRayTracing.Text = "Ray Traced Scene";
             // 
             // cmdClose
             // 
+            this.cmdClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.cmdClose.Location = new System.Drawing.Point(1111, 500);
+            this.cmdClose.Location = new System.Drawing.Point(1153, 473);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(130, 30);
             this.cmdClose.TabIndex = 23;
@@ -549,12 +540,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 571);
+            this.ClientSize = new System.Drawing.Size(1298, 516);
             this.Controls.Add(this.cmdClose);
             this.Controls.Add(this.grbRayTracing);
             this.Controls.Add(this.grbSceneSettings);
             this.Controls.Add(this.grbSphereSettings);
-            this.Controls.Add(this.lbProgress);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picScene)).EndInit();
@@ -565,7 +555,6 @@
             this.panel1.ResumeLayout(false);
             this.grbRayTracing.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -587,7 +576,6 @@
         private System.Windows.Forms.Button cmdStartRayTracing;
         private System.Windows.Forms.Button cmdStopRayTracing;
         private System.ComponentModel.BackgroundWorker bw;
-        private System.Windows.Forms.Label lbProgress;
         private System.Windows.Forms.ListBox lstSphere;
         private System.Windows.Forms.Button cmdDeleteSphere;
         private System.Windows.Forms.GroupBox grbSphereSettings;

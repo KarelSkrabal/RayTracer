@@ -9,5 +9,7 @@ namespace RayTracerApp1
     public static class Helpers
     {
         public static string SetDoubleFormat(this string value) => value.Replace('.', ',');
+
+        public static double SetDoubleValue(this string value) => Convert.ToDouble(value.SetDoubleFormat());
     }
 }

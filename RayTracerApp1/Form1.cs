@@ -73,6 +73,17 @@ namespace RayTracerApp1
             //RayTracerLib.Triangle tt = new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0));
 
             PopulateSphereListBox();
+            txtSceneCanvasWidth.Text = _rayTracer.canvasWidth.ToString();
+            txtSceneCanvasHeight.Text = _rayTracer.canvasHeight.ToString();
+            txtSceneCameraX.Text = _rayTracer.p.X.ToString();
+            txtSceneCameraY.Text = _rayTracer.p.Y.ToString();
+            txtSceneCameraZ.Text = _rayTracer.p.Z.ToString();
+            txtSceneLightDirectionX.Text = _rayTracer.lv.X.ToString();
+            txtSceneLightDirectionY.Text = _rayTracer.lv.Y.ToString();
+            txtSceneLightDirectionZ.Text = _rayTracer.lv.Z.ToString();
+            txtSceneLightPositionX.Text = _rayTracer.lp.X.ToString();
+            txtSceneLightPositionY.Text = _rayTracer.lp.Y.ToString();
+            txtSceneLightPositionZ.Text = _rayTracer.lp.Z.ToString();
         }
 
         private void PopulateSphereListBox()
@@ -96,10 +107,10 @@ namespace RayTracerApp1
         private void cmdAddSphere_Click(object sender, EventArgs e)
         {
             _rayTracer.objects.Add(new Sphere(
-                Convert.ToDouble(txtX.Text.SetDoubleFormat()),
-                Convert.ToDouble(txtY.Text.SetDoubleFormat()),
-                Convert.ToDouble(txtZ.Text.SetDoubleFormat()),
-                Convert.ToDouble(txtRadius.Text.SetDoubleFormat()),
+                txtX.Text.SetDoubleValue(),
+                txtY.Text.SetDoubleValue(),
+                txtZ.Text.SetDoubleValue(),
+                txtRadius.Text.SetDoubleValue(),
                 new RayTracerLib.Color() { R = _color.R, B = _color.B, G = _color.G }
                 ));
 
@@ -170,7 +181,7 @@ namespace RayTracerApp1
 
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            lbProgress.Text = (e.ProgressPercentage.ToString() + "%");
+            //lbProgress.Text = (e.ProgressPercentage.ToString() + "%");
         }
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
