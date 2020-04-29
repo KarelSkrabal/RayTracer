@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace RayTracerApp1
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         private static string _filePath = @"c:\Users\k.skrabal\Documents\testBackGround.png";
         private static string _filePath1 = @"c:\Users\k.skrabal\Documents\default.png";
         private IRaTracer _rayTracer;
         private System.Drawing.Color _color;
 
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
             bw.WorkerReportsProgress = true;
@@ -73,6 +73,11 @@ namespace RayTracerApp1
             //RayTracerLib.Triangle tt = new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0));
 
             PopulateSphereListBox();
+            PopulateSceneSettings();
+        }
+
+        private void PopulateSceneSettings()
+        {
             txtSceneCanvasWidth.Text = _rayTracer.canvasWidth.ToString();
             txtSceneCanvasHeight.Text = _rayTracer.canvasHeight.ToString();
             txtSceneCameraX.Text = _rayTracer.p.X.ToString();
@@ -120,6 +125,8 @@ namespace RayTracerApp1
 
         private void cmdStartRayTracing_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            //this.Cursor = Cursors.WaitCursor;
             picScene.Image = Image.FromFile(_filePath1);
             if (bw.IsBusy != true)
                 bw.RunWorkerAsync();
@@ -163,19 +170,14 @@ namespace RayTracerApp1
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            //for (int i = 0; i < 10; i++)
-            for (int i = 0; i < _rayTracer.canvasWidth * _rayTracer.canvasHeight; i++)
+            worker.WorkerReportsProgress = true;
+            if (worker.CancellationPending)
             {
-                if (worker.CancellationPending)
-                {
-                    e.Cancel = true;
-                    break;
-                }
-                else
-                {
-                    StartTracing();
-                    worker.ReportProgress(i);
-                }
+                e.Cancel = true;
+            }
+            else
+            {
+                StartTracing();
             }
         }
 
@@ -187,7 +189,10 @@ namespace RayTracerApp1
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (bw.WorkerSupportsCancellation)
+            {
                 bw.CancelAsync();
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void cmdStopRayTracing_Click(object sender, EventArgs e)
@@ -200,7 +205,7 @@ namespace RayTracerApp1
         private void cmdDeleteSphere_Click(object sender, EventArgs e)
         {
             var sphereToDelete = lstSphere.SelectedIndex;
-            if(sphereToDelete >= 0 && sphereToDelete < _rayTracer.objects.Count)
+            if (sphereToDelete >= 0 && sphereToDelete < _rayTracer.objects.Count)
             {
                 _rayTracer.objects.RemoveAt(sphereToDelete);
                 PopulateSphereListBox();
@@ -209,7 +214,7 @@ namespace RayTracerApp1
 
         private void cmdEditSphere_Click(object sender, EventArgs e)
         {
-            if(lstSphere.SelectedIndex >= 0)
+            if (lstSphere.SelectedIndex >= 0)
             {
                 var selectedSphere = _rayTracer.objects.ElementAt(lstSphere.SelectedIndex) as Sphere;
                 txtRadius.Text = selectedSphere.radius.ToString();
@@ -217,8 +222,8 @@ namespace RayTracerApp1
                 txtY.Text = selectedSphere.position.Y.ToString();
                 txtZ.Text = selectedSphere.position.Z.ToString();
                 txtColor.Text = System.Drawing.Color.FromArgb(
-                    (int)selectedSphere.color.R, 
-                    (int)selectedSphere.color.G, 
+                    (int)selectedSphere.color.R,
+                    (int)selectedSphere.color.G,
                     (int)selectedSphere.color.B).Name;
             }
         }
@@ -230,7 +235,23 @@ namespace RayTracerApp1
 
         private void cmdSaveSceneSettings_Click(object sender, EventArgs e)
         {
-
+            _rayTracer.canvasWidth = txtSceneCanvasWidth.Text.SetIntValue();
+            _rayTracer.canvasHeight = txtSceneCanvasHeight.Text.SetIntValue();
+            _rayTracer.p = new Vector(
+                txtSceneCameraX.Text.SetDoubleValue(),
+                txtSceneCameraY.Text.SetDoubleValue(),
+                txtSceneCameraZ.Text.SetDoubleValue()
+                );
+            _rayTracer.lv = new Vector(
+                txtSceneLightDirectionX.Text.SetDoubleValue(),
+                txtSceneLightDirectionY.Text.SetDoubleValue(),
+                txtSceneLightDirectionZ.Text.SetDoubleValue()
+                );
+            _rayTracer.lp = new Vector(
+                txtSceneLightPositionX.Text.SetDoubleValue(),
+                txtSceneLightPositionY.Text.SetDoubleValue(),
+                txtSceneLightPositionZ.Text.SetDoubleValue()
+                );
         }
     }
 }

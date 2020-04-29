@@ -1,6 +1,6 @@
 ﻿namespace RayTracerApp1
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -85,6 +85,7 @@
             // 
             // picScene
             // 
+            this.picScene.InitialImage = null;
             this.picScene.Location = new System.Drawing.Point(4, 3);
             this.picScene.Name = "picScene";
             this.picScene.Size = new System.Drawing.Size(418, 392);
@@ -482,7 +483,7 @@
             // lbFixSceneCanvasHeight
             // 
             this.lbFixSceneCanvasHeight.AutoSize = true;
-            this.lbFixSceneCanvasHeight.Location = new System.Drawing.Point(32, 45);
+            this.lbFixSceneCanvasHeight.Location = new System.Drawing.Point(32, 48);
             this.lbFixSceneCanvasHeight.Name = "lbFixSceneCanvasHeight";
             this.lbFixSceneCanvasHeight.Size = new System.Drawing.Size(100, 17);
             this.lbFixSceneCanvasHeight.TabIndex = 1;
@@ -528,7 +529,7 @@
             // 
             this.cmdClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.cmdClose.Location = new System.Drawing.Point(1153, 473);
+            this.cmdClose.Location = new System.Drawing.Point(1153, 441);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(130, 30);
             this.cmdClose.TabIndex = 23;
@@ -536,7 +537,7 @@
             this.cmdClose.UseVisualStyleBackColor = true;
             this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
             // 
-            // Form1
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -545,8 +546,8 @@
             this.Controls.Add(this.grbRayTracing);
             this.Controls.Add(this.grbSceneSettings);
             this.Controls.Add(this.grbSphereSettings);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "frmMain";
+            this.Text = "Ray Tracer";
             ((System.ComponentModel.ISupportInitialize)(this.picScene)).EndInit();
             this.grbSphereSettings.ResumeLayout(false);
             this.grbSphereSettings.PerformLayout();
