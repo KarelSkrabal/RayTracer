@@ -39,6 +39,4 @@ are the preffered ones.
 Focus on user experience and clean code. Use core features available in
 the selected framework.
 
-# My Notes
 
-https://stackoverflow.com/questions/12764259/not-clear-unsafe-code-in-draw-pixel-method

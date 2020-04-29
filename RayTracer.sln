@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerLib", "RayTracerLib\RayTracerLib.csproj", "{755637DF-B2EB-40ED-A2F0-FFE23A3BC9CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerApp", "RayTracerApp1\RayTracerApp.csproj", "{837175FE-B115-46F5-8EAD-C4358BD2B490}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerApp", "RayTracerApp\RayTracerApp.csproj", "{837175FE-B115-46F5-8EAD-C4358BD2B490}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
