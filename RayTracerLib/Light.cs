@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RayTracerLib
+﻿namespace RayTracerLib
 {
     public class Light
     {
@@ -19,7 +13,5 @@ namespace RayTracerLib
         }
 
         public Light(Light light) => this.light = new Vector(light.light);
-
-        //public void 
     }
 }

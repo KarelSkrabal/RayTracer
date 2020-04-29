@@ -8,7 +8,7 @@
             get => r;
             set
             {
-                int rvalue = (int)(/*255 * */value);
+                int rvalue = (int)(value);
                 rvalue = rvalue > 255 ? 255 : rvalue;
                 r = rvalue < 0 ? 0 : rvalue;
             }
@@ -19,7 +19,7 @@
             get => g;
             set
             {
-                int gvalue = (int)(/*255 * */value);
+                int gvalue = (int)(value);
                 gvalue = gvalue > 255 ? 255 : gvalue;
                 g = gvalue < 0 ? 0 : gvalue;
             }
@@ -30,7 +30,7 @@
             get => b;
             set
             {
-                int bvalue = (int)(/*255 * */value);
+                int bvalue = (int)(value);
                 bvalue = bvalue > 255 ? 255 : bvalue;
                 b = bvalue < 0 ? 0 : bvalue;
             }

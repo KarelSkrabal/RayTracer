@@ -10,8 +10,6 @@ namespace RayTracerApp1
 {
     public partial class frmMain : Form
     {
-        private static string _filePath = @"c:\Users\k.skrabal\Documents\testBackGround.png";
-        private static string _filePath1 = @"c:\Users\k.skrabal\Documents\default.png";
         private IRaTracer _rayTracer;
         private System.Drawing.Color _color;
 
@@ -22,7 +20,7 @@ namespace RayTracerApp1
             bw.WorkerSupportsCancellation = true;
             _rayTracer = new RayTracer();
             DefaultData();
-            picScene.Image = Image.FromFile(_filePath1);
+            picScene.Image = Properties.Resources.defaultPic;
         }
 
         private void DrawPicture(RayTracerLib.Color[,] pixels)
@@ -39,9 +37,9 @@ namespace RayTracerApp1
                 }
             }
             g.Dispose();
-            bmp.Save(_filePath, System.Drawing.Imaging.ImageFormat.Png);
-
-            picScene.Image = Image.FromFile(_filePath);
+            string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene.png");
+            bmp.Save(path, System.Drawing.Imaging.ImageFormat.Png);
+            picScene.Image = Image.FromFile(path);
             bmp.Dispose();
             bw.CancelAsync();
         }
@@ -51,17 +49,16 @@ namespace RayTracerApp1
             _color = new System.Drawing.Color();
             txtColor.Text = _color.Name;
 
-            _rayTracer = new RayTracerLib.RayTracer();
+            _rayTracer = new RayTracer();
             _rayTracer.canvasHeight = 300;
             _rayTracer.canvasWidth = 300;
-            _rayTracer.lp = new RayTracerLib.Vector(0.0, 0.0, 100.0);
-            _rayTracer.lv = new RayTracerLib.Vector(-1.0, -1.0, -1.0);
-            _rayTracer.p = new RayTracerLib.Vector(0.0, 0.0, 500.0);
+            _rayTracer.lp = new Vector(0.0, 0.0, 100.0);
+            _rayTracer.lv = new Vector(-1.0, -1.0, -1.0);
+            _rayTracer.p = new Vector(0.0, 0.0, 500.0);
 
-            picScene.Width = 500;
-            picScene.Height = 500;
+            picScene.Width = picScene.Height = 500;
             _rayTracer.objects = new List<BaseObject>();
-            _rayTracer.objects.Add(new RayTracerLib.Sphere(100.0, 100.0, 0.0, 40.0, new RayTracerLib.Color(250.0, 0.0, 50.0)));
+            _rayTracer.objects.Add(new Sphere(100.0, 100.0, 0.0, 40.0, new RayTracerLib.Color(250.0, 0.0, 50.0)));
             //_rayTracer.objects.Add(new RayTracerLib.Sphere(20.0, 20.0, 0.0, 20.0, new RayTracerLib.Color(30.0, 30.0, 200.0)));
             //_rayTracer.objects.Add(new RayTracerLib.Sphere(10.0, 180.0, 0.0, 30.0, new RayTracerLib.Color(255, 30.0, 200.0)));
             //_rayTracer.objects.Add(new RayTracerLib.Sphere(10.0, 30.0, 0.0, 40.0, new RayTracerLib.Color(255, 30.0, 200.0)));
@@ -127,7 +124,7 @@ namespace RayTracerApp1
         {
             Cursor.Current = Cursors.WaitCursor;
             //this.Cursor = Cursors.WaitCursor;
-            picScene.Image = Image.FromFile(_filePath1);
+            picScene.Image = Properties.Resources.ProcessingDefaultPic;
             if (bw.IsBusy != true)
                 bw.RunWorkerAsync();
             ClearSphereUI();
@@ -197,7 +194,7 @@ namespace RayTracerApp1
 
         private void cmdStopRayTracing_Click(object sender, EventArgs e)
         {
-            picScene.Image = Image.FromFile(_filePath1);
+            picScene.Image = Properties.Resources.defaultPic;
             if (bw.WorkerSupportsCancellation)
                 bw.CancelAsync();
         }

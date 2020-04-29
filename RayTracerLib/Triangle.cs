@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RayTracerLib
 {
@@ -64,24 +60,19 @@ namespace RayTracerLib
 
             double s, t;
             s = (uv * wv - vv * wu) / D;
-            if (s < 0.0 || s > 1.0)         // I is outside T
+            if (s < 0.0 || s > 1.0)         // neni v trojuhelniku
                 return 0;
             t = (uv * wu - uu * wv) / D;
-            if (t < 0.0 || (s + t) > 1.0)  // I is outside T
+            if (t < 0.0 || (s + t) > 1.0)  // neni v trojuhelniku
                 return 0;
             normalAtPoint = I;
             normalAtPoint.normalize();
-            return 1;                       // I is in T
+            return 1;                       // je v trojuhelniku
 
             //returning point
             //V0 + s * u + t * v
             //u = V1 - V0 
             //v = V2 - V0
-        }
-
-        public override bool isRayIntersected(Vector from, Vector to, ref Vector normal)
-        {
-            return base.isRayIntersected(from, to, ref normal);
         }
     }
 }
