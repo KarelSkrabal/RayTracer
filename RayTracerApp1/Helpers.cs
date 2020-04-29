@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RayTracerApp1
+namespace RayTracerApp
 {
     public static class Helpers
     {

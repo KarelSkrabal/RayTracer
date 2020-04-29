@@ -1,4 +1,4 @@
-﻿namespace RayTracerApp1
+﻿namespace RayTracerApp
 {
     partial class frmMain
     {

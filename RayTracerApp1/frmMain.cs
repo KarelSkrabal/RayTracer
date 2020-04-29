@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace RayTracerApp1
+namespace RayTracerApp
 {
     public partial class frmMain : Form
     {
