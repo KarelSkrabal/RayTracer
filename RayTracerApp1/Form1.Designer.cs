@@ -40,48 +40,48 @@
             this.lbFixSphereZ = new System.Windows.Forms.Label();
             this.lbFixSphereColor = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.cmdColor = new System.Windows.Forms.Button();
+            this.cmdColorSphere = new System.Windows.Forms.Button();
             this.cmdStartRayTracing = new System.Windows.Forms.Button();
             this.cmdStopRayTracing = new System.Windows.Forms.Button();
             this.bw = new System.ComponentModel.BackgroundWorker();
             this.lbProgress = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstSphere = new System.Windows.Forms.ListBox();
             this.cmdDeleteSphere = new System.Windows.Forms.Button();
-            this.grbSphere = new System.Windows.Forms.GroupBox();
+            this.grbSphereSettings = new System.Windows.Forms.GroupBox();
             this.cmdEditSphere = new System.Windows.Forms.Button();
             this.txtColor = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grbSceneSettings = new System.Windows.Forms.GroupBox();
             this.cmdSaveSceneSettings = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtSceneCameraZ = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtSceneCameraY = new System.Windows.Forms.TextBox();
+            this.txtSceneCameraX = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.lbFixSceneCameraPosition = new System.Windows.Forms.Label();
+            this.txtSceneLightDirectionZ = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtSceneLightDirectionY = new System.Windows.Forms.TextBox();
+            this.txtSceneLightDirectionX = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSceneLightPositionZ = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtSceneLightPositionY = new System.Windows.Forms.TextBox();
+            this.txtSceneLightPositionX = new System.Windows.Forms.TextBox();
+            this.txtSceneCanvasHeight = new System.Windows.Forms.TextBox();
+            this.txtSceneCanvasWidth = new System.Windows.Forms.TextBox();
+            this.lbFixSceneLightDirection = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbFixSceneLightPosition = new System.Windows.Forms.Label();
+            this.lbFixSceneCanvasHeight = new System.Windows.Forms.Label();
+            this.lbFixSceneCanvasWidth = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grbRayTracing = new System.Windows.Forms.GroupBox();
             this.cmdClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picScene)).BeginInit();
-            this.grbSphere.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grbSphereSettings.SuspendLayout();
+            this.grbSceneSettings.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grbRayTracing.SuspendLayout();
             this.SuspendLayout();
             // 
             // picScene
@@ -179,15 +179,15 @@
             this.lbFixSphereColor.TabIndex = 11;
             this.lbFixSphereColor.Text = "Color";
             // 
-            // cmdColor
+            // cmdColorSphere
             // 
-            this.cmdColor.Location = new System.Drawing.Point(175, 131);
-            this.cmdColor.Name = "cmdColor";
-            this.cmdColor.Size = new System.Drawing.Size(130, 30);
-            this.cmdColor.TabIndex = 13;
-            this.cmdColor.Text = "Pick Color";
-            this.cmdColor.UseVisualStyleBackColor = true;
-            this.cmdColor.Click += new System.EventHandler(this.cmdColor_Click);
+            this.cmdColorSphere.Location = new System.Drawing.Point(175, 131);
+            this.cmdColorSphere.Name = "cmdColorSphere";
+            this.cmdColorSphere.Size = new System.Drawing.Size(130, 30);
+            this.cmdColorSphere.TabIndex = 13;
+            this.cmdColorSphere.Text = "Pick Color";
+            this.cmdColorSphere.UseVisualStyleBackColor = true;
+            this.cmdColorSphere.Click += new System.EventHandler(this.cmdColor_Click);
             // 
             // cmdStartRayTracing
             // 
@@ -227,14 +227,14 @@
             this.lbProgress.TabIndex = 16;
             this.lbProgress.Text = "label6";
             // 
-            // listBox1
+            // lstSphere
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(311, 23);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(473, 132);
-            this.listBox1.TabIndex = 17;
+            this.lstSphere.FormattingEnabled = true;
+            this.lstSphere.ItemHeight = 16;
+            this.lstSphere.Location = new System.Drawing.Point(311, 23);
+            this.lstSphere.Name = "lstSphere";
+            this.lstSphere.Size = new System.Drawing.Size(473, 132);
+            this.lstSphere.TabIndex = 17;
             // 
             // cmdDeleteSphere
             // 
@@ -246,30 +246,30 @@
             this.cmdDeleteSphere.UseVisualStyleBackColor = true;
             this.cmdDeleteSphere.Click += new System.EventHandler(this.cmdDeleteSphere_Click);
             // 
-            // grbSphere
+            // grbSphereSettings
             // 
-            this.grbSphere.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbSphere.Controls.Add(this.txtX);
-            this.grbSphere.Controls.Add(this.cmdEditSphere);
-            this.grbSphere.Controls.Add(this.txtColor);
-            this.grbSphere.Controls.Add(this.lbFixSphereZ);
-            this.grbSphere.Controls.Add(this.cmdDeleteSphere);
-            this.grbSphere.Controls.Add(this.txtRadius);
-            this.grbSphere.Controls.Add(this.listBox1);
-            this.grbSphere.Controls.Add(this.lbFixSphereColor);
-            this.grbSphere.Controls.Add(this.cmdColor);
-            this.grbSphere.Controls.Add(this.lbFixRadius);
-            this.grbSphere.Controls.Add(this.txtY);
-            this.grbSphere.Controls.Add(this.cmdAddSphere);
-            this.grbSphere.Controls.Add(this.lbFixSphereY);
-            this.grbSphere.Controls.Add(this.txtZ);
-            this.grbSphere.Controls.Add(this.lbFixSphereX);
-            this.grbSphere.Location = new System.Drawing.Point(499, 13);
-            this.grbSphere.Name = "grbSphere";
-            this.grbSphere.Size = new System.Drawing.Size(790, 211);
-            this.grbSphere.TabIndex = 19;
-            this.grbSphere.TabStop = false;
-            this.grbSphere.Text = "Sphere";
+            this.grbSphereSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbSphereSettings.Controls.Add(this.txtX);
+            this.grbSphereSettings.Controls.Add(this.cmdEditSphere);
+            this.grbSphereSettings.Controls.Add(this.txtColor);
+            this.grbSphereSettings.Controls.Add(this.lbFixSphereZ);
+            this.grbSphereSettings.Controls.Add(this.cmdDeleteSphere);
+            this.grbSphereSettings.Controls.Add(this.txtRadius);
+            this.grbSphereSettings.Controls.Add(this.lstSphere);
+            this.grbSphereSettings.Controls.Add(this.lbFixSphereColor);
+            this.grbSphereSettings.Controls.Add(this.cmdColorSphere);
+            this.grbSphereSettings.Controls.Add(this.lbFixRadius);
+            this.grbSphereSettings.Controls.Add(this.txtY);
+            this.grbSphereSettings.Controls.Add(this.cmdAddSphere);
+            this.grbSphereSettings.Controls.Add(this.lbFixSphereY);
+            this.grbSphereSettings.Controls.Add(this.txtZ);
+            this.grbSphereSettings.Controls.Add(this.lbFixSphereX);
+            this.grbSphereSettings.Location = new System.Drawing.Point(499, 13);
+            this.grbSphereSettings.Name = "grbSphereSettings";
+            this.grbSphereSettings.Size = new System.Drawing.Size(790, 211);
+            this.grbSphereSettings.TabIndex = 19;
+            this.grbSphereSettings.TabStop = false;
+            this.grbSphereSettings.Text = "Sphere";
             // 
             // cmdEditSphere
             // 
@@ -288,38 +288,38 @@
             this.txtColor.Size = new System.Drawing.Size(100, 22);
             this.txtColor.TabIndex = 14;
             // 
-            // groupBox1
+            // grbSceneSettings
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.cmdSaveSceneSettings);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.textBox11);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(499, 240);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(787, 170);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Scene Settings";
+            this.grbSceneSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbSceneSettings.Controls.Add(this.cmdSaveSceneSettings);
+            this.grbSceneSettings.Controls.Add(this.txtSceneCameraZ);
+            this.grbSceneSettings.Controls.Add(this.label6);
+            this.grbSceneSettings.Controls.Add(this.txtSceneCameraY);
+            this.grbSceneSettings.Controls.Add(this.txtSceneCameraX);
+            this.grbSceneSettings.Controls.Add(this.label10);
+            this.grbSceneSettings.Controls.Add(this.lbFixSceneCameraPosition);
+            this.grbSceneSettings.Controls.Add(this.txtSceneLightDirectionZ);
+            this.grbSceneSettings.Controls.Add(this.label8);
+            this.grbSceneSettings.Controls.Add(this.txtSceneLightDirectionY);
+            this.grbSceneSettings.Controls.Add(this.txtSceneLightDirectionX);
+            this.grbSceneSettings.Controls.Add(this.label9);
+            this.grbSceneSettings.Controls.Add(this.txtSceneLightPositionZ);
+            this.grbSceneSettings.Controls.Add(this.label7);
+            this.grbSceneSettings.Controls.Add(this.txtSceneLightPositionY);
+            this.grbSceneSettings.Controls.Add(this.txtSceneLightPositionX);
+            this.grbSceneSettings.Controls.Add(this.txtSceneCanvasHeight);
+            this.grbSceneSettings.Controls.Add(this.txtSceneCanvasWidth);
+            this.grbSceneSettings.Controls.Add(this.lbFixSceneLightDirection);
+            this.grbSceneSettings.Controls.Add(this.label4);
+            this.grbSceneSettings.Controls.Add(this.lbFixSceneLightPosition);
+            this.grbSceneSettings.Controls.Add(this.lbFixSceneCanvasHeight);
+            this.grbSceneSettings.Controls.Add(this.lbFixSceneCanvasWidth);
+            this.grbSceneSettings.Location = new System.Drawing.Point(499, 240);
+            this.grbSceneSettings.Name = "grbSceneSettings";
+            this.grbSceneSettings.Size = new System.Drawing.Size(787, 170);
+            this.grbSceneSettings.TabIndex = 20;
+            this.grbSceneSettings.TabStop = false;
+            this.grbSceneSettings.Text = "Scene Settings";
             // 
             // cmdSaveSceneSettings
             // 
@@ -329,13 +329,14 @@
             this.cmdSaveSceneSettings.TabIndex = 23;
             this.cmdSaveSceneSettings.Text = "Save";
             this.cmdSaveSceneSettings.UseVisualStyleBackColor = true;
+            this.cmdSaveSceneSettings.Click += new System.EventHandler(this.cmdSaveSceneSettings_Click);
             // 
-            // textBox9
+            // txtSceneCameraZ
             // 
-            this.textBox9.Location = new System.Drawing.Point(397, 133);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 22);
-            this.textBox9.TabIndex = 22;
+            this.txtSceneCameraZ.Location = new System.Drawing.Point(397, 133);
+            this.txtSceneCameraZ.Name = "txtSceneCameraZ";
+            this.txtSceneCameraZ.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneCameraZ.TabIndex = 22;
             // 
             // label6
             // 
@@ -346,19 +347,19 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Z";
             // 
-            // textBox10
+            // txtSceneCameraY
             // 
-            this.textBox10.Location = new System.Drawing.Point(268, 134);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 22);
-            this.textBox10.TabIndex = 20;
+            this.txtSceneCameraY.Location = new System.Drawing.Point(268, 134);
+            this.txtSceneCameraY.Name = "txtSceneCameraY";
+            this.txtSceneCameraY.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneCameraY.TabIndex = 20;
             // 
-            // textBox11
+            // txtSceneCameraX
             // 
-            this.textBox11.Location = new System.Drawing.Point(139, 134);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 22);
-            this.textBox11.TabIndex = 19;
+            this.txtSceneCameraX.Location = new System.Drawing.Point(139, 134);
+            this.txtSceneCameraX.Name = "txtSceneCameraX";
+            this.txtSceneCameraX.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneCameraX.TabIndex = 19;
             // 
             // label10
             // 
@@ -369,21 +370,21 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "Y";
             // 
-            // label11
+            // lbFixSceneCameraPosition
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 137);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 17);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Camera Position  X";
+            this.lbFixSceneCameraPosition.AutoSize = true;
+            this.lbFixSceneCameraPosition.Location = new System.Drawing.Point(7, 137);
+            this.lbFixSceneCameraPosition.Name = "lbFixSceneCameraPosition";
+            this.lbFixSceneCameraPosition.Size = new System.Drawing.Size(128, 17);
+            this.lbFixSceneCameraPosition.TabIndex = 17;
+            this.lbFixSceneCameraPosition.Text = "Camera Position  X";
             // 
-            // textBox6
+            // txtSceneLightDirectionZ
             // 
-            this.textBox6.Location = new System.Drawing.Point(397, 105);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 22);
-            this.textBox6.TabIndex = 16;
+            this.txtSceneLightDirectionZ.Location = new System.Drawing.Point(397, 105);
+            this.txtSceneLightDirectionZ.Name = "txtSceneLightDirectionZ";
+            this.txtSceneLightDirectionZ.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneLightDirectionZ.TabIndex = 16;
             // 
             // label8
             // 
@@ -394,19 +395,19 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Z";
             // 
-            // textBox7
+            // txtSceneLightDirectionY
             // 
-            this.textBox7.Location = new System.Drawing.Point(268, 106);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 22);
-            this.textBox7.TabIndex = 14;
+            this.txtSceneLightDirectionY.Location = new System.Drawing.Point(268, 106);
+            this.txtSceneLightDirectionY.Name = "txtSceneLightDirectionY";
+            this.txtSceneLightDirectionY.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneLightDirectionY.TabIndex = 14;
             // 
-            // textBox8
+            // txtSceneLightDirectionX
             // 
-            this.textBox8.Location = new System.Drawing.Point(139, 106);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 22);
-            this.textBox8.TabIndex = 13;
+            this.txtSceneLightDirectionX.Location = new System.Drawing.Point(139, 106);
+            this.txtSceneLightDirectionX.Name = "txtSceneLightDirectionX";
+            this.txtSceneLightDirectionX.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneLightDirectionX.TabIndex = 13;
             // 
             // label9
             // 
@@ -417,12 +418,12 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "Y";
             // 
-            // textBox5
+            // txtSceneLightPositionZ
             // 
-            this.textBox5.Location = new System.Drawing.Point(397, 74);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 22);
-            this.textBox5.TabIndex = 11;
+            this.txtSceneLightPositionZ.Location = new System.Drawing.Point(397, 74);
+            this.txtSceneLightPositionZ.Name = "txtSceneLightPositionZ";
+            this.txtSceneLightPositionZ.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneLightPositionZ.TabIndex = 11;
             // 
             // label7
             // 
@@ -433,42 +434,42 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Z";
             // 
-            // textBox4
+            // txtSceneLightPositionY
             // 
-            this.textBox4.Location = new System.Drawing.Point(268, 75);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 9;
+            this.txtSceneLightPositionY.Location = new System.Drawing.Point(268, 75);
+            this.txtSceneLightPositionY.Name = "txtSceneLightPositionY";
+            this.txtSceneLightPositionY.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneLightPositionY.TabIndex = 9;
             // 
-            // textBox3
+            // txtSceneLightPositionX
             // 
-            this.textBox3.Location = new System.Drawing.Point(139, 75);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 8;
+            this.txtSceneLightPositionX.Location = new System.Drawing.Point(139, 75);
+            this.txtSceneLightPositionX.Name = "txtSceneLightPositionX";
+            this.txtSceneLightPositionX.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneLightPositionX.TabIndex = 8;
             // 
-            // textBox2
+            // txtSceneCanvasHeight
             // 
-            this.textBox2.Location = new System.Drawing.Point(139, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 7;
+            this.txtSceneCanvasHeight.Location = new System.Drawing.Point(139, 45);
+            this.txtSceneCanvasHeight.Name = "txtSceneCanvasHeight";
+            this.txtSceneCanvasHeight.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneCanvasHeight.TabIndex = 7;
             // 
-            // textBox1
+            // txtSceneCanvasWidth
             // 
-            this.textBox1.Location = new System.Drawing.Point(139, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 6;
+            this.txtSceneCanvasWidth.Location = new System.Drawing.Point(139, 17);
+            this.txtSceneCanvasWidth.Name = "txtSceneCanvasWidth";
+            this.txtSceneCanvasWidth.Size = new System.Drawing.Size(100, 22);
+            this.txtSceneCanvasWidth.TabIndex = 6;
             // 
-            // label5
+            // lbFixSceneLightDirection
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 109);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Light Direction  X";
+            this.lbFixSceneLightDirection.AutoSize = true;
+            this.lbFixSceneLightDirection.Location = new System.Drawing.Point(19, 109);
+            this.lbFixSceneLightDirection.Name = "lbFixSceneLightDirection";
+            this.lbFixSceneLightDirection.Size = new System.Drawing.Size(116, 17);
+            this.lbFixSceneLightDirection.TabIndex = 4;
+            this.lbFixSceneLightDirection.Text = "Light Direction  X";
             // 
             // label4
             // 
@@ -479,32 +480,32 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Y";
             // 
-            // label3
+            // lbFixSceneLightPosition
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Light Position   X";
+            this.lbFixSceneLightPosition.AutoSize = true;
+            this.lbFixSceneLightPosition.Location = new System.Drawing.Point(21, 78);
+            this.lbFixSceneLightPosition.Name = "lbFixSceneLightPosition";
+            this.lbFixSceneLightPosition.Size = new System.Drawing.Size(114, 17);
+            this.lbFixSceneLightPosition.TabIndex = 2;
+            this.lbFixSceneLightPosition.Text = "Light Position   X";
             // 
-            // label2
+            // lbFixSceneCanvasHeight
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Canvas Height";
+            this.lbFixSceneCanvasHeight.AutoSize = true;
+            this.lbFixSceneCanvasHeight.Location = new System.Drawing.Point(32, 45);
+            this.lbFixSceneCanvasHeight.Name = "lbFixSceneCanvasHeight";
+            this.lbFixSceneCanvasHeight.Size = new System.Drawing.Size(100, 17);
+            this.lbFixSceneCanvasHeight.TabIndex = 1;
+            this.lbFixSceneCanvasHeight.Text = "Canvas Height";
             // 
-            // label1
+            // lbFixSceneCanvasWidth
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Canvas   Width";
+            this.lbFixSceneCanvasWidth.AutoSize = true;
+            this.lbFixSceneCanvasWidth.Location = new System.Drawing.Point(30, 22);
+            this.lbFixSceneCanvasWidth.Name = "lbFixSceneCanvasWidth";
+            this.lbFixSceneCanvasWidth.Size = new System.Drawing.Size(103, 17);
+            this.lbFixSceneCanvasWidth.TabIndex = 0;
+            this.lbFixSceneCanvasWidth.Text = "Canvas   Width";
             // 
             // panel1
             // 
@@ -518,20 +519,20 @@
             this.panel1.Size = new System.Drawing.Size(462, 358);
             this.panel1.TabIndex = 21;
             // 
-            // groupBox2
+            // grbRayTracing
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grbRayTracing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.panel1);
-            this.groupBox2.Controls.Add(this.cmdStopRayTracing);
-            this.groupBox2.Controls.Add(this.cmdStartRayTracing);
-            this.groupBox2.Location = new System.Drawing.Point(2, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(491, 491);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.grbRayTracing.Controls.Add(this.panel1);
+            this.grbRayTracing.Controls.Add(this.cmdStopRayTracing);
+            this.grbRayTracing.Controls.Add(this.cmdStartRayTracing);
+            this.grbRayTracing.Location = new System.Drawing.Point(2, 12);
+            this.grbRayTracing.Name = "grbRayTracing";
+            this.grbRayTracing.Size = new System.Drawing.Size(491, 491);
+            this.grbRayTracing.TabIndex = 22;
+            this.grbRayTracing.TabStop = false;
+            this.grbRayTracing.Text = "Ray Traced Scene";
             // 
             // cmdClose
             // 
@@ -550,19 +551,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1298, 571);
             this.Controls.Add(this.cmdClose);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.grbSphere);
+            this.Controls.Add(this.grbRayTracing);
+            this.Controls.Add(this.grbSceneSettings);
+            this.Controls.Add(this.grbSphereSettings);
             this.Controls.Add(this.lbProgress);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picScene)).EndInit();
-            this.grbSphere.ResumeLayout(false);
-            this.grbSphere.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grbSphereSettings.ResumeLayout(false);
+            this.grbSphereSettings.PerformLayout();
+            this.grbSceneSettings.ResumeLayout(false);
+            this.grbSceneSettings.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
+            this.grbRayTracing.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,42 +583,42 @@
         private System.Windows.Forms.Label lbFixSphereZ;
         private System.Windows.Forms.Label lbFixSphereColor;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button cmdColor;
+        private System.Windows.Forms.Button cmdColorSphere;
         private System.Windows.Forms.Button cmdStartRayTracing;
         private System.Windows.Forms.Button cmdStopRayTracing;
         private System.ComponentModel.BackgroundWorker bw;
         private System.Windows.Forms.Label lbProgress;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstSphere;
         private System.Windows.Forms.Button cmdDeleteSphere;
-        private System.Windows.Forms.GroupBox grbSphere;
+        private System.Windows.Forms.GroupBox grbSphereSettings;
         private System.Windows.Forms.TextBox txtColor;
         private System.Windows.Forms.Button cmdEditSphere;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox grbSceneSettings;
+        private System.Windows.Forms.TextBox txtSceneCanvasWidth;
+        private System.Windows.Forms.Label lbFixSceneLightDirection;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label lbFixSceneLightPosition;
+        private System.Windows.Forms.Label lbFixSceneCanvasHeight;
+        private System.Windows.Forms.Label lbFixSceneCanvasWidth;
+        private System.Windows.Forms.TextBox txtSceneCanvasHeight;
+        private System.Windows.Forms.TextBox txtSceneLightPositionZ;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtSceneLightPositionY;
+        private System.Windows.Forms.TextBox txtSceneLightPositionX;
+        private System.Windows.Forms.TextBox txtSceneLightDirectionZ;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtSceneLightDirectionY;
+        private System.Windows.Forms.TextBox txtSceneLightDirectionX;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtSceneCameraZ;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtSceneCameraY;
+        private System.Windows.Forms.TextBox txtSceneCameraX;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbFixSceneCameraPosition;
         private System.Windows.Forms.Button cmdSaveSceneSettings;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grbRayTracing;
         private System.Windows.Forms.Button cmdClose;
     }
 }

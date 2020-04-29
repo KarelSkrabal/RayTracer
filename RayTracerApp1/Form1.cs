@@ -77,10 +77,10 @@ namespace RayTracerApp1
 
         private void PopulateSphereListBox()
         {
-            listBox1.Items.Clear();
+            lstSphere.Items.Clear();
             foreach (var sphere in _rayTracer.objects)
             {
-                listBox1.Items.Add(sphere.ToString());
+                lstSphere.Items.Add(sphere.ToString());
             }
         }
 
@@ -188,7 +188,7 @@ namespace RayTracerApp1
 
         private void cmdDeleteSphere_Click(object sender, EventArgs e)
         {
-            var sphereToDelete = listBox1.SelectedIndex;
+            var sphereToDelete = lstSphere.SelectedIndex;
             if(sphereToDelete >= 0 && sphereToDelete < _rayTracer.objects.Count)
             {
                 _rayTracer.objects.RemoveAt(sphereToDelete);
@@ -198,9 +198,9 @@ namespace RayTracerApp1
 
         private void cmdEditSphere_Click(object sender, EventArgs e)
         {
-            if(listBox1.SelectedIndex >= 0)
+            if(lstSphere.SelectedIndex >= 0)
             {
-                var selectedSphere = _rayTracer.objects.ElementAt(listBox1.SelectedIndex) as Sphere;
+                var selectedSphere = _rayTracer.objects.ElementAt(lstSphere.SelectedIndex) as Sphere;
                 txtRadius.Text = selectedSphere.radius.ToString();
                 txtX.Text = selectedSphere.position.X.ToString();
                 txtY.Text = selectedSphere.position.Y.ToString();
@@ -215,6 +215,11 @@ namespace RayTracerApp1
         private void cmdClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cmdSaveSceneSettings_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
