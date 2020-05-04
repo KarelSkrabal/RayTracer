@@ -76,6 +76,7 @@
             this.pnlScene = new System.Windows.Forms.Panel();
             this.grbRayTracing = new System.Windows.Forms.GroupBox();
             this.cmdClose = new System.Windows.Forms.Button();
+            this.cmdLoadSceneDefaults = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picScene)).BeginInit();
             this.grbSphereSettings.SuspendLayout();
             this.grbSceneSettings.SuspendLayout();
@@ -94,7 +95,7 @@
             // 
             // cmdAddSphere
             // 
-            this.cmdAddSphere.Location = new System.Drawing.Point(39, 163);
+            this.cmdAddSphere.Location = new System.Drawing.Point(175, 167);
             this.cmdAddSphere.Name = "cmdAddSphere";
             this.cmdAddSphere.Size = new System.Drawing.Size(130, 30);
             this.cmdAddSphere.TabIndex = 19;
@@ -192,7 +193,7 @@
             // cmdStartRayTracing
             // 
             this.cmdStartRayTracing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cmdStartRayTracing.Location = new System.Drawing.Point(7, 387);
+            this.cmdStartRayTracing.Location = new System.Drawing.Point(35, 443);
             this.cmdStartRayTracing.Name = "cmdStartRayTracing";
             this.cmdStartRayTracing.Size = new System.Drawing.Size(130, 30);
             this.cmdStartRayTracing.TabIndex = 14;
@@ -204,7 +205,7 @@
             // 
             this.cmdStopRayTracing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cmdStopRayTracing.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cmdStopRayTracing.Location = new System.Drawing.Point(143, 387);
+            this.cmdStopRayTracing.Location = new System.Drawing.Point(171, 443);
             this.cmdStopRayTracing.Name = "cmdStopRayTracing";
             this.cmdStopRayTracing.Size = new System.Drawing.Size(130, 30);
             this.cmdStopRayTracing.TabIndex = 15;
@@ -221,6 +222,7 @@
             // lstSphere
             // 
             this.lstSphere.FormattingEnabled = true;
+            this.lstSphere.HorizontalScrollbar = true;
             this.lstSphere.ItemHeight = 16;
             this.lstSphere.Location = new System.Drawing.Point(311, 23);
             this.lstSphere.Name = "lstSphere";
@@ -229,7 +231,7 @@
             // 
             // cmdDeleteSphere
             // 
-            this.cmdDeleteSphere.Location = new System.Drawing.Point(654, 161);
+            this.cmdDeleteSphere.Location = new System.Drawing.Point(654, 167);
             this.cmdDeleteSphere.Name = "cmdDeleteSphere";
             this.cmdDeleteSphere.Size = new System.Drawing.Size(130, 30);
             this.cmdDeleteSphere.TabIndex = 22;
@@ -255,16 +257,16 @@
             this.grbSphereSettings.Controls.Add(this.lbFixSphereY);
             this.grbSphereSettings.Controls.Add(this.txtZ);
             this.grbSphereSettings.Controls.Add(this.lbFixSphereX);
-            this.grbSphereSettings.Location = new System.Drawing.Point(499, 13);
+            this.grbSphereSettings.Location = new System.Drawing.Point(555, 13);
             this.grbSphereSettings.Name = "grbSphereSettings";
-            this.grbSphereSettings.Size = new System.Drawing.Size(790, 211);
+            this.grbSphereSettings.Size = new System.Drawing.Size(790, 207);
             this.grbSphereSettings.TabIndex = 19;
             this.grbSphereSettings.TabStop = false;
             this.grbSphereSettings.Text = "Sphere";
             // 
             // cmdEditSphere
             // 
-            this.cmdEditSphere.Location = new System.Drawing.Point(518, 161);
+            this.cmdEditSphere.Location = new System.Drawing.Point(518, 167);
             this.cmdEditSphere.Name = "cmdEditSphere";
             this.cmdEditSphere.Size = new System.Drawing.Size(130, 30);
             this.cmdEditSphere.TabIndex = 21;
@@ -282,6 +284,7 @@
             // grbSceneSettings
             // 
             this.grbSceneSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbSceneSettings.Controls.Add(this.cmdLoadSceneDefaults);
             this.grbSceneSettings.Controls.Add(this.cmdSaveSceneSettings);
             this.grbSceneSettings.Controls.Add(this.txtSceneCameraZ);
             this.grbSceneSettings.Controls.Add(this.lbFixSceneCamerPositionZ);
@@ -305,7 +308,7 @@
             this.grbSceneSettings.Controls.Add(this.lbFixSceneLightPosition);
             this.grbSceneSettings.Controls.Add(this.lbFixSceneCanvasHeight);
             this.grbSceneSettings.Controls.Add(this.lbFixSceneCanvasWidth);
-            this.grbSceneSettings.Location = new System.Drawing.Point(499, 240);
+            this.grbSceneSettings.Location = new System.Drawing.Point(555, 240);
             this.grbSceneSettings.Name = "grbSceneSettings";
             this.grbSceneSettings.Size = new System.Drawing.Size(787, 170);
             this.grbSceneSettings.TabIndex = 20;
@@ -314,7 +317,7 @@
             // 
             // cmdSaveSceneSettings
             // 
-            this.cmdSaveSceneSettings.Location = new System.Drawing.Point(503, 126);
+            this.cmdSaveSceneSettings.Location = new System.Drawing.Point(503, 129);
             this.cmdSaveSceneSettings.Name = "cmdSaveSceneSettings";
             this.cmdSaveSceneSettings.Size = new System.Drawing.Size(130, 30);
             this.cmdSaveSceneSettings.TabIndex = 23;
@@ -507,7 +510,7 @@
             this.pnlScene.Controls.Add(this.picScene);
             this.pnlScene.Location = new System.Drawing.Point(6, 24);
             this.pnlScene.Name = "pnlScene";
-            this.pnlScene.Size = new System.Drawing.Size(462, 303);
+            this.pnlScene.Size = new System.Drawing.Size(518, 359);
             this.pnlScene.TabIndex = 21;
             // 
             // grbRayTracing
@@ -520,7 +523,7 @@
             this.grbRayTracing.Controls.Add(this.cmdStartRayTracing);
             this.grbRayTracing.Location = new System.Drawing.Point(2, 12);
             this.grbRayTracing.Name = "grbRayTracing";
-            this.grbRayTracing.Size = new System.Drawing.Size(491, 436);
+            this.grbRayTracing.Size = new System.Drawing.Size(547, 492);
             this.grbRayTracing.TabIndex = 22;
             this.grbRayTracing.TabStop = false;
             this.grbRayTracing.Text = "Ray Traced Scene";
@@ -529,7 +532,7 @@
             // 
             this.cmdClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.cmdClose.Location = new System.Drawing.Point(1153, 441);
+            this.cmdClose.Location = new System.Drawing.Point(1196, 474);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(130, 30);
             this.cmdClose.TabIndex = 23;
@@ -537,11 +540,22 @@
             this.cmdClose.UseVisualStyleBackColor = true;
             this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
             // 
+            // cmdLoadSceneDefaults
+            // 
+            this.cmdLoadSceneDefaults.Location = new System.Drawing.Point(641, 128);
+            this.cmdLoadSceneDefaults.Name = "cmdLoadSceneDefaults";
+            this.cmdLoadSceneDefaults.Size = new System.Drawing.Size(130, 30);
+            this.cmdLoadSceneDefaults.TabIndex = 24;
+            this.cmdLoadSceneDefaults.Text = "Load Default";
+            this.cmdLoadSceneDefaults.UseVisualStyleBackColor = true;
+            this.cmdLoadSceneDefaults.Click += new System.EventHandler(this.cmdLoadSceneDefaults_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1298, 516);
+            this.CancelButton = this.cmdClose;
+            this.ClientSize = new System.Drawing.Size(1354, 516);
             this.Controls.Add(this.cmdClose);
             this.Controls.Add(this.grbRayTracing);
             this.Controls.Add(this.grbSceneSettings);
@@ -609,6 +623,7 @@
         private System.Windows.Forms.Panel pnlScene;
         private System.Windows.Forms.GroupBox grbRayTracing;
         private System.Windows.Forms.Button cmdClose;
+        private System.Windows.Forms.Button cmdLoadSceneDefaults;
     }
 }
 

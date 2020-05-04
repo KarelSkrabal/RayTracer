@@ -38,9 +38,8 @@ namespace RayTracerLib
         {
             Vector normalVectorAtPoint = new Vector();
             double t = 1.0E10;
-            //cc
-            Vector to = new Vector(i - p.X, j - p.Y, -p.Z);
-            to.normalize();
+            Vector to = new Vector(i - p.X, j - p.Y, -p.Z);//line goes from camera to canvas
+            //to.normalize();//sphere
             bool bShadow = false;
             BaseObject obj = null;
             for (int k = 0; k < objects.Count(); k++)
@@ -70,7 +69,7 @@ namespace RayTracerLib
                         }
                     }
                 }
-                double cosAngle = Vector.GetCosAngleV1V2(lv, new Vector(hitPoint - obj.position));
+                double cosAngle = Vector.GetCosAngleV1V2(lv, new Vector(hitPoint - /*obj.position*/p));
                 pixels[i, j] = Color.GetShedowedColor(bShadow, obj.color, cosAngle);
             }
         }

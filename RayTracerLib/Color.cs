@@ -57,6 +57,7 @@
         public static Color GetShedowedColor(bool bShadow, Color color, double cost)
         {
             if (cost < 0)
+                //cost *= -1;
                 cost = 0;
             double fact = (bShadow == true) ? 0.5 : 1.0;
             return new Color(
@@ -65,6 +66,6 @@
                 color.B * cost * fact);
         }
 
-        public override string ToString() => "RGB(R = " + R + " , G = " + G + " , B = " + B + ")";
+        public override string ToString() => "RGB(" + R + "," + G + "," + B + ")";
     }
 }

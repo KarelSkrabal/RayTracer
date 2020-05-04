@@ -118,6 +118,6 @@ namespace RayTracerLib
             return rtnvector;
         }
 
-        public override string ToString() => "(X = " + X + " , Y = " + Y + " , Z = " + Z + ")";
+        public override string ToString() => "(" + X + "," + Y + "," + Z + ")";
     }
 }

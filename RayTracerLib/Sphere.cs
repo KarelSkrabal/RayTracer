@@ -55,6 +55,7 @@ namespace RayTracerLib
 
         public override double GetIntersection(Vector from, Vector to, ref Vector normalAtPoint)
         {
+            to.normalize();//sphere
             double t = GetIntersection(from, to);
             Vector v1 = to * t + from;
             v1 = v1 - position;
@@ -63,6 +64,6 @@ namespace RayTracerLib
             return t;
         }
 
-        public override string ToString() => "radius = " + radius.ToString() + base.ToString();
+        public override string ToString() => "sphere : radius=" + radius.ToString() + base.ToString();
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -32,12 +33,16 @@ namespace RayTracerApp
                 for (int j = 0; j < _rayTracer.canvasHeight; j++)
                 {
                     var color = System.Drawing.Color.FromArgb((Byte)pixels[i, j].R, (Byte)pixels[i, j].G, (Byte)pixels[i, j].B);
-                    System.Drawing.Brush brush1 = new SolidBrush(color);
+                    Brush brush1 = new SolidBrush(color);
                     g.FillRectangle(brush1, i, j, 1, 1);
                 }
             }
             g.Dispose();
             string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene.png");
+            if(File.Exists(path))
+            {
+                File.Delete(path);
+            }
             bmp.Save(path, System.Drawing.Imaging.ImageFormat.Png);
             picScene.Image = Image.FromFile(path);
             bmp.Dispose();
@@ -50,28 +55,39 @@ namespace RayTracerApp
             txtColor.Text = _color.Name;
 
             _rayTracer = new RayTracer();
-            _rayTracer.canvasHeight = 300;
-            _rayTracer.canvasWidth = 300;
-            _rayTracer.lp = new Vector(0.0, 0.0, 100.0);
-            _rayTracer.lv = new Vector(-1.0, -1.0, -1.0);
-            _rayTracer.p = new Vector(0.0, 0.0, 500.0);
+            _rayTracer.canvasHeight = 600;
+            _rayTracer.canvasWidth = 600;
+            _rayTracer.lp = new Vector(0.0, 100.0, 300.0);
+            _rayTracer.lv = new Vector(-1.0, 1.0, -1.0);
+            _rayTracer.p = new Vector(100.0, 50.0, 500.0);
 
             picScene.Width = picScene.Height = 500;
             _rayTracer.objects = new List<BaseObject>();
-            _rayTracer.objects.Add(new Sphere(100.0, 100.0, 0.0, 40.0, new RayTracerLib.Color(250.0, 0.0, 50.0)));
-            _rayTracer.objects.Add(new Plane(new Vector(0.0, 0.0, 10.0), new RayTracerLib.Color(255.0, 0.0, 150.0)));
-            //_rayTracer.objects.Add(new RayTracerLib.Sphere(20.0, 20.0, 0.0, 20.0, new RayTracerLib.Color(30.0, 30.0, 200.0)));
-            //_rayTracer.objects.Add(new RayTracerLib.Sphere(10.0, 180.0, 0.0, 30.0, new RayTracerLib.Color(255, 30.0, 200.0)));
-            //_rayTracer.objects.Add(new RayTracerLib.Sphere(10.0, 30.0, 0.0, 40.0, new RayTracerLib.Color(255, 30.0, 200.0)));
-            //_rayTracer.objects.Add(new RayTracerLib.Sphere(210.0, 230.0, 0.0, 40.0, new RayTracerLib.Color(255, 30.0, 200.0)));
-            //RayTracerLib.Vector v0 = new RayTracerLib.Vector(0.0, 0.0, 0.0);
-            //RayTracerLib.Vector v1 = new RayTracerLib.Vector(200.0, 0.0, 0.0);
-            //RayTracerLib.Vector v2 = new RayTracerLib.Vector(0.0, 200.0, 0.0);
-            //rayTracer.objects.Add(new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0)));
-            //RayTracerLib.Triangle tt = new RayTracerLib.Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0));
-
+            //_rayTracer.objects.Add(new Plane(new Vector(10.0, 10.0, -10), new Vector(10.0, 10.0, 10.0), new RayTracerLib.Color(255.0, 0.0, 0.0)));
+            _rayTracer.objects.Add(new Sphere(60.0, 60.0, 0.0, 60.0, new RayTracerLib.Color(0.0, 0.0, 255.0)));
+            _rayTracer.objects.Add(new Sphere(300.0, 300.0, 0.0, 40.0, new RayTracerLib.Color(255.0, 0.0, 255.0)));
+            Vector v0 = new Vector(100.0, 100.0, 0.0);
+            Vector v1 = new Vector(100.0, 80.0, 0.0);
+            Vector v2 = new Vector(80.0, 100.0, 0.0);
+            Triangle tt = new Triangle(v0, v1, v2, new RayTracerLib.Color(200.0, 30.0, 30.0));
+            _rayTracer.objects.Add(tt);
+            SaveDefaultSceneSettings();
             PopulateSphereListBox();
             PopulateSceneSettings();
+        }
+        private void SaveDefaultSceneSettings()
+        {
+            txtSceneCanvasWidth.Tag = _rayTracer.canvasWidth.ToString();
+            txtSceneCanvasHeight.Tag = _rayTracer.canvasHeight.ToString();
+            txtSceneCameraX.Tag = _rayTracer.p.X.ToString();
+            txtSceneCameraY.Tag = _rayTracer.p.Y.ToString();
+            txtSceneCameraZ.Tag = _rayTracer.p.Z.ToString();
+            txtSceneLightDirectionX.Tag = _rayTracer.lv.X.ToString();
+            txtSceneLightDirectionY.Tag = _rayTracer.lv.Y.ToString();
+            txtSceneLightDirectionZ.Tag = _rayTracer.lv.Z.ToString();
+            txtSceneLightPositionX.Tag = _rayTracer.lp.X.ToString();
+            txtSceneLightPositionY.Tag = _rayTracer.lp.Y.ToString();
+            txtSceneLightPositionZ.Tag = _rayTracer.lp.Z.ToString();
         }
 
         private void PopulateSceneSettings()
@@ -250,6 +266,25 @@ namespace RayTracerApp
                 txtSceneLightPositionY.Text.SetDoubleValue(),
                 txtSceneLightPositionZ.Text.SetDoubleValue()
                 );
+        }
+
+        private void cmdLoadSceneDefaults_Click(object sender, EventArgs e)
+        {
+            _rayTracer.canvasWidth = Convert.ToInt16(txtSceneCanvasWidth.Tag);
+            _rayTracer.canvasHeight = Convert.ToInt16(txtSceneCanvasHeight.Tag);
+            _rayTracer.p = new Vector(
+                Convert.ToDouble(txtSceneCameraX.Tag),
+                Convert.ToDouble(txtSceneCameraY.Tag),
+                Convert.ToDouble(txtSceneCameraZ.Tag));
+            _rayTracer.lv = new Vector(
+                Convert.ToDouble(txtSceneLightDirectionX.Tag), 
+                Convert.ToDouble(txtSceneLightDirectionY.Tag),
+                Convert.ToDouble(txtSceneLightDirectionZ.Tag));
+            _rayTracer.lp = new Vector(
+                Convert.ToDouble(txtSceneLightPositionX.Tag), 
+                Convert.ToDouble(txtSceneLightPositionY.Tag),
+                Convert.ToDouble(txtSceneLightPositionZ.Tag));
+            PopulateSceneSettings();
         }
     }
 }
