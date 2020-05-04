@@ -8,15 +8,15 @@ namespace RayTracerLib
         /// <summary>
         /// Eye position (camera)
         /// </summary>
-        RayTracerLib.Vector p { get; set; }
+        Vector p { get; set; }
         /// <summary>
         /// Light position
         /// </summary>
-        RayTracerLib.Vector lp { get; set; }
+        Vector lp { get; set; }
         /// <summary>
         /// Light direction (vector)
         /// </summary>
-        RayTracerLib.Vector lv { get; set; }
+        Vector lv { get; set; }
         //light color
         /// <summary>
         /// Width of the canvas

@@ -59,6 +59,7 @@ namespace RayTracerApp
             picScene.Width = picScene.Height = 500;
             _rayTracer.objects = new List<BaseObject>();
             _rayTracer.objects.Add(new Sphere(100.0, 100.0, 0.0, 40.0, new RayTracerLib.Color(250.0, 0.0, 50.0)));
+            _rayTracer.objects.Add(new Plane(new Vector(0.0, 0.0, 10.0), new RayTracerLib.Color(255.0, 0.0, 150.0)));
             //_rayTracer.objects.Add(new RayTracerLib.Sphere(20.0, 20.0, 0.0, 20.0, new RayTracerLib.Color(30.0, 30.0, 200.0)));
             //_rayTracer.objects.Add(new RayTracerLib.Sphere(10.0, 180.0, 0.0, 30.0, new RayTracerLib.Color(255, 30.0, 200.0)));
             //_rayTracer.objects.Add(new RayTracerLib.Sphere(10.0, 30.0, 0.0, 40.0, new RayTracerLib.Color(255, 30.0, 200.0)));

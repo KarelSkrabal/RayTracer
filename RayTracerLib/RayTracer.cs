@@ -5,8 +5,17 @@ namespace RayTracerLib
 {
     public class RayTracer : IRaTracer
     {
+        /// <summary>
+        /// Eye position (camera)
+        /// </summary>
         public Vector p { get; set; }
+        /// <summary>
+        /// Light position
+        /// </summary>
         public Vector lp { get; set; }
+        /// <summary>
+        /// Light direction (vector)
+        /// </summary>
         public Vector lv { get; set; }
 
         public int canvasWidth { get; set; }
@@ -29,6 +38,7 @@ namespace RayTracerLib
         {
             Vector normalVectorAtPoint = new Vector();
             double t = 1.0E10;
+            //cc
             Vector to = new Vector(i - p.X, j - p.Y, -p.Z);
             to.normalize();
             bool bShadow = false;
