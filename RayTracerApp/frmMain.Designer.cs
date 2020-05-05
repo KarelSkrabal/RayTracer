@@ -50,6 +50,7 @@
             this.cmdEditSphere = new System.Windows.Forms.Button();
             this.txtColor = new System.Windows.Forms.TextBox();
             this.grbSceneSettings = new System.Windows.Forms.GroupBox();
+            this.cmdLoadSceneDefaults = new System.Windows.Forms.Button();
             this.cmdSaveSceneSettings = new System.Windows.Forms.Button();
             this.txtSceneCameraZ = new System.Windows.Forms.TextBox();
             this.lbFixSceneCamerPositionZ = new System.Windows.Forms.Label();
@@ -76,7 +77,6 @@
             this.pnlScene = new System.Windows.Forms.Panel();
             this.grbRayTracing = new System.Windows.Forms.GroupBox();
             this.cmdClose = new System.Windows.Forms.Button();
-            this.cmdLoadSceneDefaults = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picScene)).BeginInit();
             this.grbSphereSettings.SuspendLayout();
             this.grbSceneSettings.SuspendLayout();
@@ -227,7 +227,7 @@
             this.lstSphere.Location = new System.Drawing.Point(311, 23);
             this.lstSphere.Name = "lstSphere";
             this.lstSphere.Size = new System.Drawing.Size(473, 132);
-            this.lstSphere.TabIndex = 17;
+            this.lstSphere.TabIndex = 20;
             // 
             // cmdDeleteSphere
             // 
@@ -314,6 +314,16 @@
             this.grbSceneSettings.TabIndex = 20;
             this.grbSceneSettings.TabStop = false;
             this.grbSceneSettings.Text = "Scene Settings";
+            // 
+            // cmdLoadSceneDefaults
+            // 
+            this.cmdLoadSceneDefaults.Location = new System.Drawing.Point(641, 128);
+            this.cmdLoadSceneDefaults.Name = "cmdLoadSceneDefaults";
+            this.cmdLoadSceneDefaults.Size = new System.Drawing.Size(130, 30);
+            this.cmdLoadSceneDefaults.TabIndex = 24;
+            this.cmdLoadSceneDefaults.Text = "Load Default";
+            this.cmdLoadSceneDefaults.UseVisualStyleBackColor = true;
+            this.cmdLoadSceneDefaults.Click += new System.EventHandler(this.cmdLoadSceneDefaults_Click);
             // 
             // cmdSaveSceneSettings
             // 
@@ -539,16 +549,6 @@
             this.cmdClose.Text = "Close";
             this.cmdClose.UseVisualStyleBackColor = true;
             this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
-            // 
-            // cmdLoadSceneDefaults
-            // 
-            this.cmdLoadSceneDefaults.Location = new System.Drawing.Point(641, 128);
-            this.cmdLoadSceneDefaults.Name = "cmdLoadSceneDefaults";
-            this.cmdLoadSceneDefaults.Size = new System.Drawing.Size(130, 30);
-            this.cmdLoadSceneDefaults.TabIndex = 24;
-            this.cmdLoadSceneDefaults.Text = "Load Default";
-            this.cmdLoadSceneDefaults.UseVisualStyleBackColor = true;
-            this.cmdLoadSceneDefaults.Click += new System.EventHandler(this.cmdLoadSceneDefaults_Click);
             // 
             // frmMain
             // 

@@ -23,6 +23,14 @@ namespace RayTracerWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            RayTracerWPF.ViewModel.RayTracerViewModel rayTracerViewModelObject = new ViewModel.RayTracerViewModel();
+            rayTracerViewModelObject.LoadRayTracer();
+            SceneSettings.DataContext = rayTracerViewModelObject;
+
+            //MVVMDemo.ViewModel.StudentViewModel studentViewModelObject = new ViewModel.StudentViewModel();
+            //studentViewModelObject.LoadStudents();
+            //StudentViewControl.DataContext = studentViewModelObject;
         }
     }
 }
