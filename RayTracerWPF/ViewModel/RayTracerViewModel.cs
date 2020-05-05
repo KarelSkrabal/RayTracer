@@ -37,7 +37,16 @@ namespace RayTracerWPF.ViewModel
             var rayTracer = new RayTracerModel()
             {
                 CanvasWidth = "10",
-                CanvasHeight = "20"
+                CanvasHeight = "20",
+                LightPositionX = "20",
+                LightPositionY = "30",
+                LightPositionZ = "40",
+                LightDirectionX = "50",
+                LightDirectionY = "60",
+                LightDirectionZ = "70",
+                CameraPositionX = "80",
+                CameraPositionY = "90",
+                CameraPositionZ = "100"
             };
             rayTracerModelData.Add(rayTracer);
             this.RayTracerData = rayTracerModelData;

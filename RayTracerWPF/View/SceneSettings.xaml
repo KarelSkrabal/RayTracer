@@ -15,6 +15,15 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -22,8 +31,26 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="Canvas Width" Grid.Row="0" Grid.Column="0"/>
                             <TextBlock Text="{Binding Path=CanvasWidth , Mode = TwoWay}"  Grid.Row="0" Grid.Column="1"  Margin = "3 5 3 5" Width = "100" />
-                            <Label Content=" Canvas Height" Grid.Row="1" Grid.Column="0" />
+                            <Label Content="Canvas Height" Grid.Row="1" Grid.Column="0" />
                             <TextBlock Text="{Binding Path=CanvasHeight , Mode = TwoWay}" Grid.Row="1" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Light Position X" Grid.Row="2" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=LightPositionX , Mode = TwoWay}" Grid.Row="2" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Light Position Y" Grid.Row="3" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=LightPositionY , Mode = TwoWay}" Grid.Row="3" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Light Position Z" Grid.Row="4" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=LightPositionZ , Mode = TwoWay}" Grid.Row="4" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Light Direction X" Grid.Row="5" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=LightDirectionX , Mode = TwoWay}" Grid.Row="5" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Light Direction Y" Grid.Row="6" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=LightDirectionY , Mode = TwoWay}" Grid.Row="6" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Light Direction Z" Grid.Row="7" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=LightDirectionZ , Mode = TwoWay}" Grid.Row="7" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Camera Position X" Grid.Row="8" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=CameraPositionX , Mode = TwoWay}" Grid.Row="8" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Camera Position Y" Grid.Row="9" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=CameraPositionY , Mode = TwoWay}" Grid.Row="9" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Label Content="Camera Position Z" Grid.Row="10" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=CameraPositionZ , Mode = TwoWay}" Grid.Row="10" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
