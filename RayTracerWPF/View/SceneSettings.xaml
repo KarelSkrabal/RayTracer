@@ -7,14 +7,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Right">
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
             <ItemsControl ItemsSource="{Binding Path=RayTracerData}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=CanvasWidth , Mode = TwoWay}" Width = "100" Margin = "3 5 3 5"/>
-                            <TextBlock Text="{Binding Path=CanvasHeight , Mode = TwoWay}" Width = "100" Margin = "3 5 3 5"/>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Canvas Width" Grid.Row="0" Grid.Column="0"/>
+                            <TextBlock Text="{Binding Path=CanvasWidth , Mode = TwoWay}"  Grid.Row="0" Grid.Column="1"  Margin = "3 5 3 5" Width = "100" />
+                            <Label Content=" Canvas Height" Grid.Row="1" Grid.Column="0" />
+                            <TextBlock Text="{Binding Path=CanvasHeight , Mode = TwoWay}" Grid.Row="1" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                        </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
