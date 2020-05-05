@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command.cs" />
     <Compile Include="ViewModel\RayTracerViewModel.cs" />
     <Compile Include="View\SceneSettings.xaml.cs">
       <DependentUpon>SceneSettings.xaml</DependentUpon>

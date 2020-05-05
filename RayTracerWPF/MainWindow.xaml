@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RayTracerWPF"
         xmlns:views ="clr-namespace:RayTracerWPF.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="1200">
     <Grid>
         <views:SceneSettings x:Name="SceneSettingsControl"/>
     </Grid>

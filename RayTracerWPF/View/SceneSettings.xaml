@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RayTracerWPF.View"
-             mc:Ignorable="d" 
+             xmlns:RayTracerWPF="clr-namespace:RayTracerWPF" mc:Ignorable="d" IsEnabled="{Binding Enabled}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
@@ -13,6 +13,7 @@
                     <DataTemplate>
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
@@ -51,6 +52,8 @@
                             <TextBlock Text="{Binding Path=CameraPositionY , Mode = TwoWay}" Grid.Row="9" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
                             <Label Content="Camera Position Z" Grid.Row="10" Grid.Column="0" />
                             <TextBlock Text="{Binding Path=CameraPositionZ , Mode = TwoWay}" Grid.Row="10" Grid.Column="1"   Margin = "3 5 3 5" Width = "100"/>
+                            <Button Content="Save" Command="{Binding SaveSceneSettingsCommand}" CommandParameter="{Binding}" Grid.Row="11" Grid.Column="0" Width="90"/>
+                            <Button Content="Load Default" Command="{Binding SaveSceneSettingsCommand}" CommandParameter="{Binding}" Grid.Row="11" Grid.Column="1" Width="90"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace RayTracerWPF.ViewModel
 {
@@ -16,6 +17,10 @@ namespace RayTracerWPF.ViewModel
             get;
             set;
         }
+
+        //public CustomCommand SaveSceneSettingsCommand { get; set; }
+        private ICommand _saveSceneSettingsCommand;
+
         //private RayTracerModel _rayTracer;
         //public RayTracerModel RayTracer
         //{
@@ -28,11 +33,15 @@ namespace RayTracerWPF.ViewModel
         public RayTracerViewModel()
         {
             LoadRayTracer();
+            //SaveSceneSettingsCommand = new CustomCommand(OnSaveSceneSettingsCommand, CanSaveSceneSettingsCommand);
+            //SaveSceneSettingsCommand.RaiseCanExecuteChanged();
         }
 
         public void LoadRayTracer()
         {
             ObservableCollection<RayTracerModel> rayTracerModelData = new ObservableCollection<RayTracerModel>();
+
+
 
             var rayTracer = new RayTracerModel()
             {
@@ -52,6 +61,36 @@ namespace RayTracerWPF.ViewModel
             this.RayTracerData = rayTracerModelData;
         }
 
+        public ICommand SaveSceneSettingsCommand
+        {
+            get
+            {
+                if (_saveSceneSettingsCommand == null)
+                    _saveSceneSettingsCommand = new Command(ExecuteSaveSceneSettings);
+                return _saveSceneSettingsCommand;
+            }
+            set { _saveSceneSettingsCommand = value; }
+        }
+
+        private void ExecuteSaveSceneSettings()
+        {
+            //do something
+            var i = 10;
+            i++;
+        }
+        //private void OnSaveSceneSettingsCommand()
+        //{
+        //    //Students.Remove(SelectedStudent);
+        //    var t = 10;
+        //    t++;
+        //    ;
+        //}
+
+        //private bool CanSaveSceneSettingsCommand()
+        //{
+        //    //return SelectedStudent != null;
+        //    return true;
+        //}
         //public event PropertyChangedEventHandler PropertyChanged;
 
         //public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
