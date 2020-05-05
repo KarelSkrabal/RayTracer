@@ -24,7 +24,7 @@ namespace RayTracerWPF.View
         public SceneSettings()
         {
             InitializeComponent();
-            DataContext = new RayTracerViewModel().RayTracer;
+            DataContext = new RayTracerViewModel()/*.RayTracer*/;
         }
     }
 }

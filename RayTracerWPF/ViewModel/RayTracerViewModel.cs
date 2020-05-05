@@ -1,6 +1,7 @@
 ﻿using RayTracerWPF.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,22 @@ using System.Threading.Tasks;
 
 namespace RayTracerWPF.ViewModel
 {
-    public class RayTracerViewModel : INotifyPropertyChanged
+    public class RayTracerViewModel /*: INotifyPropertyChanged*/
     {
-        private RayTracerModel _rayTracer;
-        public RayTracerModel RayTracer
+        public ObservableCollection<RayTracerModel> RayTracerData
         {
-            get => _rayTracer;
-            set {
-                _rayTracer = value;
-                OnPropertyChanged("RayTracer");
-            }
+            get;
+            set;
         }
+        //private RayTracerModel _rayTracer;
+        //public RayTracerModel RayTracer
+        //{
+        //    get => _rayTracer;
+        //    set {
+        //        _rayTracer = value;
+        //        OnPropertyChanged("RayTracer");
+        //    }
+        //}
         public RayTracerViewModel()
         {
             LoadRayTracer();
@@ -26,16 +32,19 @@ namespace RayTracerWPF.ViewModel
 
         public void LoadRayTracer()
         {
+            ObservableCollection<RayTracerModel> rayTracerModelData = new ObservableCollection<RayTracerModel>();
+
             var rayTracer = new RayTracerModel()
             {
                 CanvasWidth = "10",
                 CanvasHeight = "20"
             };
-            RayTracer = rayTracer;
+            rayTracerModelData.Add(rayTracer);
+            this.RayTracerData = rayTracerModelData;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <!--<views:SceneSettings x:Name="SceneSettingsControl"/>-->
-        <views:SceneSettings x:Name="SceneSettings"/>
+        <views:SceneSettings x:Name="SceneSettingsControl"/>
     </Grid>
 </Window>
