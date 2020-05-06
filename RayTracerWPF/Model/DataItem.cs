@@ -14,9 +14,12 @@ namespace RayTracerWPF.Model
             private set;
         }
 
-        public DataItem(string title)
+        public double CanvasWidth { get; private set; }
+
+        public DataItem(string title, double canvasWidth)
         {
             Title = title;
+            CanvasWidth = canvasWidth;
         }
     }
 }

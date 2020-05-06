@@ -12,7 +12,7 @@ namespace RayTracerWPF.Model
         {
             // Use this to connect to the actual data service
 
-            var item = new DataItem("Welcome to MVVM Light");
+            var item = new DataItem("Welcome to MVVM Light", 123.123);
             callback(item, null);
         }
     }

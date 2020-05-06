@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using System.Windows;
+using RayTracerWPF.Model;
 
 namespace RayTracerWPF.ViewModel
 {
@@ -19,10 +20,11 @@ namespace RayTracerWPF.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private readonly IDataService _dataService;
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(IDataService dataService)
         {
             ////if (IsInDesignMode)
             ////{
@@ -32,11 +34,20 @@ namespace RayTracerWPF.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+            _dataService = dataService;
+            _dataService.GetData(
+                (item, error) =>
+                {
+                    if (error != null)
+                    {
+                        return;
+                    }
+                    CanvasWidth = item.CanvasWidth;
+                });
             ExampleValue = 10;
         }
 
         int _exampleValue;
-
         public int ExampleValue
         {
             get
@@ -51,6 +62,13 @@ namespace RayTracerWPF.ViewModel
                 Set(ref _exampleValue, value);
                 RaisePropertyChanged("ExampleValue");
             }
+        }
+
+        private double _canvasWidth;
+        public double CanvasWidth
+        {
+            get => _canvasWidth;
+            set => Set(ref _canvasWidth, value);//does it raisePropertyChanged??????? 
         }
     }
 }
