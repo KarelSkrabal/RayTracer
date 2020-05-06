@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Windows;
 using RayTracerWPF.Model;
 
+
 namespace RayTracerWPF.ViewModel
 {
     /// <summary>
@@ -34,6 +35,9 @@ namespace RayTracerWPF.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+            //commands
+            Page2Command = new RelayCommand(() => GoToPage2());
+
             _dataService = dataService;
             _dataService.GetData(
                 (item, error) =>
@@ -69,6 +73,20 @@ namespace RayTracerWPF.ViewModel
         {
             get => _canvasWidth;
             set => Set(ref _canvasWidth, value);//does it raisePropertyChanged??????? 
+        }
+
+        public RelayCommand Page2Command
+        {
+            get;
+            private set;
+        }
+        private object GoToPage2()
+        {
+            //var msg = new GoToPageMessage() { PageName = "Page2View" };
+            //Messenger.Default.Send<GoToPageMessage>(msg);
+
+            System.Windows.MessageBox.Show("Navigate to Page 2!");
+            return null;
         }
     }
 }

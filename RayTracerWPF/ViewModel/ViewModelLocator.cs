@@ -15,6 +15,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using RayTracerWPF.Model;
 //using Microsoft.Practices.ServiceLocation;
 
 namespace RayTracerWPF.ViewModel
@@ -43,6 +44,7 @@ namespace RayTracerWPF.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
+            SimpleIoc.Default.Register<IDataService, DataService>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 

@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RayTracerWPF"
         xmlns:views ="clr-namespace:RayTracerWPF.View"
+        xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+        xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:GalaSoft_MvvmLight_Command1="http://www.galasoft.ch/mvvmlight"
         mc:Ignorable="d"
         Title="Ray Tracer" Height="700" Width="1200"
         DataContext="{Binding Main,Source={StaticResource Locator}}">
@@ -13,19 +16,44 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="257*" />
         </Grid.RowDefinitions>
-        <Label Content="Value 1" Grid.Row="1" Grid.Column="0"/>
-        <TextBox Grid.Row="1"
+        <Label Content="Value 1" Grid.Row="0" 
+               Grid.Column="0"/>
+        <TextBox Grid.Row="0"
                    Grid.Column="1"
                    MinWidth="50"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Text="{Binding ExampleValue}"
                    TextAlignment="Center" />
+        <Label Content="Canvas Width" Grid.Row="1" 
+               Grid.Column="0"/>
+        <TextBox Grid.Row="1"
+                   Grid.Column="1"
+                   MinWidth="50"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="{Binding CanvasWidth}"
+                   TextAlignment="Center" />
+        <Button x:Name="Page2Button"
+                Content="Page 2"
+                Margin="0"
+                Grid.Row="1"
+                Grid.Column="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <Custom:Interaction.Triggers>
+                <Custom:EventTrigger EventName="Click">
+                    <GalaSoft_MvvmLight_Command1:EventToCommand x:Name="Page2ButtonClicked"
+                                                               Command="{Binding Page2Command, Mode=OneWay}" />
+                </Custom:EventTrigger>
+            </Custom:Interaction.Triggers>
+        </Button>
     </Grid>
 </Window>
