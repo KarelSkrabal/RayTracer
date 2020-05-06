@@ -48,6 +48,7 @@ namespace RayTracerWPF.ViewModel
                 if (_exampleValue == value)
                     return;
                 _exampleValue = value;
+                Set(ref _exampleValue, value);
                 RaisePropertyChanged("ExampleValue");
             }
         }

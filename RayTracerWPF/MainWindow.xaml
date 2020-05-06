@@ -19,7 +19,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="257*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1"
+        <Label Content="Value 1" Grid.Row="1" Grid.Column="0"/>
+        <TextBox Grid.Row="1"
                    Grid.Column="1"
                    MinWidth="50"
                    HorizontalAlignment="Center"
