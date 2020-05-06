@@ -6,8 +6,25 @@
         xmlns:local="clr-namespace:RayTracerWPF"
         xmlns:views ="clr-namespace:RayTracerWPF.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1200">
+        Title="Ray Tracer" Height="700" Width="1200"
+        DataContext="{Binding Main,Source={StaticResource Locator}}">
     <Grid>
-        <views:SceneSettings x:Name="SceneSettingsControl"/>
+        <!--<views:SceneSettings x:Name="SceneSettingsControl"/>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="257*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   MinWidth="50"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="{Binding ExampleValue}"
+                   TextAlignment="Center" />
     </Grid>
 </Window>
