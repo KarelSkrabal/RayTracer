@@ -23,8 +23,14 @@ namespace RayTracerWPF.View
     {
         public SceneSettings()
         {
+            DataContext = new RayTracerViewModel();
             InitializeComponent();
-            DataContext = new RayTracerViewModel()/*.RayTracer*/;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ;
+            //saving scene settings
         }
     }
 }

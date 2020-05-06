@@ -1,11 +1,5 @@
 ﻿using RayTracerWPF.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace RayTracerWPF.ViewModel
@@ -18,8 +12,17 @@ namespace RayTracerWPF.ViewModel
             set;
         }
 
-        //public CustomCommand SaveSceneSettingsCommand { get; set; }
-        private ICommand _saveSceneSettingsCommand;
+        private ICommand _saveSceneSettingsCommand ;
+        public ICommand SaveSceneSettingsCommand
+        {
+            get
+            {
+                if (_saveSceneSettingsCommand == null)
+                    _saveSceneSettingsCommand = new Command(ExecuteSaveSceneSettings);
+                return _saveSceneSettingsCommand;
+            }
+            set { _saveSceneSettingsCommand = value; }
+        }
 
         //private RayTracerModel _rayTracer;
         //public RayTracerModel RayTracer
@@ -35,14 +38,12 @@ namespace RayTracerWPF.ViewModel
             LoadRayTracer();
             //SaveSceneSettingsCommand = new CustomCommand(OnSaveSceneSettingsCommand, CanSaveSceneSettingsCommand);
             //SaveSceneSettingsCommand.RaiseCanExecuteChanged();
+            SaveSceneSettingsCommand = new Command(ExecuteSaveSceneSettings);
         }
 
         public void LoadRayTracer()
         {
             ObservableCollection<RayTracerModel> rayTracerModelData = new ObservableCollection<RayTracerModel>();
-
-
-
             var rayTracer = new RayTracerModel()
             {
                 CanvasWidth = "10",
@@ -55,22 +56,14 @@ namespace RayTracerWPF.ViewModel
                 LightDirectionZ = "70",
                 CameraPositionX = "80",
                 CameraPositionY = "90",
-                CameraPositionZ = "100"
+                CameraPositionZ = "100",
+                
             };
             rayTracerModelData.Add(rayTracer);
             this.RayTracerData = rayTracerModelData;
         }
 
-        public ICommand SaveSceneSettingsCommand
-        {
-            get
-            {
-                if (_saveSceneSettingsCommand == null)
-                    _saveSceneSettingsCommand = new Command(ExecuteSaveSceneSettings);
-                return _saveSceneSettingsCommand;
-            }
-            set { _saveSceneSettingsCommand = value; }
-        }
+
 
         private void ExecuteSaveSceneSettings()
         {
@@ -80,7 +73,6 @@ namespace RayTracerWPF.ViewModel
         }
         //private void OnSaveSceneSettingsCommand()
         //{
-        //    //Students.Remove(SelectedStudent);
         //    var t = 10;
         //    t++;
         //    ;
@@ -88,9 +80,9 @@ namespace RayTracerWPF.ViewModel
 
         //private bool CanSaveSceneSettingsCommand()
         //{
-        //    //return SelectedStudent != null;
         //    return true;
         //}
+
         //public event PropertyChangedEventHandler PropertyChanged;
 
         //public void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

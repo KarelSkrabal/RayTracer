@@ -24,9 +24,10 @@ namespace RayTracerWPF
         {
             InitializeComponent();
 
-            RayTracerWPF.ViewModel.RayTracerViewModel rayTracerViewModelObject = new ViewModel.RayTracerViewModel();
-            rayTracerViewModelObject.LoadRayTracer();
-            SceneSettingsControl.DataContext = rayTracerViewModelObject/*.RayTracer*/;
+            //ViewModel.RayTracerViewModel rayTracerViewModelObject = new ViewModel.RayTracerViewModel();
+            //rayTracerViewModelObject.LoadRayTracer();
+            SceneSettingsControl.DataContext = new ViewModel.RayTracerViewModel();
+            this.DataContext = new ViewModel.RayTracerViewModel();
         }
     }
 }
