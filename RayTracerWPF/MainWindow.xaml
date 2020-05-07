@@ -11,49 +11,424 @@
         mc:Ignorable="d"
         Title="Ray Tracer" Height="700" Width="1200"
         DataContext="{Binding Main,Source={StaticResource Locator}}">
-    <Grid>
-        <!--<views:SceneSettings x:Name="SceneSettingsControl"/>-->
+    <!-- main grid level 0 -->
+    <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="257*" />
         </Grid.RowDefinitions>
-        <Label Content="Value 1" Grid.Row="0" 
-               Grid.Column="0"/>
-        <TextBox Grid.Row="0"
-                   Grid.Column="1"
-                   MinWidth="50"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Text="{Binding ExampleValue}"
-                   TextAlignment="Center" />
-        <Label Content="Canvas Width" Grid.Row="1" 
-               Grid.Column="0"/>
-        <TextBox Grid.Row="1"
-                   Grid.Column="1"
-                   MinWidth="50"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Text="{Binding CanvasWidth}"
-                   TextAlignment="Center" />
-        <Button x:Name="Page2Button"
-                Content="Page 2"
-                Margin="0"
-                Grid.Row="1"
-                Grid.Column="3"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
-            <Custom:Interaction.Triggers>
-                <Custom:EventTrigger EventName="Click">
-                    <GalaSoft_MvvmLight_Command1:EventToCommand x:Name="Page2ButtonClicked"
-                                                               Command="{Binding Page2Command, Mode=OneWay}" />
-                </Custom:EventTrigger>
-            </Custom:Interaction.Triggers>
-        </Button>
+        <!-- Image 0,0 -->
+        <Label Content="Image" Grid.Row="0" Grid.Column="0" 
+               Grid.RowSpan="4" Width="500" Height="500"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+        <!-- subgrid 0,1 level 1-->
+        <Grid Name="SettingsGrid" Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- scene settings subgrid 0,0 -->
+            <!-- subgrid level 2-->
+            <Grid Name="SceneSettingsGrid" Grid.Row="0">
+                <!-- Scene settings grid 7x5 -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!-- Scene settings grid 7x5 -->
+                <Label Content="Canvas Width"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="2" 
+                     Margin="0 3 0 3"/>
+                <Label Content="Canvas Height"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   Grid.ColumnSpan="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Position X"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="1"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Direction X"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="2"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="2"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Camera Position X"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="3"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="3"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Button Content="Save" Grid.Row="4" Grid.Column="1"
+                    Grid.ColumnSpan="2" Margin="0 3 0 3"/>
+                <Button Content="Load Defaults" Grid.Row="4" Grid.Column="5" 
+                    Grid.ColumnSpan="2" Margin="0 3 3 3"/>
+            </Grid>
+            <!-- sphere settings subgrid 1,0 -->
+            <Grid Name="SphereSettingsGrid" Grid.Row="1">
+                <!-- Scene settings grid 7x5 -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!-- Scene settings grid 7x5 -->
+                <Label Content="Canvas Width"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="2" 
+                     Margin="0 3 0 3"/>
+                <Label Content="Canvas Height"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   Grid.ColumnSpan="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Position X"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="1"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Direction X"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="2"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="2"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Camera Position X"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="3"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="3"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Button Content="Save" Grid.Row="4" Grid.Column="1"
+                    Grid.ColumnSpan="2" Margin="0 3 0 3"/>
+                <Button Content="Load Defaults" Grid.Row="4" Grid.Column="5" 
+                    Grid.ColumnSpan="2" Margin="0 3 3 3"/>
+            </Grid>
+            <!-- triangle settings subgrid 2,0 -->
+            <Grid Name="TriangleSettingsGrid" Grid.Row="2">
+                <!-- Scene settings grid 7x5 -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!-- Scene settings grid 7x5 -->
+                <Label Content="Canvas Width"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="2" 
+                     Margin="0 3 0 3"/>
+                <Label Content="Canvas Height"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   Grid.ColumnSpan="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Position X"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="1"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Direction X"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="2"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="2"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Camera Position X"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="3"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="3"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Button Content="Save" Grid.Row="4" Grid.Column="1"
+                    Grid.ColumnSpan="2" Margin="0 3 0 3"/>
+                <Button Content="Load Defaults" Grid.Row="4" Grid.Column="5" 
+                    Grid.ColumnSpan="2" Margin="0 3 3 3"/>
+            </Grid>
+            <!-- plane settings subgrid 3,0 -->
+            <Grid Name="PlaneSettingsGrid" Grid.Row="3">
+                <!-- Scene settings grid 7x5 -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!-- Scene settings grid 7x5 -->
+                <Label Content="Canvas Width"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="2" 
+                     Margin="0 3 0 3"/>
+                <Label Content="Canvas Height"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   Grid.ColumnSpan="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Position X"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="1"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Light Direction X"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="2"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="2"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Label Content="Camera Position X"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="2"
+                     Margin="0 3 0 3"/>
+                <Label Content="Y"
+                   Grid.Row="3"
+                   Grid.Column="3"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="4"
+                     Margin="0 3 0 3"/>
+                <Label Content="Z"
+                   Grid.Row="3"
+                   Grid.Column="5"
+                   HorizontalContentAlignment="Right"/>
+                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="6"
+                     Margin="0 3 0 3"/>
+                <Button Content="Save" Grid.Row="4" Grid.Column="1"
+                    Grid.ColumnSpan="2" Margin="0 3 0 3"/>
+                <Button Content="Load Defaults" Grid.Row="4" Grid.Column="5" 
+                    Grid.ColumnSpan="2" Margin="0 3 3 3"/>
+            </Grid>
+            <!-- empty 3,0 -->
+            <Grid Name="Empty" Grid.Row="4">
+                
+            </Grid>
+        </Grid>
+        <!-- Main menu buttons 1,0 & 1,1 -->
+        <Label Content="Main menu buttons" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
