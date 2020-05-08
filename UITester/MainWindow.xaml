@@ -1,0 +1,177 @@
+﻿<Window x:Class="UITester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UITester"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image Source="c:\Users\k.skrabal\Documents\scene.png"
+               Grid.Row="0"
+               Grid.Column="0"
+               Width="500" 
+               Height="500" 
+               HorizontalAlignment="Left"/>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Scene Settings" Grid.Row="0" Grid.Column="0" Margin="0 0 3 0">
+                <UniformGrid Columns="6" Rows="5" >
+                        <Label Content="Canvas Width"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Canvas Height"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content="Light Position X"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Light Direction X"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Camera Position X"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Button Content="Edit" Width="80"  Height="20" />
+                        <Button Content="Default" Width="80"  Height="20" />
+                    </UniformGrid>
+            </GroupBox>
+            <GroupBox Header="Plane Settings" Grid.Row="1" Grid.Column="0" Margin="0 0 3 0">
+                <StackPanel>
+                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <UniformGrid Columns="6" Rows="4" >
+                        <Label Content="Normal Vector X"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Plane's Point"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content="Color" HorizontalAlignment="Right"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
+                        <Button Content="Pick Color" Width="80"  Height="20" />
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Button Content="Add" Width="80"  Height="20" />
+                        <Button Content="Edit" Width="80"  Height="20" />
+                        <Button Content="Delete" Width="80"  Height="20" />
+                    </UniformGrid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0" Margin="0 0 3 0">
+                <StackPanel>
+                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <UniformGrid Columns="6" Rows="5" >
+                        <Label Content="Vertex 1"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Vertex 2"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Vertex 3"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content="Color" HorizontalAlignment="Right"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
+                        <Button Content="Pick Color" Width="80"  Height="20" />
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Button Content="Add" Width="80"  Height="20" />
+                        <Button Content="Edit" Width="80"  Height="20" />
+                        <Button Content="Delete" Width="80"  Height="20" />
+                    </UniformGrid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Sphere Settings" Grid.Row="3" Grid.Column="0" Margin="0 0 3 0">
+                <StackPanel>
+                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <UniformGrid Columns="6" Rows="3" >
+                        <Label Content="Center X"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="radius"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content="Color" HorizontalAlignment="Right"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top" Margin="0 3 0 0"/>
+                        <Button Content="Pick Color" Width="80"  Height="20" />
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Button Content="Add" Width="80"  Height="20" />
+                        <Button Content="Edit" Width="80"  Height="20" />
+                        <Button Content="Delete" Width="80"  Height="20" />
+                    </UniformGrid>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <DockPanel Grid.Row="1"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right">
+            <Grid>
+                <Button Content="Run" Width="80"  Height="20" Margin="10 0 110 20"/>
+                <Button Content="Stop" Width="80"  Height="20" Margin="80 0 0 20"/>
+            </Grid>
+        </DockPanel>
+        <DockPanel Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalAlignment="Right">
+            <Button Content="Close" Width="80"  Height="20" Margin="0 0 20 20" />
+        </DockPanel>
+    </Grid>
+</Window>
