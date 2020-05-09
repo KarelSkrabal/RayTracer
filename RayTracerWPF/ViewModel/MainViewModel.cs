@@ -177,23 +177,59 @@ namespace RayTracerWPF.ViewModel
             get => _planeColor;
             set => Set(ref _planeColor, value);
         }
-        private double _triangleVertex1;
-        public double TriangleVertex1
+        private double _triangleVertex1X;
+        public double TriangleVertex1X
         {
-            get => _triangleVertex1;
-            set => Set(ref _triangleVertex1, value);
+            get => _triangleVertex1X;
+            set => Set(ref _triangleVertex1X, value);
         }
-        private double _triangleVertex2;
-        public double TriangleVertex2
+        private double _triangleVertex1Y;
+        public double TriangleVertex1Y
         {
-            get => _triangleVertex2;
-            set => Set(ref _triangleVertex2, value);
+            get => _triangleVertex1Y;
+            set => Set(ref _triangleVertex1Y, value);
         }
-        private double _triangleVertex3;
-        public double TriangleVertex3
+        private double _triangleVertex1Z;
+        public double TriangleVertex1Z
         {
-            get => _triangleVertex3;
-            set => Set(ref _triangleVertex3, value);
+            get => _triangleVertex1Z;
+            set => Set(ref _triangleVertex1Z, value);
+        }
+        private double _triangleVertex2X;
+        public double TriangleVertex2X
+        {
+            get => _triangleVertex2X;
+            set => Set(ref _triangleVertex2X, value);
+        }
+        private double _triangleVertex2Y;
+        public double TriangleVertex2Y
+        {
+            get => _triangleVertex2Y;
+            set => Set(ref _triangleVertex2Y, value);
+        }
+        private double _triangleVertex2Z;
+        public double TriangleVertex2Z
+        {
+            get => _triangleVertex2Z;
+            set => Set(ref _triangleVertex2Z, value);
+        }
+        private double _triangleVertex3X;
+        public double TriangleVertex3X
+        {
+            get => _triangleVertex3X;
+            set => Set(ref _triangleVertex3X, value);
+        }
+        private double _triangleVertex3Y;
+        public double TriangleVertex3Y
+        {
+            get => _triangleVertex3Y;
+            set => Set(ref _triangleVertex3Y, value);
+        }
+        private double _triangleVertex3Z;
+        public double TriangleVertex3Z
+        {
+            get => _triangleVertex3Z;
+            set => Set(ref _triangleVertex3Z, value);
         }
         private double _triangleColor;
         public double TriangleColor
@@ -201,11 +237,23 @@ namespace RayTracerWPF.ViewModel
             get => _triangleColor;
             set => Set(ref _triangleColor, value);
         }
-        private double _sphereCenter;
-        public double SphereCenter
+        private double _sphereCenterX;
+        public double SphereCenterX
         {
-            get => _sphereCenter;
-            set => Set(ref _sphereCenter, value);
+            get => _sphereCenterX;
+            set => Set(ref _sphereCenterX, value);
+        }
+        private double _sphereCenterY;
+        public double SphereCenterY
+        {
+            get => _sphereCenterY;
+            set => Set(ref _sphereCenterY, value);
+        }
+        private double _sphereCenterZ;
+        public double SphereCenterZ
+        {
+            get => _sphereCenterZ;
+            set => Set(ref _sphereCenterZ, value);
         }
         private double _sphereRadius;
         public double SphereRadius

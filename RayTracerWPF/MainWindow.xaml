@@ -40,29 +40,29 @@
             <GroupBox Header="Scene Settings" Grid.Row="0" Grid.Column="0" Margin="0 0 3 0">
                 <UniformGrid Columns="6" Rows="5" >
                     <Label Content="Canvas Width"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding CanvasWidth}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Canvas Height"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding CanvasHeight}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content=""/>
                     <Label Content=""/>
                     <Label Content="Light Position X"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding LightPositionX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Y"  HorizontalContentAlignment="Center"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding LightPositionY}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Z" HorizontalContentAlignment="Center"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding LightPositionZ}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Light Direction X"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding LightDirectionX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Y" HorizontalContentAlignment="Center"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding LightDirectionY}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Z" HorizontalContentAlignment="Center"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding LightDirectionZ}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Camera Position X"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding CameraPositionX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Y" HorizontalContentAlignment="Center"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding CameraPositionY}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content="Z" HorizontalContentAlignment="Center"/>
-                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding CameraPositionZ}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                     <Label Content=""/>
                     <Label Content=""/>
                     <Label Content=""/>
@@ -76,22 +76,22 @@
                     <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
                     <UniformGrid Columns="6" Rows="4" >
                         <Label Content="Normal Vector X"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding PlaneNormalVectorX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Y"  HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding PlaneNormalVectorY}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Z" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding PlaneNormalVectorZ}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Plane's Point"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding PlanePointX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Y" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding PlanePointY}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Z" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding PlanePointZ}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content=""/>
                         <Label Content=""/>
                         <Label Content=""/>
                         <Label Content="Color" HorizontalAlignment="Right"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
+                        <TextBox Text="{Binding PlaneColor}"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
                         <Button Content="Pick Color" Width="80"  Height="20" />
                         <Label Content=""/>
                         <Label Content=""/>
@@ -107,28 +107,28 @@
                     <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
                     <UniformGrid Columns="6" Rows="5" >
                         <Label Content="Vertex 1"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex1X}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Y"  HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex1Y}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Z" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex1Z}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Vertex 2"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex2X}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Y" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex2Y}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Z" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex2Z}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Vertex 3"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex3X}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Y" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex3Y}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Z" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding TriangleVertex3Z}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content=""/>
                         <Label Content=""/>
                         <Label Content=""/>
                         <Label Content="Color" HorizontalAlignment="Right"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
+                        <TextBox Text="{Binding TriangleColor}"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
                         <Button Content="Pick Color" Width="80"  Height="20" />
                         <Label Content=""/>
                         <Label Content=""/>
@@ -144,16 +144,16 @@
                     <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
                     <UniformGrid Columns="6" Rows="3" >
                         <Label Content="Center X"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding SphereCenterX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Y"  HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding SphereCenterY}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Z" HorizontalContentAlignment="Center"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding SphereCenterZ}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="radius"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding SphereRadius}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content=""/>
                         <Label Content="Color" HorizontalAlignment="Right"/>
-                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top" Margin="0 3 0 0"/>
+                        <TextBox Text="{Binding TriangleColor}"  Width="100"  Height="20" VerticalAlignment="Top" Margin="0 3 0 0"/>
                         <Button Content="Pick Color" Width="80"  Height="20" />
                         <Label Content=""/>
                         <Label Content=""/>
