@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RayTracerLib;
 
 namespace RayTracerWPF.Model
 {
@@ -12,7 +13,7 @@ namespace RayTracerWPF.Model
         {
             // Use this to connect to the actual data service
 
-            var item = new DataItem("Welcome to MVVM Light", 123.123);
+            var item = new DataItem(new RayTracer());
             callback(item, null);
         }
     }

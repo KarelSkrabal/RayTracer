@@ -102,7 +102,7 @@
                     </UniformGrid>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0" Margin="0 0 3 0">
+            <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0" Margin="0,2,3.2,158.2" Grid.RowSpan="2">
                 <StackPanel>
                     <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
                     <UniformGrid Columns="6" Rows="5" >

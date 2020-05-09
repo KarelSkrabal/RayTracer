@@ -3,7 +3,9 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using System.Windows;
 using RayTracerWPF.Model;
-
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace RayTracerWPF.ViewModel
 {
@@ -46,9 +48,20 @@ namespace RayTracerWPF.ViewModel
                     {
                         return;
                     }
-                    CanvasWidth = item.CanvasWidth;
+                    CanvasWidth = item.RayTracer.canvasWidth;
+                    CanvasHeight = item.RayTracer.canvasHeight;
+                    LightPositionX = item.RayTracer.lp.X;
+                    LightPositionY = item.RayTracer.lp.Y;
+                    LightPositionZ = item.RayTracer.lp.Z;
+                    LightDirectionX = item.RayTracer.lv.X;
+                    LightDirectionX = item.RayTracer.lv.Y;
+                    LightDirectionX = item.RayTracer.lv.Z;
+                    CameraPositionX = item.RayTracer.p.X;
+                    CameraPositionX = item.RayTracer.p.Y;
+                    CameraPositionX = item.RayTracer.p.Z;
+                    //Spheres = item.RayTracer.objects.OfType<RayTracerLib.Sphere>()/*.ToObservableCollection<string>()*/.ToList<string>();
                 });
-            ExampleValue = 10;
+            //ExampleValue = 10;
         }
 
         int _exampleValue;
@@ -69,14 +82,45 @@ namespace RayTracerWPF.ViewModel
         }
 
         #region Binding Attributes
-        private double _canvasWidth;
-        public double CanvasWidth
+
+        private ObservableCollection<string> _spheres;
+        public ObservableCollection<string> Spheres
+        {
+            get => _spheres;
+            set
+            {
+                Set(ref _spheres, value);
+                RaisePropertyChanged("Spheres");//TODO
+            }
+        }
+        private ObservableCollection<string> _triangles;
+        public ObservableCollection<string> Triangles
+        {
+            get => _triangles;
+            set
+            {
+                Set(ref _triangles, value);
+                RaisePropertyChanged("Triangles");
+            }
+        }
+        private ObservableCollection<string> _planes;
+        public ObservableCollection<string> Planes
+        {
+            get => _planes;
+            set
+            {
+                Set(ref _planes, value);
+                RaisePropertyChanged("Planes");
+            }
+        }
+        private int _canvasWidth;
+        public int CanvasWidth
         {
             get => _canvasWidth;
             set => Set(ref _canvasWidth, value);
         }
-        private double _canvasHeight;
-        public double CanvasHeight
+        private int _canvasHeight;
+        public int CanvasHeight
         {
             get => _canvasHeight;
             set => Set(ref _canvasHeight, value);

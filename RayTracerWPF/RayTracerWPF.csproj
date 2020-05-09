@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="Command.cs" />
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IDataService.cs" />
@@ -127,6 +128,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RayTracerLib\RayTracerLib.csproj">
+      <Project>{755637df-b2eb-40ed-a2f0-ffe23a3bc9cc}</Project>
+      <Name>RayTracerLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
