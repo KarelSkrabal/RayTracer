@@ -35,7 +35,7 @@ namespace RayTracerWPF.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
-            //commands
+            //commands  
             Page2Command = new RelayCommand(() => GoToPage2());
 
             _dataService = dataService;
@@ -68,13 +68,160 @@ namespace RayTracerWPF.ViewModel
             }
         }
 
+        #region Binding Attributes
         private double _canvasWidth;
         public double CanvasWidth
         {
             get => _canvasWidth;
-            set => Set(ref _canvasWidth, value);//does it raisePropertyChanged??????? 
+            set => Set(ref _canvasWidth, value);
         }
+        private double _canvasHeight;
+        public double CanvasHeight
+        {
+            get => _canvasHeight;
+            set => Set(ref _canvasHeight, value);
+        }
+        private double _lightPositionX;
+        public double LightPositionX
+        {
+            get => _lightPositionX;
+            set => Set(ref _lightPositionX, value);
+        }
+        private double _lightPositionY;
+        public double LightPositionY
+        {
+            get => _lightPositionY;
+            set => Set(ref _lightPositionY, value);
+        }
+        private double _lightPositionZ;
+        public double LightPositionZ
+        {
+            get => _lightPositionZ;
+            set => Set(ref _lightPositionZ, value);
+        }
+        private double _lightDirectionX;
+        public double LightDirectionX
+        {
+            get => _lightDirectionX;
+            set => Set(ref _lightDirectionX, value);
+        }
+        private double _lightDirectionY;
+        public double LightDirectionY
+        {
+            get => _lightDirectionY;
+            set => Set(ref _lightDirectionY, value);
+        }
+        private double _lightDirectionZ;
+        public double LightDirectionZ
+        {
+            get => _lightDirectionZ;
+            set => Set(ref _lightDirectionZ, value);
+        }
+        private double _cameraPositionX;
+        public double CameraPositionX
+        {
+            get => _cameraPositionX;
+            set => Set(ref _cameraPositionX, value);
+        }
+        private double _cameraPositionY;
+        public double CameraPositionY
+        {
+            get => _cameraPositionY;
+            set => Set(ref _cameraPositionY, value);
+        }
+        private double _cameraPositionZ;
+        public double CameraPositionZ
+        {
+            get => _cameraPositionZ;
+            set => Set(ref _cameraPositionZ, value);
+        }
+        private double _planeNormalVectorX;
+        public double PlaneNormalVectorX
+        {
+            get => _planeNormalVectorX;
+            set => Set(ref _planeNormalVectorX, value);
+        }
+        private double _planeNormalVectorY;
+        public double PlaneNormalVectorY
+        {
+            get => _planeNormalVectorY;
+            set => Set(ref _planeNormalVectorY, value);
+        }
+        private double _planeNormalVectorZ;
+        public double PlaneNormalVectorZ
+        {
+            get => _planeNormalVectorZ;
+            set => Set(ref _planeNormalVectorZ, value);
+        }
+        private double _planePointX;
+        public double PlanePointX
+        {
+            get => _planePointX;
+            set => Set(ref _planePointX, value);
+        }
+        private double _planePointY;
+        public double PlanePointY
+        {
+            get => _planePointY;
+            set => Set(ref _planePointY, value);
+        }
+        private double _planePointZ;
+        public double PlanePointZ
+        {
+            get => _planePointZ;
+            set => Set(ref _planePointZ, value);
+        }
+        private double _planeColor;
+        public double PlaneColor
+        {
+            get => _planeColor;
+            set => Set(ref _planeColor, value);
+        }
+        private double _triangleVertex1;
+        public double TriangleVertex1
+        {
+            get => _triangleVertex1;
+            set => Set(ref _triangleVertex1, value);
+        }
+        private double _triangleVertex2;
+        public double TriangleVertex2
+        {
+            get => _triangleVertex2;
+            set => Set(ref _triangleVertex2, value);
+        }
+        private double _triangleVertex3;
+        public double TriangleVertex3
+        {
+            get => _triangleVertex3;
+            set => Set(ref _triangleVertex3, value);
+        }
+        private double _triangleColor;
+        public double TriangleColor
+        {
+            get => _triangleColor;
+            set => Set(ref _triangleColor, value);
+        }
+        private double _sphereCenter;
+        public double SphereCenter
+        {
+            get => _sphereCenter;
+            set => Set(ref _sphereCenter, value);
+        }
+        private double _sphereRadius;
+        public double SphereRadius
+        {
+            get => _sphereRadius;
+            set => Set(ref _sphereRadius, value);
+        }
+        private double _sphereColor;
+        public double SphereColor
+        {
+            get => _sphereColor;
+            set => Set(ref _sphereColor, value);
+        }
+        #endregion
 
+        #region Commands
         public RelayCommand Page2Command
         {
             get;
@@ -88,5 +235,6 @@ namespace RayTracerWPF.ViewModel
             System.Windows.MessageBox.Show("Navigate to Page 2!");
             return null;
         }
+        #endregion
     }
 }
