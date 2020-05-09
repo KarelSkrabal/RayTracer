@@ -9,402 +9,174 @@
         xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:GalaSoft_MvvmLight_Command1="http://www.galasoft.ch/mvvmlight"
         mc:Ignorable="d"
-        Title="Ray Tracer" Height="800" Width="1000"
+        Title="Ray Tracer" Height="800" Width="1500"
         DataContext="{Binding Main,Source={StaticResource Locator}}">
-    <!-- main grid level 0 -->
     <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <!-- Image 0,0 -->
-        <Image Source="c:\Users\k.skrabal\Documents\scene.png" 
-               Grid.Row="0" 
-               Grid.Column="0" 
-               Grid.RowSpan="4" Width="620" Height="600"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"/>
-        <!-- subgrid 0,1 level 1-->
-        <Grid Name="SettingsGrid" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Image Source="c:\Users\k.skrabal\Documents\scene.png"
+               Grid.Row="0"
+               Grid.Column="0"
+               Width="500" 
+               Height="500" 
+               HorizontalAlignment="Left"/>
+        <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <!-- scene settings subgrid 0,0 -->
-            <!-- subgrid level 2-->
-            <GroupBox Header="Scene Settings" Grid.Row="1" Grid.Column="0">
-            <Grid Name="SceneSettingsGrid" Grid.Row="0">
-                <!-- Scene settings grid 7x5 -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <!-- Scene settings grid 7x5 -->
-                <Label Content="Canvas Width"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="2" 
-                     Margin="0 3 0 3"/>
-                <Label Content="Canvas Height"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   Grid.ColumnSpan="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="0" Grid.Column="6"
-                     Margin="0 3 3 3"/>
-                <Label Content="Light Position      X"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Y"
-                   Grid.Row="1"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
-                     Margin="0 3 3 3"/>
-                <Label Content="Z"
-                   Grid.Row="1"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
-                     Margin="0 3 3 3"/>
-                <Label Content="Light Direction    X"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Y"
-                   Grid.Row="2"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Label Content="Z"
-                   Grid.Row="2"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="6"
-                     Margin="0 3 3 3"/>
-                <Label Content="Camera Position  X"
-                   Grid.Row="3"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Y"
-                   Grid.Row="3"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Label Content="Z"
-                   Grid.Row="3"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="6"
-                     Margin="0 3 3 3"/>
-                <Button Content="Save" Grid.Row="4" Grid.Column="3"
-                    Grid.ColumnSpan="2" Margin="0 3 3 3"/>
-                <Button Content="Load Defaults" Grid.Row="4" Grid.Column="5" 
-                    Grid.ColumnSpan="2" Margin="0 3 3 3"/>
-            </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Scene Settings" Grid.Row="0" Grid.Column="0" Margin="0 0 3 0">
+                <UniformGrid Columns="6" Rows="5" >
+                    <Label Content="Canvas Width"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Canvas Height"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content=""/>
+                    <Label Content=""/>
+                    <Label Content="Light Position X"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Z" HorizontalContentAlignment="Center"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Light Direction X"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Y" HorizontalContentAlignment="Center"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Z" HorizontalContentAlignment="Center"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Camera Position X"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Y" HorizontalContentAlignment="Center"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content="Z" HorizontalContentAlignment="Center"/>
+                    <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                    <Label Content=""/>
+                    <Label Content=""/>
+                    <Label Content=""/>
+                    <Label Content=""/>
+                    <Button Content="Edit" Width="80"  Height="20" />
+                    <Button Content="Default" Width="80"  Height="20" />
+                </UniformGrid>
             </GroupBox>
-            <!-- sphere settings subgrid 1,0 -->
-            <GroupBox Header="Sphere Settings"  Grid.Row="2" Grid.Column="0">
-            <Grid Name="SphereSettingsGrid" Grid.Row="1" Margin="3 3 3 3">
-                <!-- Sphere settings grid 7x5 -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <!-- Sphere settings grid 7x5 -->
-                <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
-                         Height="60" Margin="2 2 2 2"/>
-                <Label Content="Center Position X"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Y"
-                   Grid.Row="1"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Label Content="Z"
-                   Grid.Row="1"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
-                     Margin="0 3 3 3"/>
-                <Label Content="Sphere Radius"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Color"
-                   Grid.Row="2"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Button Content="Pick Color"
-                   Grid.Row="2"
-                   Grid.Column="5"
-                        Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Center"
-                        Margin="2 2 3 2"/>
-                <Button Content="Add" Grid.Row="4" Grid.Column="1"
-                    Grid.ColumnSpan="2" Margin="0 3 4 3"/>
-                <Button Content="Edit" Grid.Row="4" Grid.Column="3"
-                    Grid.ColumnSpan="2" Margin="0 3 4 3"/>
-                <Button Content="Delete" Grid.Row="4" Grid.Column="5" 
-                    Grid.ColumnSpan="2" Margin="0 3 3 3"/>
-            </Grid>
+            <GroupBox Header="Plane Settings" Grid.Row="1" Grid.Column="0" Margin="0 0 3 0">
+                <StackPanel>
+                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <UniformGrid Columns="6" Rows="4" >
+                        <Label Content="Normal Vector X"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Plane's Point"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content="Color" HorizontalAlignment="Right"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
+                        <Button Content="Pick Color" Width="80"  Height="20" />
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Button Content="Add" Width="80"  Height="20" />
+                        <Button Content="Edit" Width="80"  Height="20" />
+                        <Button Content="Delete" Width="80"  Height="20" />
+                    </UniformGrid>
+                </StackPanel>
             </GroupBox>
-            <!-- triangle settings subgrid 2,0 -->
-            <GroupBox Header="Triangle Settings" Grid.Row="3" Grid.Column="0">
-            <Grid Name="TriangleSettingsGrid" Grid.Row="2">
-                <!-- triangle settings grid 7x5 -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <!-- triangle settings grid 7x5 -->
-                <ListBox Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="7" Height="60" Margin="2 2 2 2"/>
-                <Label Content="Triangle Vertex 1"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Y"
-                   Grid.Row="1"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Label Content="Z"
-                   Grid.Row="1"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
-                     Margin="0 3 0 3"/>
-                <Label Content="Triangle Vertex 2"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Y"
-                   Grid.Row="2"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Label Content="Z"
-                   Grid.Row="2"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="6"
-                     Margin="0 3 0 3"/>
-                <Label Content="Triangle Vertex 3"
-                   Grid.Row="3"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                <Label Content="Y"
-                   Grid.Row="3"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Label Content="Z"
-                   Grid.Row="3"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="6"
-                     Margin="0 3 0 3"/>
-                <Label Content="Color"
-                   Grid.Row="4"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                <TextBox Text="xxxxxxxx" Grid.Row="4" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                <Button Content="Pick Color"
-                   Grid.Row="4"
-                   Grid.Column="5"
-                        Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Center"
-                        Margin="2 2 0 2"/>
-                <Button Content="Add" Grid.Row="5" Grid.Column="1"
-                    Grid.ColumnSpan="2" Margin="0 3 4 3"/>
-                <Button Content="Edit" Grid.Row="5" Grid.Column="3"
-                    Grid.ColumnSpan="2" Margin="0 3 4 3"/>
-                <Button Content="Delete" Grid.Row="5" Grid.Column="5" 
-                    Grid.ColumnSpan="2" Margin="0 3 0 3"/>
-            </Grid>
+            <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0" Margin="0 0 3 0">
+                <StackPanel>
+                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <UniformGrid Columns="6" Rows="5" >
+                        <Label Content="Vertex 1"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Vertex 2"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Vertex 3"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content="Color" HorizontalAlignment="Right"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"  Margin="0 3 0 0"/>
+                        <Button Content="Pick Color" Width="80"  Height="20" />
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Button Content="Add" Width="80"  Height="20" />
+                        <Button Content="Edit" Width="80"  Height="20" />
+                        <Button Content="Delete" Width="80"  Height="20" />
+                    </UniformGrid>
+                </StackPanel>
             </GroupBox>
-            <!-- plane settings subgrid 3,0 -->
-            <GroupBox Header="Plane Settings" Grid.Row="4" Grid.Column="0">
-                <Grid Name="PlaneSettingsGrid" Grid.Row="3">
-                    <!-- Scene settings grid 7x5 -->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <!-- Scene settings grid 7x5 -->
-                    <ListBox
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="7"
-                    Height="60"
-                   HorizontalContentAlignment="Left"/>
-                    <Label Content="Plane Point X"
-                   Grid.Row="1"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                    <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                    <Label Content="Y"
-                   Grid.Row="1"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                    <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                    <Label Content="Z"
-                   Grid.Row="1"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                    <TextBox Text="xxxxxxxx" Grid.Row="1" Grid.Column="6"
-                     Margin="0 3 0 3"/>
-                    <Label Content="Normal Vector X"
-                   Grid.Row="2"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Left"/>
-                    <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="2"
-                     Margin="0 3 0 3"/>
-                    <Label Content="Y"
-                   Grid.Row="2"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                    <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                    <Label Content="Z"
-                   Grid.Row="2"
-                   Grid.Column="5"
-                   HorizontalContentAlignment="Left"/>
-                    <TextBox Text="xxxxxxxx" Grid.Row="2" Grid.Column="6"
-                     Margin="0 3 0 3"/>
-                    <Label Content="Color"
-                   Grid.Row="3"
-                   Grid.Column="3"
-                   HorizontalContentAlignment="Left"/>
-                    <TextBox Text="xxxxxxxx" Grid.Row="3" Grid.Column="4"
-                     Margin="0 3 0 3"/>
-                    <Button Content="Pick Color"
-                   Grid.Row="3"
-                   Grid.Column="5"
-                        Grid.ColumnSpan="2"
-                   HorizontalContentAlignment="Center"
-                        Margin="2 2 0 2"/>
-                    <Button Content="Add" Grid.Row="5" Grid.Column="1"
-                    Grid.ColumnSpan="2" Margin="0 3 4 3"/>
-                    <Button Content="Edit" Grid.Row="4" Grid.Column="3"
-                    Grid.ColumnSpan="2" Margin="0 3 4 3"/>
-                    <Button Content="Save" Grid.Row="4" Grid.Column="5" 
-                    Grid.ColumnSpan="2" Margin="0 3 0 3"/>
-                </Grid>
+            <GroupBox Header="Sphere Settings" Grid.Row="3" Grid.Column="0" Margin="0 0 3 0">
+                <StackPanel>
+                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <UniformGrid Columns="6" Rows="3" >
+                        <Label Content="Center X"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Y"  HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="Z" HorizontalContentAlignment="Center"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content="radius"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <Label Content=""/>
+                        <Label Content="Color" HorizontalAlignment="Right"/>
+                        <TextBox Text="0000000"  Width="100"  Height="20" VerticalAlignment="Top" Margin="0 3 0 0"/>
+                        <Button Content="Pick Color" Width="80"  Height="20" />
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Label Content=""/>
+                        <Button Content="Add" Width="80"  Height="20" />
+                        <Button Content="Edit" Width="80"  Height="20" />
+                        <Button Content="Delete" Width="80"  Height="20" />
+                    </UniformGrid>
+                </StackPanel>
             </GroupBox>
-            <!-- empty 3,0 -->
-            <Grid Name="Empty" Grid.Row="4">
-
-            </Grid>
         </Grid>
-        <!-- Main menu buttons 1,0 & 1,1 -->
-        <DockPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Height="Auto">
-            <Button Content="Start" Margin="3 3 3 3"/>
-            <Button Content="Stop" Margin="3 3 3 3"/>
-            <Button Content="Cancel" Margin="3 3 3 3"/>
+        <DockPanel Grid.Row="1"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right">
+            <Grid>
+                <Button Content="Run" Width="80"  Height="20" Margin="10 0 110 20"/>
+                <Button Content="Stop" Width="80"  Height="20" Margin="80 0 0 20"/>
+            </Grid>
+        </DockPanel>
+        <DockPanel Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalAlignment="Right">
+            <Button Content="Close" Width="80"  Height="20" Margin="0 0 20 20" />
         </DockPanel>
     </Grid>
 </Window>
