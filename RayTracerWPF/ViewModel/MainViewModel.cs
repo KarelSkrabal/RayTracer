@@ -6,6 +6,7 @@ using RayTracerWPF.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using RayTracerLib;
 
 namespace RayTracerWPF.ViewModel
 {
@@ -59,9 +60,10 @@ namespace RayTracerWPF.ViewModel
                     CameraPositionX = item.RayTracer.p.X;
                     CameraPositionX = item.RayTracer.p.Y;
                     CameraPositionX = item.RayTracer.p.Z;
-                    //Spheres = item.RayTracer.objects.OfType<RayTracerLib.Sphere>()/*.ToObservableCollection<string>()*/.ToList<string>();
+                    Spheres = new ObservableCollection<Sphere>(item.RayTracer.objects.OfType<Sphere>());
+                    Planes = new ObservableCollection<Plane>(item.RayTracer.objects.OfType<Plane>());
+                    Triangles = new ObservableCollection<Triangle>(item.RayTracer.objects.OfType<Triangle>());
                 });
-            //ExampleValue = 10;
         }
 
         int _exampleValue;
@@ -83,18 +85,26 @@ namespace RayTracerWPF.ViewModel
 
         #region Binding Attributes
 
-        private ObservableCollection<string> _spheres;
-        public ObservableCollection<string> Spheres
+        private ObservableCollection<Sphere> _spheres;
+        public ObservableCollection<Sphere> Spheres
         {
             get => _spheres;
             set
             {
                 Set(ref _spheres, value);
-                RaisePropertyChanged("Spheres");//TODO
+                RaisePropertyChanged("Spheres");
             }
         }
-        private ObservableCollection<string> _triangles;
-        public ObservableCollection<string> Triangles
+
+
+        //private void lbTodoList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        //{
+        //    if (lbTodoList.SelectedItem != null)
+        //        this.Title = (lbTodoList.SelectedItem as TodoItem).Title;
+        //}
+
+        private ObservableCollection<Triangle> _triangles;
+        public ObservableCollection<Triangle> Triangles
         {
             get => _triangles;
             set
@@ -103,8 +113,8 @@ namespace RayTracerWPF.ViewModel
                 RaisePropertyChanged("Triangles");
             }
         }
-        private ObservableCollection<string> _planes;
-        public ObservableCollection<string> Planes
+        private ObservableCollection<Plane> _planes;
+        public ObservableCollection<Plane> Planes
         {
             get => _planes;
             set

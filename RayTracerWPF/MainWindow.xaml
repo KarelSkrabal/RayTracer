@@ -102,7 +102,7 @@
                     </UniformGrid>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0" Margin="0,2,3.2,158.2" Grid.RowSpan="2">
+            <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0" Margin="0 0 3 0">
                 <StackPanel>
                     <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
                     <UniformGrid Columns="6" Rows="5" >
@@ -141,7 +141,16 @@
             </GroupBox>
             <GroupBox Header="Sphere Settings" Grid.Row="3" Grid.Column="0" Margin="0 0 3 0">
                 <StackPanel>
-                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <!-- -->
+                    <ListBox Height="50" Width="640" Margin="0 5 0 5"
+                             ItemsSource="{Binding Spheres}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="0"
+                                           Height="Auto" Width="640"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
                     <UniformGrid Columns="6" Rows="3" >
                         <Label Content="Center X"/>
                         <TextBox Text="{Binding SphereCenterX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
