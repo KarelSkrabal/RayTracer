@@ -9,8 +9,19 @@
         xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:GalaSoft_MvvmLight_Command1="http://www.galasoft.ch/mvvmlight"
         mc:Ignorable="d"
-        Title="Ray Tracer" Height="800" Width="1500"
+        Title="Ray Tracer" Height="950" Width="1500"
         DataContext="{Binding Main,Source={StaticResource Locator}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ListBoxItem">
+                <Label Content="{Binding title}" Foreground="Black" VerticalAlignment="Center">
+                </Label>
+            </DataTemplate>
+            <Style TargetType="ListViewItem">
+                <Setter Property="Height" Value="30"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -73,7 +84,22 @@
             </GroupBox>
             <GroupBox Header="Plane Settings" Grid.Row="1" Grid.Column="0" Margin="0 0 3 0">
                 <StackPanel>
-                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <ListBox Height="60" Width="640" Margin="0 5 0 5" x:Name="PlanesListBox"
+                             ItemsSource="{Binding PlanesListBoxItems}"
+                             ItemTemplate="{StaticResource ListBoxItem}">
+                        <Custom:Interaction.Triggers>
+                            <Custom:EventTrigger EventName="SelectionChanged">
+                                <Custom:InvokeCommandAction Command="{Binding planeItemChanged}" 
+                                               CommandParameter="{Binding ElementName=PlanesListBox, Path=SelectedItem}"/>
+                            </Custom:EventTrigger>
+                        </Custom:Interaction.Triggers>
+                        <ListBox.ItemContainerStyle >
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Height" Value="25"/>
+                                <Setter Property="FontSize" Value="10"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
                     <UniformGrid Columns="6" Rows="4" >
                         <Label Content="Normal Vector X"/>
                         <TextBox Text="{Binding PlaneNormalVectorX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
@@ -104,7 +130,22 @@
             </GroupBox>
             <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0" Margin="0 0 3 0">
                 <StackPanel>
-                    <ListBox Height="50" Width="640" Margin="0 5 0 5"/>
+                    <ListBox Height="60" Width="640" Margin="0 5 0 5" x:Name="TrianglesListBox"
+                             ItemsSource="{Binding TrianglesListBoxItems}"
+                             ItemTemplate="{StaticResource ListBoxItem}">
+                        <Custom:Interaction.Triggers>
+                            <Custom:EventTrigger EventName="SelectionChanged">
+                                <Custom:InvokeCommandAction Command="{Binding triangleItemChanged}" 
+                                               CommandParameter="{Binding ElementName=TrianglesListBox, Path=SelectedItem}"/>
+                            </Custom:EventTrigger>
+                        </Custom:Interaction.Triggers>
+                        <ListBox.ItemContainerStyle >
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Height" Value="25"/>
+                                <Setter Property="FontSize" Value="10"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
                     <UniformGrid Columns="6" Rows="5" >
                         <Label Content="Vertex 1"/>
                         <TextBox Text="{Binding TriangleVertex1X}"  Width="100"  Height="20" VerticalAlignment="Top"/>
@@ -142,18 +183,25 @@
             <GroupBox Header="Sphere Settings" Grid.Row="3" Grid.Column="0" Margin="0 0 3 0">
                 <StackPanel>
                     <!-- -->
-                    <ListBox Height="50" Width="640" Margin="0 5 0 5"
-                             ItemsSource="{Binding Spheres}">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Margin="0"
-                                           Height="Auto" Width="640"/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                    <ListBox Height="60" Width="640" Margin="0 5 0 5" x:Name="SpheresListBox"
+                             ItemsSource="{Binding SpheresListBoxItems}"
+                             ItemTemplate="{StaticResource ListBoxItem}" >
+                        <Custom:Interaction.Triggers>
+                            <Custom:EventTrigger EventName="SelectionChanged">
+                                <Custom:InvokeCommandAction Command="{Binding sphereItemChanged}" 
+                                               CommandParameter="{Binding ElementName=SpheresListBox, Path=SelectedItem}"/>
+                            </Custom:EventTrigger>
+                        </Custom:Interaction.Triggers>
+                        <ListBox.ItemContainerStyle >
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Height" Value="25"/>
+                                <Setter Property="FontSize" Value="10"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                     <UniformGrid Columns="6" Rows="3" >
                         <Label Content="Center X"/>
-                        <TextBox Text="{Binding SphereCenterX}"  Width="100"  Height="20" VerticalAlignment="Top"/>
+                        <TextBox Text="{Binding SphereSelectedItem.position.X, Mode=TwoWay}" Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Y"  HorizontalContentAlignment="Center"/>
                         <TextBox Text="{Binding SphereCenterY}"  Width="100"  Height="20" VerticalAlignment="Top"/>
                         <Label Content="Z" HorizontalContentAlignment="Center"/>
