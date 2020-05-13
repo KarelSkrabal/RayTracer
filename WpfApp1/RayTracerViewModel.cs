@@ -1,11 +1,12 @@
-﻿using GalaSoft.MvvmLight;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using RayTracerTest.MVVMCodeBase;
 
-namespace RayTracerWPF.Model
+namespace RayTracerTest
 {
     //this's like SongViewModel
     //will contain properties of all objects
@@ -25,7 +26,7 @@ namespace RayTracerWPF.Model
                 if(SphereObject.CenterX != value)
                 {
                     SphereObject.CenterX = value;
-                    RaisePropertyChanged(nameof(CenterX));
+                    RaisePropertyChanged("CenterX");
                 }
             }
         }
@@ -37,7 +38,7 @@ namespace RayTracerWPF.Model
                 if (SphereObject.CenterY != value)
                 {
                     SphereObject.CenterY = value;
-                    RaisePropertyChanged(nameof(CenterY));
+                    RaisePropertyChanged("CenterY");
                 }
             }
         }
@@ -49,7 +50,7 @@ namespace RayTracerWPF.Model
                 if (SphereObject.CenterZ != value)
                 {
                     SphereObject.CenterZ = value;
-                    RaisePropertyChanged(nameof(CenterZ));
+                    RaisePropertyChanged("CenterZ");
                 }
             }
         }
@@ -61,7 +62,7 @@ namespace RayTracerWPF.Model
                 if (SphereObject.RadiusXX != value)
                 {
                     SphereObject.RadiusXX = value;
-                    RaisePropertyChanged(nameof(RadiusXXXX));
+                    RaisePropertyChanged("RadiusXXXX");
                 }
             }
         }
@@ -73,13 +74,13 @@ namespace RayTracerWPF.Model
                 if (SphereObject.Color != value)
                 {
                     SphereObject.Color = value;
-                    RaisePropertyChanged(nameof(RadiusXXXX));
+                    RaisePropertyChanged("RadiusXXXX");
                 }
             }
         }
         public RayTracerViewModel()
         {
-            SphereObject = new SphereObject { RadiusXX = -50.0, CenterX = -200.0, CenterY = -300.0, CenterZ = 0.0, Color = "xxx" };
+            SphereObject = new SphereObject { RadiusXX = 0, CenterX = 0, CenterY = 0, CenterZ = 0, Color = "xx" };
         }
     }
 }
