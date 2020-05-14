@@ -23,11 +23,27 @@ namespace RayTracerWPF
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            //ViewModel.RayTracerViewModel rayTracerViewModelObject = new ViewModel.RayTracerViewModel();
-            //rayTracerViewModelObject.LoadRayTracer();
-            //SceneSettingsControl.DataContext = new ViewModel.RayTracerViewModel();
-            //this.DataContext = new ViewModel.RayTracerViewModel();
+        private void grdPlanes_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as DataGrid).Columns[0].Header = "Normal Vector X";
+            (sender as DataGrid).Columns[1].Header = "Normal Vector Y";
+            (sender as DataGrid).Columns[2].Header = "Normal Vector Z";
+            (sender as DataGrid).Columns[3].Header = "Point X";
+            (sender as DataGrid).Columns[4].Header = "Point Y";
+            (sender as DataGrid).Columns[5].Header = "Point Z";
+            (sender as DataGrid).Columns[6].Header = "Color";
+        }
+
+        private void grdTriangles_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void grdSpheres_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

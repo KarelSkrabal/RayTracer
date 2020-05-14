@@ -1,5 +1,7 @@
 using RayTracerWPF.Model;
+using RayTracerWPF.MVVMCodeBase;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Plane = RayTracerWPF.Model.Plane;
 using Sphere = RayTracerWPF.Model.Sphere;
 using Triangle = RayTracerWPF.Model.Triangle;
@@ -67,6 +69,15 @@ namespace RayTracerWPF.ViewModel
         {
             get => _spheres;
             set => _spheres = value;
+        }
+
+        public ICommand AddSphere { get { return new RelayCommand(AddSphereExecute, CanAddSphereExecute); } }
+
+        private bool CanAddSphereExecute() => true;
+
+        private void AddSphereExecute()
+        {
+
         }
     }
 }
