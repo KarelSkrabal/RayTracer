@@ -3,9 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:RayTracerWPF.ViewModel"
         Title="Ray" Height="500" Width="500">
-    <Window.DataContext>
-        <local:m
-    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

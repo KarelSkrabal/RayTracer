@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace RayTracerWPF.Model
 {
-    public class RayTracerModel : INotifyPropertyChanged
+    public class Scene : INotifyPropertyChanged
     {
-        private string _canvasWidth;
-        private string _canvasHeight;
-        private string _lightPositionX;
-        private string _lightPositionY;
-        private string _lightPositionZ;
-        private string _lightDirectionX;
-        private string _lightDirectionY;
-        private string _lightDirectionZ;
-        private string _cameraPositionX;
-        private string _cameraPositionY;
-        private string _cameraPositionZ;
+        int _canvasWidth;
+        int _canvasHeight;
+        double _lightPositionX;
+        double _lightPositionY;
+        double _lightPositionZ;
+        double _lightDirectionX;
+        double _lightDirectionY;
+        double _lightDirectionZ;
+        double _cameraPositionX;
+        double _cameraPositionY;
+        double _cameraPositionZ;
 
-        public string CanvasWidth
+        public int CanvasWidth
         {
             get => _canvasWidth;
             set
@@ -33,8 +28,7 @@ namespace RayTracerWPF.Model
                 }
             }
         }
-
-        public string CanvasHeight
+        public int CanvasHeight
         {
             get => _canvasHeight;
             set
@@ -46,8 +40,7 @@ namespace RayTracerWPF.Model
                 }
             }
         }
-
-        public string LightPositionX
+        public double LightPositionX
         {
             get => _lightPositionX;
             set
@@ -55,12 +48,11 @@ namespace RayTracerWPF.Model
                 if (_lightPositionX != value)
                 {
                     _lightPositionX = value;
-                    RaisePropertyChanged(nameof(LightPositionX));
+                    RaisePropertyChanged("LightPositionX");
                 }
             }
         }
-
-        public string LightPositionY
+        public double LightPositionY
         {
             get => _lightPositionY;
             set
@@ -68,12 +60,11 @@ namespace RayTracerWPF.Model
                 if (_lightPositionY != value)
                 {
                     _lightPositionY = value;
-                    RaisePropertyChanged(nameof(LightPositionY));
+                    RaisePropertyChanged("LightPositionY");
                 }
             }
         }
-
-        public string LightPositionZ
+        public double LightPositionZ
         {
             get => _lightPositionZ;
             set
@@ -81,12 +72,11 @@ namespace RayTracerWPF.Model
                 if (_lightPositionZ != value)
                 {
                     _lightPositionZ = value;
-                    RaisePropertyChanged(nameof(LightPositionZ));
+                    RaisePropertyChanged("LightPositionZ");
                 }
             }
         }
-        
-        public string LightDirectionX
+        public double LightDirectionX
         {
             get => _lightDirectionX;
             set
@@ -94,12 +84,11 @@ namespace RayTracerWPF.Model
                 if (_lightDirectionX != value)
                 {
                     _lightDirectionX = value;
-                    RaisePropertyChanged(nameof(LightDirectionX));
+                    RaisePropertyChanged("LightDirectionX");
                 }
             }
         }
-
-        public string LightDirectionY
+        public double LightDirectionY
         {
             get => _lightDirectionY;
             set
@@ -107,12 +96,11 @@ namespace RayTracerWPF.Model
                 if (_lightDirectionY != value)
                 {
                     _lightDirectionY = value;
-                    RaisePropertyChanged(nameof(LightDirectionY));
+                    RaisePropertyChanged("LightDirectionY");
                 }
             }
         }
-
-        public string LightDirectionZ
+        public double LightDirectionZ
         {
             get => _lightDirectionZ;
             set
@@ -120,12 +108,11 @@ namespace RayTracerWPF.Model
                 if (_lightDirectionZ != value)
                 {
                     _lightDirectionZ = value;
-                    RaisePropertyChanged(nameof(LightDirectionZ));
+                    RaisePropertyChanged("LightDirectionZ");
                 }
             }
         }
-
-        public string CameraPositionX
+        public double CameraPositionX
         {
             get => _cameraPositionX;
             set
@@ -133,39 +120,39 @@ namespace RayTracerWPF.Model
                 if (_cameraPositionX != value)
                 {
                     _cameraPositionX = value;
-                    RaisePropertyChanged(nameof(CameraPositionX));
+                    RaisePropertyChanged("CameraPositionX");
                 }
             }
         }
-
-        public string CameraPositionY
+        public double CameraPositionY
         {
             get => _cameraPositionY;
             set
             {
-                if (_cameraPositionY != value)
+                if(_cameraPositionY != value)
                 {
                     _cameraPositionY = value;
-                    RaisePropertyChanged(nameof(CameraPositionY));
+                    RaisePropertyChanged("CameraPositionY");
                 }
             }
         }
-
-        public string CameraPositionZ
+        public double CameraPositionZ
         {
             get => _cameraPositionZ;
             set
             {
-                if (_cameraPositionZ != value)
+                if(_cameraPositionZ != value)
                 {
                     _cameraPositionZ = value;
-                    RaisePropertyChanged(nameof(CameraPositionZ));
+                    RaisePropertyChanged("CameraPositionZ");
                 }
             }
         }
 
+        void RaisePropertyChanged(string prop)
+        {
+            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void RaisePropertyChanged(string property) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
     }
 }

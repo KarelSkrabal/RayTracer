@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace RayTracerTest.Model
+namespace RayTracerTest
 {
     public class Scene : INotifyPropertyChanged
     {

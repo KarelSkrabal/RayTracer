@@ -13,7 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -22,11 +22,6 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="3" Grid.Column="0"
-                  ItemsSource="{Binding SpheresXX}" Height="100" 
-                  AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False">
-            
-        </DataGrid>
         <DataGrid Name="PlaneGrid" Loaded="PlaneGrid_Loaded" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding Planes}" Height="100"/>
         <StackPanel Grid.Row="3" Grid.Column="1">
             <DockPanel>
@@ -42,10 +37,7 @@
                 <TextBox Text="{Binding Scene.CameraPositionY}" Width="30" Margin="5 1 1 1"/>
                 <TextBlock Text="Camera Position Z" Margin="1 1 1 1"/>
                 <TextBox Text="{Binding Scene.CameraPositionZ}" Width="30" Margin="5 1 1 1"/>
-            </DockPanel>
-            
-            
-            
+            </DockPanel>         
             <TextBox Text="{Binding Scene.LightDirectionX}" Width="30"/>
             <TextBox Text="{Binding Scene.LightDirectionY}" Width="30"/>
             <TextBox Text="{Binding Scene.LightDirectionZ}" Width="30"/>
