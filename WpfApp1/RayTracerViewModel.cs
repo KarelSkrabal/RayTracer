@@ -8,12 +8,10 @@ using RayTracerTest.MVVMCodeBase;
 
 namespace RayTracerTest
 {
-    //this's like SongViewModel
-    //will contain properties of all objects
     public class RayTracerViewModel : ObservableObject
     {
-        private SphereObject _sphereObject;
-        public SphereObject SphereObject
+        private Sphere _sphereObject;
+        public Sphere SphereObject
         {
             get => _sphereObject;
             set => _sphereObject = value;
@@ -54,15 +52,15 @@ namespace RayTracerTest
                 }
             }
         }
-        public double RadiusXXXX
+        public double Radius
         {
-            get => SphereObject.RadiusXX;
+            get => SphereObject.Radius;
             set
             {
-                if (SphereObject.RadiusXX != value)
+                if (SphereObject.Radius != value)
                 {
-                    SphereObject.RadiusXX = value;
-                    RaisePropertyChanged("RadiusXXXX");
+                    SphereObject.Radius = value;
+                    RaisePropertyChanged("Radius");
                 }
             }
         }
@@ -74,13 +72,13 @@ namespace RayTracerTest
                 if (SphereObject.Color != value)
                 {
                     SphereObject.Color = value;
-                    RaisePropertyChanged("RadiusXXXX");
+                    RaisePropertyChanged("Color");
                 }
             }
         }
         public RayTracerViewModel()
         {
-            SphereObject = new SphereObject { RadiusXX = 0, CenterX = 0, CenterY = 0, CenterZ = 0, Color = "xx" };
+            SphereObject = new Sphere { Radius = 0, CenterX = 0, CenterY = 0, CenterZ = 0, Color = "xx" };
         }
     }
 }

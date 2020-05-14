@@ -25,5 +25,25 @@ namespace RayTracerTest
             InitializeComponent();
             DataContext = new MainViewModel();
         }
+
+        private void PlaneGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as DataGrid).Columns[0].Header = "Normal Vector X";
+            (sender as DataGrid).Columns[1].Header = "Normal Vector Y";
+            (sender as DataGrid).Columns[2].Header = "Normal Vector Z";
+            (sender as DataGrid).Columns[3].Header = "Point X";
+            (sender as DataGrid).Columns[4].Header = "Point Y";
+            (sender as DataGrid).Columns[5].Header = "Point Z";
+            (sender as DataGrid).Columns[6].Header = "Color";
+            //TODO-create helper string function-create Header text from a property name (nameof(item)).SplitByUpperCaseLetter, use
+            //foreach loop (or for loop (below)) to set
+            //TODO-bind column width to the length of header text from previous TODO
+            //var names = new MainViewModel().Planes;
+            //for (int i = 0; i < names.Count; i++)
+            //{
+            //    var item = names[i];
+            //    (sender as DataGrid).Columns[i].Header = nameof(item);
+            //}
+        }
     }
 }

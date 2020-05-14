@@ -56,8 +56,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="Model\Plane.cs" />
+    <Compile Include="Model\Scene.cs" />
+    <Compile Include="Model\Triangle.cs" />
     <Compile Include="RayTracerViewModel.cs" />
-    <Compile Include="Model\SphereObject.cs" />
+    <Compile Include="Model\Sphere.cs" />
+    <Compile Include="ViewModel\PlaneViewModel.cs" />
+    <Compile Include="ViewModel\SceneViewModel.cs" />
+    <Compile Include="ViewModel\SphereViewModel.cs" />
+    <Compile Include="ViewModel\TriangleViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

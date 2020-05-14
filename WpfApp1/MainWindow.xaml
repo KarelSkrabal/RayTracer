@@ -22,63 +22,36 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="1" Grid.Column="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <ListBox
-            x:Name="list"
-            ItemsSource="{Binding SpheresXX}"
-             Grid.Column="0"
-            DisplayMemberPath="CenterX"/>
-            <TextBox
-            Grid.Column="1"
-            VerticalAlignment="Top"
-            Text="{Binding SelectedItem.CenterX, ElementName=list}" />
-            <TextBox
-            Grid.Column="2"
-            VerticalAlignment="Top"
-            Text="{Binding SelectedItem.CenterY, ElementName=list}" />
-            <TextBox
-            Grid.Column="3"
-            VerticalAlignment="Top"
-            Text="{Binding SelectedItem.CenterZ, ElementName=list}" />
-        </Grid>
-        <UniformGrid Columns="6" Rows="1" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
-            <ItemsControl ItemTemplate="{Binding SelectedSphere}">
-                <Label Content="Center X"/>
-                <TextBox Name="CenterX" Text="{Binding SelectedSphere.CenterX, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Width="100"  Height="20" VerticalAlignment="Top"/>
-                <Label Content="Y"  HorizontalContentAlignment="Center"/>
-                <TextBox Name="CenterY" Text="{Binding SelectedSphere.CenterY, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Width="100"  Height="20" VerticalAlignment="Top"/>
-                <Label Content="Z" HorizontalContentAlignment="Center"/>
-                <TextBox Name="CenterZ" Text="{Binding SelectedSphere.CenterZ, Mode=TwoWay, UpdateSourceTrigger=Explicit}"  Width="100"  Height="20" VerticalAlignment="Top"/>
-                <!--<Button Content="Add" Command="{Binding AddSphere}"  Width="80"  Height="20"/>-->
-                <Button Content="New" Command="{Binding  NewSphere}"  Width="80"  Height="20"/>
-                <Button Content="Delete" Command="{Binding DeleteSphere}"  Width="80"  Height="20"/>
-            </ItemsControl>
-
-        </UniformGrid>
-        <ListView ItemsSource="{Binding  SpheresXX}" Grid.Row="1" Grid.Column="1" SelectedItem="{Binding SelectedSphere}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel HorizontalAlignment="Center">
-                        <Label Content="{Binding CenterX}"/>
-                        <Label Content="{Binding CenterY}"/>
-                        <Label Content="{Binding CenterZ}"/>
-                        <Label Content="{Binding RadiusXXXX}"/>
-                        <Label Content="{Binding Color}"/>
-                    </DockPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Content="Test" Grid.Row="2" Grid.Column="1" Command="{Binding UpdateAlbumArtists}"/>
         <DataGrid Grid.Row="3" Grid.Column="0"
-                  ItemsSource="{Binding SpheresXX}" Height="100">
+                  ItemsSource="{Binding SpheresXX}" Height="100" 
+                  AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False">
+            
         </DataGrid>
+        <DataGrid Name="PlaneGrid" Loaded="PlaneGrid_Loaded" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding Planes}" Height="100"/>
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <DockPanel>
+                <TextBlock Text="Canvas Width"/>
+                <TextBox Text="{Binding Scene.CanvasWidth}" Width="50" Margin="5 1 1 1"/>
+                <TextBlock Text="Canvas Height" Margin="1 1 1 1"/>
+                <TextBox Text="{Binding Scene.CanvasHeight}" Width="50" Margin="5 1 1 1"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Camera Position X" Margin="1 1 1 1"/>
+                <TextBox Text="{Binding Scene.CameraPositionX}" Width="30" Margin="5 1 1 1"/>
+                <TextBlock Text="Camera Position Y" Margin="1 1 1 1"/>
+                <TextBox Text="{Binding Scene.CameraPositionY}" Width="30" Margin="5 1 1 1"/>
+                <TextBlock Text="Camera Position Z" Margin="1 1 1 1"/>
+                <TextBox Text="{Binding Scene.CameraPositionZ}" Width="30" Margin="5 1 1 1"/>
+            </DockPanel>
+            
+            
+            
+            <TextBox Text="{Binding Scene.LightDirectionX}" Width="30"/>
+            <TextBox Text="{Binding Scene.LightDirectionY}" Width="30"/>
+            <TextBox Text="{Binding Scene.LightDirectionZ}" Width="30"/>
+            <TextBox Text="{Binding Scene.LightPositionX}" Width="30"/>
+            <TextBox Text="{Binding Scene.LightPositionY}" Width="30"/>
+            <TextBox Text="{Binding Scene.LightPositionZ}" Width="30"/>
+        </StackPanel>
     </Grid>
 </Window>
