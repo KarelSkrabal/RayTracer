@@ -27,9 +27,9 @@ namespace RayTracerWPF
 
         private void grdPlanes_Loaded(object sender, RoutedEventArgs e)
         {
-            (sender as DataGrid).Columns[0].Header = "Normal Vector X";
-            (sender as DataGrid).Columns[1].Header = "Normal Vector Y";
-            (sender as DataGrid).Columns[2].Header = "Normal Vector Z";
+            (sender as DataGrid).Columns[0].Header = "Normal X";
+            (sender as DataGrid).Columns[1].Header = "Normal Y";
+            (sender as DataGrid).Columns[2].Header = "Normal Z";
             (sender as DataGrid).Columns[3].Header = "Point X";
             (sender as DataGrid).Columns[4].Header = "Point Y";
             (sender as DataGrid).Columns[5].Header = "Point Z";
