@@ -7,12 +7,30 @@ using Plane = RayTracerWPF.Model.Plane;
 using Sphere = RayTracerWPF.Model.Sphere;
 using Triangle = RayTracerWPF.Model.Triangle;
 using System.Windows.Media;
+using System;
+using System.Windows;
 
 namespace RayTracerWPF.ViewModel
 {
     public class MainViewModel
     {
         private ColorDialog dlgColor = new ColorDialog();
+
+        public RelayCommand<object> cmdClose;
+        public RelayCommand<object> CmdClose
+        {
+            get
+            {
+                if(cmdClose == null)
+                {
+                    cmdClose = new RelayCommand<object>((param) => this.CloseExecute(param), null);
+                }
+                return cmdClose;
+            }
+        }
+
+        private void CloseExecute(object obj) => (obj as Window).Close();
+
         public ICommand cmdPlanePickColor { get { return new RelayCommand(PlanePickColorExecute, CanPlanePickColorExecute); } }
 
         private bool CanPlanePickColorExecute() => SelectedPlane != null && Planes.Contains(SelectedPlane);
@@ -75,6 +93,7 @@ namespace RayTracerWPF.ViewModel
 
         public MainViewModel()
         {
+            //Inject RayTracerLib default objects
             _spheres.Add(new Sphere { Radius = 45, CenterX = 71, CenterY = 72, CenterZ = 73, Color = "sphere color" });
             _planes.Add(new Plane { NormalX = 33, NormalY = 34, NormalZ = 35, PointX = 43, PointY = 44, PointZ = 45, Color = "Plane color" });
             _triangles.Add(new Triangle
@@ -153,14 +172,6 @@ namespace RayTracerWPF.ViewModel
         {
             get => _selectedSphere;
             set => _selectedSphere = value;
-        }
-        public ICommand AddSphere { get { return new RelayCommand(AddSphereExecute, CanAddSphereExecute); } }
-
-        private bool CanAddSphereExecute() => true;
-
-        private void AddSphereExecute()
-        {
-
         }
     }
 }
