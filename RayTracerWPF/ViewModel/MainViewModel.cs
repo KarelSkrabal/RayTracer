@@ -1,14 +1,12 @@
-using System.Windows.Forms;
 using RayTracerWPF.Model;
 using RayTracerWPF.MVVMCodeBase;
 using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using Plane = RayTracerWPF.Model.Plane;
 using Sphere = RayTracerWPF.Model.Sphere;
 using Triangle = RayTracerWPF.Model.Triangle;
-using System.Windows.Media;
-using System;
-using System.Windows;
 
 namespace RayTracerWPF.ViewModel
 {
