@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:RayTracerWPF.ViewModel"
-        Title="Ray" Height="720" Width="1200" FontSize="9.5" MinHeight="700" MinWidth="1100">
+        Title="Ray" Height="720" Width="1200" FontSize="9.5" MinHeight="720" MinWidth="1100">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
@@ -80,7 +80,7 @@
                             </Style>
                         </DataGrid.ColumnHeaderStyle>
                     </DataGrid>
-                    <Button Content="Pick Color" Width="80" HorizontalAlignment="Right" Margin="5 5 0 5"/>
+                    <Button Content="Pick Color" Width="80" Height="20" HorizontalAlignment="Right" Margin="5 5 0 5"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Triangle Settings" Grid.Row="2" Grid.Column="0"  Padding="10 10 10 1" Margin="0 10 10 0">
@@ -92,7 +92,7 @@
                             <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">10</sys:Double>
                         </DataGrid.Resources>
                     </DataGrid>
-                    <Button Content="Pick Color" Width="80" HorizontalAlignment="Right" Margin="5 5 0 5"/>
+                    <Button Content="Pick Color" Width="80" Height="20" HorizontalAlignment="Right" Margin="5 5 0 5"/>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="Sphere Settings" Grid.Row="3" Grid.Column="0"  Padding="10 10 10 1" Margin="0 10 10 0">
@@ -103,7 +103,7 @@
                             <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">10</sys:Double>
                         </DataGrid.Resources>
                     </DataGrid>
-                    <Button Content="Pick Color" Width="80" HorizontalAlignment="Right" Margin="5 5 0 5"/>
+                    <Button Content="Pick Color" Width="80" Height="20" HorizontalAlignment="Right" Margin="5 5 0 5"/>
                 </StackPanel>
             </GroupBox>
         </Grid>
