@@ -22,7 +22,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <DataGrid Name="PlaneGrid" Loaded="grdPlanes_Loaded" Grid.Row="3" Grid.Column="0" ItemsSource="{Binding Planes}" Height="100"/>
+        <DataGrid Name="PlaneGrid"  Grid.Row="3" Grid.Column="0" ItemsSource="{Binding Planes}" Height="100"/>
         <StackPanel Grid.Row="3" Grid.Column="1">
             <DockPanel>
                 <TextBlock Text="Canvas Width"/>

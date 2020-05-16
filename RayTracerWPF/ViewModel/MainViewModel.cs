@@ -1,3 +1,5 @@
+using System.Linq;
+using RayTracerLib;
 using RayTracerWPF.Model;
 using RayTracerWPF.MVVMCodeBase;
 using System.Collections.ObjectModel;
@@ -12,7 +14,9 @@ namespace RayTracerWPF.ViewModel
 {
     public class MainViewModel
     {
-        private ColorDialog dlgColor = new ColorDialog();
+        private ColorDialog _dlgColor = new ColorDialog();
+        private IRaTracer _raTracer = new RayTracer();
+        private DataProvider _dataProvider = new DataProvider(new RayTracer());
 
         public RelayCommand<object> cmdClose;
         public RelayCommand<object> CmdClose
@@ -37,9 +41,9 @@ namespace RayTracerWPF.ViewModel
         {
             int index = Planes.IndexOf(SelectedPlane);
 
-            if (dlgColor.ShowDialog() == DialogResult.OK)
+            if (_dlgColor.ShowDialog() == DialogResult.OK)
             {
-                Planes[index].Color = dlgColor.Color.Name;
+                Planes[index].Color = _dlgColor.Color.Name;
                 SelectedPlane = null;
             }
         }
@@ -52,9 +56,9 @@ namespace RayTracerWPF.ViewModel
         {
             int index = Triangles.IndexOf(SelectedTriangle);
 
-            if (dlgColor.ShowDialog() == DialogResult.OK)
+            if (_dlgColor.ShowDialog() == DialogResult.OK)
             {
-                Triangles[index].Color = dlgColor.Color.Name;
+                Triangles[index].Color = _dlgColor.Color.Name;
                 SelectedTriangle = null;
             }
         }
@@ -66,32 +70,49 @@ namespace RayTracerWPF.ViewModel
         {
             int index = Spheres.IndexOf(SelectedSphere);
 
-            if (dlgColor.ShowDialog() == DialogResult.OK)
+            if (_dlgColor.ShowDialog() == DialogResult.OK)
             {
-                Spheres[index].Color = dlgColor.Color.Name;
+                Spheres[index].Color = _dlgColor.Color.Name;
                 SelectedSphere = null;
             }
+        }
+
+        public ICommand cmdRun { get { return new RelayCommand(RunExecute, CanRunExecute); } }
+
+        private bool CanRunExecute() => true;
+
+        private void RunExecute()
+        {
+            this._dataProvider._planes = Planes;
+            _dataProvider._scene = Scene;
+            _dataProvider._triangles = Triangles;
+            _dataProvider._spheres = Spheres;
+            _dataProvider.Run();
         }
 
         //TODO-implement generic command
         private void PlanePickColorExecute<T>(ObservableCollection<T> collection, T item)
         {
             int index = collection.IndexOf(item);
-            if (dlgColor.ShowDialog() == DialogResult.OK)
+            if (_dlgColor.ShowDialog() == DialogResult.OK)
             {
                 (collection[index] as RayTracerLib.BaseObject).color = new RayTracerLib.Color
                 {
-                    R = dlgColor.Color.R,
-                    G = dlgColor.Color.G,
-                    B = dlgColor.Color.B
+                    R = _dlgColor.Color.R,
+                    G = _dlgColor.Color.G,
+                    B = _dlgColor.Color.B
                 };
                 SelectedPlane = null;
             }
         }
 
-        public MainViewModel()
+        public MainViewModel(/*IRaTracer rayTracer*/)
         {
             //Inject RayTracerLib default objects
+            //_raTracer = rayTracer;
+            //_spheres = _raTracer.objects.OfType<Sphere>().ToObservableCollection<Sphere>();
+            
+            
             _spheres.Add(new Sphere { Radius = 45, CenterX = 71, CenterY = 72, CenterZ = 73, Color = "sphere color" });
             _planes.Add(new Plane { NormalX = 33, NormalY = 34, NormalZ = 35, PointX = 43, PointY = 44, PointZ = 45, Color = "Plane color" });
             _triangles.Add(new Triangle

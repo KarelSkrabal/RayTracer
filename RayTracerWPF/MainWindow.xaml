@@ -3,7 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:RayTracerWPF.ViewModel"
+        xmlns:c="clr-namespace:RayTracerWPF"
         Title="Ray" Height="720" Width="1200" FontSize="9.5" MinHeight="720" MinWidth="1100" Background="Beige">
+    <Window.Resources>
+        <c:StringToColorConverter x:Key="StringToColorConverter"/>
+    </Window.Resources>
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
@@ -110,7 +114,7 @@
                    Grid.Column="0"
                    HorizontalAlignment="Right">
             <Grid>
-                <Button Content="Run" Width="80"  Height="20" Margin="10 0 110 20"/>
+                <Button Content="Run"  Width="80" Command="{Binding cmdRun}" Height="20" Margin="10 0 110 20"/>
                 <Button Content="Stop" Width="80"  Height="20" Margin="80 0 0 20"/>
             </Grid>
         </DockPanel>
