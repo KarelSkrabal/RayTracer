@@ -4,9 +4,9 @@ namespace RayTracerLib
 {
     public class Triangle : BaseObject
     {
-        Vector v0 { get; }
-        Vector v1 { get; }
-        Vector v2 { get; }
+        public Vector v0 { get; }
+        public Vector v1 { get; }
+        public Vector v2 { get; }
 
 
         public Triangle(Vector v0, Vector v1, Vector v2, Color c) : base(v0, c)

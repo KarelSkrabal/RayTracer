@@ -1,4 +1,3 @@
-using System.Linq;
 using RayTracerLib;
 using RayTracerWPF.Model;
 using RayTracerWPF.MVVMCodeBase;
@@ -110,37 +109,11 @@ namespace RayTracerWPF.ViewModel
         {
             //Inject RayTracerLib default objects
             //_raTracer = rayTracer;
-            //_spheres = _raTracer.objects.OfType<Sphere>().ToObservableCollection<Sphere>();
-            
-            
-            _spheres.Add(new Sphere { Radius = 45, CenterX = 71, CenterY = 72, CenterZ = 73, Color = "sphere color" });
-            _planes.Add(new Plane { NormalX = 33, NormalY = 34, NormalZ = 35, PointX = 43, PointY = 44, PointZ = 45, Color = "Plane color" });
-            _triangles.Add(new Triangle
-            {
-                Vertex1X = 20,
-                Vertex1Y = 21,
-                Vertex1Z = 22,
-                Vertex2X = 30,
-                Vertex2Y = 31,
-                Vertex2Z = 32,
-                Vertex3X = 41,
-                Vertex3Y = 42,
-                Vertex3Z = 43
-            });
-            _scene = new Scene
-            {
-                CanvasWidth = 500,
-                CanvasHeight = 300,
-                CameraPositionX = 50,
-                CameraPositionY = 51,
-                CameraPositionZ = 52,
-                LightDirectionX = -1,
-                LightDirectionY = 0,
-                LightDirectionZ = 1,
-                LightPositionX = 60,
-                LightPositionY = 61,
-                LightPositionZ = 62
-            };
+
+            _planes = _dataProvider._planes;
+            _spheres = _dataProvider._spheres;
+            _triangles = _dataProvider._triangles;
+            _scene = _dataProvider._scene;
         }
 
         private ObservableCollection<Plane> _planes = new ObservableCollection<Plane>();

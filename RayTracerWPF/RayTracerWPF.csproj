@@ -83,7 +83,10 @@
     </ApplicationDefinition>
     <Compile Include="BaseConverter.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataProvider.cs" />
+    <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\IDataProvider.cs" />
     <Compile Include="Model\Plane.cs" />
     <Compile Include="Model\Scene.cs" />
     <Compile Include="Model\Sphere.cs" />

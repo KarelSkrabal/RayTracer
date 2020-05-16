@@ -8,8 +8,8 @@ namespace RayTracerLib
 {
     public class Plane : BaseObject
     {
-        Vector normal;
-        double d;
+        public Vector normal;
+        public double d;
         public Plane(Vector position, Vector normal, Color color) : base(position, color)
         {
             this.position = position;
