@@ -20,12 +20,13 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Image Source="c:\Users\k.skrabal\Documents\scene.png"
+        <Image Source="{Binding Scene.Image,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                Grid.Row="0"
                Grid.Column="0"
                Width="500" 
                Height="500" 
-               HorizontalAlignment="Left"/>
+               HorizontalAlignment="Center"
+               Stretch="UniformToFill"/>
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -64,9 +65,9 @@
                     <DockPanel HorizontalAlignment="Left">
                         <TextBlock Text="Light Position X" Padding="5 10 10 10" Margin="1 1 1 1"/>
                         <TextBox Text="{Binding Scene.LightPositionX}" Width="60" Height="20" Margin="14 0 0 0"/>
-                        <TextBlock Text="Light Position X" Padding="5 10 10 10" Margin="1 1 1 1"/>
+                        <TextBlock Text="Light Position Y" Padding="5 10 10 10" Margin="1 1 1 1"/>
                         <TextBox Text="{Binding Scene.LightPositionY}" Width="60" Height="20" Margin="10 0 0 0"/>
-                        <TextBlock Text="Light Position X" Padding="5 10 10 10" Margin="1 1 1 1"/>
+                        <TextBlock Text="Light Position Z" Padding="5 10 10 10" Margin="1 1 1 1"/>
                         <TextBox Text="{Binding Scene.LightPositionZ}" Width="60" Height="20" Margin="10 0 0 0"/>
                     </DockPanel>
                 </StackPanel>

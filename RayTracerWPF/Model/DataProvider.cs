@@ -1,5 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Windows.Media.Imaging;
 using RayTracerLib;
 using SysDrawing = System.Drawing;
 
@@ -9,6 +13,7 @@ namespace RayTracerWPF.Model
     {
         private IRaTracer _rayTracer;
         private Color[,] Pixels;
+        private string _imagePath;
 
         public ObservableCollection<Plane> _planes { get; set; }
         public ObservableCollection<Sphere> _spheres { get; set; }
@@ -52,7 +57,8 @@ namespace RayTracerWPF.Model
                 LightDirectionZ = _rayTracer.lv.Z,
                 LightPositionX = _rayTracer.lp.X,
                 LightPositionY = _rayTracer.lp.Y,
-                LightPositionZ = _rayTracer.lp.Z
+                LightPositionZ = _rayTracer.lp.Z,
+                ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene.png")
             };
         }
 
@@ -101,11 +107,61 @@ namespace RayTracerWPF.Model
 
         public void Run()
         {
+            _rayTracer.objects.Clear();
             SetScene();
             SetSpheres();
             SetTriangles();
             SetPlanes();
+
+            Pixels = new Color[_rayTracer.canvasWidth, _rayTracer.canvasHeight];
             _rayTracer.RayTraceScene(ref Pixels);
+            DrawPicture(Pixels);
+        }
+        private void DrawPicture(Color[,] pixels)
+        {
+            SysDrawing.Bitmap bmp = new SysDrawing.Bitmap(_rayTracer.canvasWidth, _rayTracer.canvasHeight);
+            SysDrawing.Graphics g = SysDrawing.Graphics.FromImage(bmp);
+            for (int i = 0; i < _rayTracer.canvasWidth; i++)
+            {
+                for (int j = 0; j < _rayTracer.canvasHeight; j++)
+                {
+                    var color = SysDrawing.Color.FromArgb((Byte)pixels[i, j].R, (Byte)pixels[i, j].G, (Byte)pixels[i, j].B);
+                    SysDrawing.Brush brush1 = new SysDrawing.SolidBrush(color);
+                    g.FillRectangle(brush1, i, j, 1, 1);
+                }
+            }
+            g.Dispose();
+            //string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".png");
+            string path = _imagePath;
+            string pattern = "scene*.png";
+            string folderName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments));
+            var matches = Directory.GetFiles(folderName, pattern);
+            foreach (string file in Directory.GetFiles(folderName,pattern))
+                File.Delete(file);
+
+            //if (File.Exists(path))
+            //{
+            //    File.Delete(path);
+            //}
+            bmp.Save(path, SysDrawing.Imaging.ImageFormat.Png);
+
+
+            using (var memory = new MemoryStream())
+            {
+                bmp.Save(memory, ImageFormat.Png);
+                memory.Position = 0;
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+
+                _scene.Image = bitmapImage;
+            }
+            bmp.Dispose();
+
         }
 
         private void SetPlanes()
@@ -138,17 +194,24 @@ namespace RayTracerWPF.Model
 
         private void SetSpheres()
         {
+            SysDrawing.Color t = SysDrawing.ColorTranslator.FromHtml(_spheres[0].Color);
+            //SysDrawing.Color cc = SysDrawing.ColorConverter.
+            var test = new Color(
+                    (SysDrawing.ColorTranslator.FromHtml(_spheres[0].Color)).R,
+                    (SysDrawing.ColorTranslator.FromHtml(_spheres[0].Color)).G,
+                    (SysDrawing.ColorTranslator.FromHtml(_spheres[0].Color)).B);
+            ;
             var spheres = _spheres.Select(s => new RayTracerLib.Sphere
-            {
-                cx = s.CenterX,
-                cy = s.CenterY,
-                cz = s.CenterZ,
-                radius = s.Radius,
-                color = new Color(
+            (
+                s.CenterX,
+                s.CenterY,
+                s.CenterZ,
+                s.Radius,
+                new Color(
                     (SysDrawing.ColorTranslator.FromHtml(s.Color)).R,
                     (SysDrawing.ColorTranslator.FromHtml(s.Color)).G,
                     (SysDrawing.ColorTranslator.FromHtml(s.Color)).B)
-            }).ToList();
+            )).ToList();
             _rayTracer.objects.AddRange(spheres);
         }
 
@@ -157,6 +220,7 @@ namespace RayTracerWPF.Model
             _rayTracer.lp = new Vector(_scene.LightPositionX, _scene.LightPositionY, _scene.LightPositionZ);
             _rayTracer.lv = new Vector(_scene.LightDirectionX, _scene.LightDirectionY, _scene.LightDirectionZ);
             _rayTracer.p = new Vector(_scene.CameraPositionX, _scene.CameraPositionY, _scene.CameraPositionZ);
+            _imagePath = _scene.ImagePath;
         }
     }
 }

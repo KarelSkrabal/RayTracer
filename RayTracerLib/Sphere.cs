@@ -22,15 +22,15 @@ namespace RayTracerLib
             radius = r;
             this.color = new Color(color);
         }
-        public Sphere() : base(new Vector(0.0, 0.0, 0.0), new Color())
-        {
-            cx = 0.0;
-            cy = 0.0;
-            cz = 0.0;
-            position = new Vector(0.0, 0.0, 0.0);
-            radius = 0.0;
-            this.color = new Color();
-        }
+        //public Sphere() : base(new Vector(0.0, 0.0, 0.0), new Color())
+        //{
+        //    cx = 0.0;
+        //    cy = 0.0;
+        //    cz = 0.0;
+        //    position = new Vector(0.0, 0.0, 0.0);
+        //    radius = 0.0;
+        //    this.color = new Color();
+        //}
 
         public bool Equals(Sphere sphere) => cx == sphere.cx && cy == sphere.cy && cz == sphere.cz && radius == sphere.radius;
 

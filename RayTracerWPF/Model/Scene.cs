@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Drawing;
+using System.ComponentModel;
+using System.Windows.Media.Imaging;
 
 namespace RayTracerWPF.Model
 {
@@ -15,6 +17,35 @@ namespace RayTracerWPF.Model
         double _cameraPositionX;
         double _cameraPositionY;
         double _cameraPositionZ;
+        BitmapImage _image;
+        string _imagePath;
+
+        public string ImagePath{
+            get => _imagePath;
+            set
+            {
+                if(_imagePath != value)
+                {
+                    _imagePath = value;
+                    RaisePropertyChanged("ImagePath");
+                }
+            }
+        }
+
+
+
+        public BitmapImage Image
+        {
+            get => _image;
+            set
+            {
+                if(_image != value)
+                {
+                    _image = value;
+                    RaisePropertyChanged("Image");
+                }
+            }
+        }
 
         public int CanvasWidth
         {

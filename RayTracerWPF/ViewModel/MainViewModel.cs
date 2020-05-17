@@ -1,7 +1,10 @@
-using RayTracerLib;
+﻿using RayTracerLib;
 using RayTracerWPF.Model;
 using RayTracerWPF.MVVMCodeBase;
+using System;
 using System.Collections.ObjectModel;
+using System.Drawing;
+using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -14,7 +17,7 @@ namespace RayTracerWPF.ViewModel
     public class MainViewModel
     {
         private ColorDialog _dlgColor = new ColorDialog();
-        private IRaTracer _raTracer = new RayTracer();
+        //private IRaTracer _raTracer = new RayTracer();
         private DataProvider _dataProvider = new DataProvider(new RayTracer());
 
         public RelayCommand<object> cmdClose;
@@ -42,7 +45,8 @@ namespace RayTracerWPF.ViewModel
 
             if (_dlgColor.ShowDialog() == DialogResult.OK)
             {
-                Planes[index].Color = _dlgColor.Color.Name;
+                string HexVal = ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(_dlgColor.Color.R, _dlgColor.Color.G, _dlgColor.Color.B));
+                Planes[index].Color = HexVal;
                 SelectedPlane = null;
             }
         }
@@ -57,7 +61,8 @@ namespace RayTracerWPF.ViewModel
 
             if (_dlgColor.ShowDialog() == DialogResult.OK)
             {
-                Triangles[index].Color = _dlgColor.Color.Name;
+                string HexVal = ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(_dlgColor.Color.R, _dlgColor.Color.G, _dlgColor.Color.B));
+                Triangles[index].Color = HexVal;
                 SelectedTriangle = null;
             }
         }
@@ -71,7 +76,9 @@ namespace RayTracerWPF.ViewModel
 
             if (_dlgColor.ShowDialog() == DialogResult.OK)
             {
-                Spheres[index].Color = _dlgColor.Color.Name;
+                bool c = _dlgColor.Color.IsKnownColor;
+                string HexVal = ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(_dlgColor.Color.R, _dlgColor.Color.G, _dlgColor.Color.B));
+                Spheres[index].Color = HexVal;
                 SelectedSphere = null;
             }
         }
@@ -82,11 +89,16 @@ namespace RayTracerWPF.ViewModel
 
         private void RunExecute()
         {
-            this._dataProvider._planes = Planes;
+            _dataProvider._planes = Planes;
+            Scene.ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".png");
+            //Scene.Image = Image.FromFile( Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".png"));
             _dataProvider._scene = Scene;
             _dataProvider._triangles = Triangles;
             _dataProvider._spheres = Spheres;
             _dataProvider.Run();
+            Scene.Image = _dataProvider._scene.Image;
+            //Scene.ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".png");
+            Scene.ImagePath = Scene.ImagePath;
         }
 
         //TODO-implement generic command
@@ -109,6 +121,7 @@ namespace RayTracerWPF.ViewModel
         {
             //Inject RayTracerLib default objects
             //_raTracer = rayTracer;
+            //string exeDirectory = System.IO.Path.GetDirectory(System.Reflection.Assembly.GetEntryAssembly().Location);
 
             _planes = _dataProvider._planes;
             _spheres = _dataProvider._spheres;
@@ -123,6 +136,7 @@ namespace RayTracerWPF.ViewModel
         private Plane _selectedPlane = new Plane();
         private Triangle _selectedTriangle = new Triangle();
         private Sphere _selectedSphere = new Sphere();
+        //private string _imagePath;
 
         public ObservableCollection<Plane> Planes
         {
@@ -165,5 +179,11 @@ namespace RayTracerWPF.ViewModel
             get => _selectedSphere;
             set => _selectedSphere = value;
         }
+
+        //public string ImagePath
+        //{
+        //    get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene.png");
+        //    set => _imagePath = value;
+        //}
     }
 }
