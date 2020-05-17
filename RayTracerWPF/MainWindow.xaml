@@ -4,10 +4,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:RayTracerWPF.ViewModel"
         xmlns:c="clr-namespace:RayTracerWPF"
-        Title="Ray" Height="720" Width="1200" FontSize="9.5" MinHeight="720" MinWidth="1100" Background="Beige">
-    <Window.Resources>
-        <c:StringToColorConverter x:Key="StringToColorConverter"/>
-    </Window.Resources>
+        Title="Ray Tracer" Height="720" Width="1200" FontSize="9.5" MinHeight="720" MinWidth="1100" Background="Beige">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
