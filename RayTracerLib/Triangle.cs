@@ -8,7 +8,6 @@ namespace RayTracerLib
         public Vector v1 { get; }
         public Vector v2 { get; }
 
-
         public Triangle(Vector v0, Vector v1, Vector v2, Color c) : base(v0, c)
         {
             this.v0 = v0;
@@ -59,8 +58,6 @@ namespace RayTracerLib
             t = (uv * wu - uu * wv) / D;
             if (t < 0.0 || (s + t) > 1.0)  // neni v trojuhelniku
                 return 0;
-            //normalAtPoint = I;
-            //normalAtPoint.normalize();
             return t;                       // je v trojuhelniku
         }
         public override double GetIntersection(Vector from, Vector to, ref Vector normalAtPoint)
@@ -100,11 +97,6 @@ namespace RayTracerLib
             normalAtPoint = I;
             normalAtPoint.normalize();
             return t;                       // je v trojuhelniku
-
-            //returning point
-            //V0 + s * u + t * v
-            //u = V1 - V0 
-            //v = V2 - V0
         }
 
         public override string ToString() => "triangle : v0=" + v0.ToString() + " , v1=" + v1.ToString() + " , v2=" + v2.ToString() + " , color=" + color.ToString();

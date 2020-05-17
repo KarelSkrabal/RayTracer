@@ -22,15 +22,6 @@ namespace RayTracerLib
             radius = r;
             this.color = new Color(color);
         }
-        //public Sphere() : base(new Vector(0.0, 0.0, 0.0), new Color())
-        //{
-        //    cx = 0.0;
-        //    cy = 0.0;
-        //    cz = 0.0;
-        //    position = new Vector(0.0, 0.0, 0.0);
-        //    radius = 0.0;
-        //    this.color = new Color();
-        //}
 
         public bool Equals(Sphere sphere) => cx == sphere.cx && cy == sphere.cy && cz == sphere.cz && radius == sphere.radius;
 
@@ -55,7 +46,7 @@ namespace RayTracerLib
 
         public override double GetIntersection(Vector from, Vector to, ref Vector normalAtPoint)
         {
-            to.normalize();//sphere
+            to.normalize();
             double t = GetIntersection(from, to);
             Vector v1 = to * t + from;
             v1 = v1 - position;

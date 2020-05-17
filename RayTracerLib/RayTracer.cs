@@ -69,7 +69,7 @@ namespace RayTracerLib
                         }
                     }
                 }
-                double cosAngle = Vector.GetCosAngleV1V2(lv, new Vector(hitPoint - /*obj.position*/p));
+                double cosAngle = Vector.GetCosAngleV1V2(lv, new Vector(hitPoint - p));
                 pixels[i, j] = Color.GetShedowedColor(bShadow, obj.color, cosAngle);
             }
         }

@@ -78,24 +78,7 @@ namespace RayTracerLib
         public static double dot(Vector v1, Vector v2) => v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 
 
-        public static double GetCosAngleV1V2(Vector v1,
-                                             Vector v2)
-        {
-            /* incident angle
-             intersection pt (i)
-            double ix, iy, iz;
-            ix = px+t*vx;
-            iy = py+t*vy;
-            iz = pz+t*vz;
-            normal at i
-            double nx, ny, nz;
-            nx = ix - cx;
-            ny = iy - cy;
-            nz = iz - cz;
-            cos(t) = (v.w) / (|v|.|w|)
-            */
-            return (v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z) / (modv(v1.X, v1.Y, v1.Z) * modv(v2.X, v2.Y, v2.Z));
-        }
+        public static double GetCosAngleV1V2(Vector v1, Vector v2) => (v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z) / (modv(v1.X, v1.Y, v1.Z) * modv(v2.X, v2.Y, v2.Z));
 
         public static Vector operator +(Vector v1, Vector v2) => new Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
 

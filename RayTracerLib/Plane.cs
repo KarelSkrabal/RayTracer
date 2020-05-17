@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RayTracerLib
+﻿namespace RayTracerLib
 {
     public class Plane : BaseObject
     {
@@ -20,24 +14,10 @@ namespace RayTracerLib
 
         public override double GetIntersection(Vector from, Vector to, ref Vector normalAtPoint)
         {
-            // static Vector3D IntersectPoint(Vector3D rayVector, Vector3D rayPoint, Vector3D planeNormal, Vector3D planePoint) 
-            //rayVector parameters from to, ray point calculate point , planeNormal..attribute, planePoint .. attribute
-            //line goes from camera position to one of canvas point, this is from & to vectors
-            //Line line = new Line(to - from, from);
-            //Vector p = line.point;
-            //Vector v = line.direction;
-            //Vector n = normal;
-            //double dot1 = Vector.dot(n, v);
-            //double dot2 = Vector.dot(n, p);
-            //if (dot1 == 0)
-            //    return 0;
             double t = GetIntersection(from, to);
-            //find intersection point
             Vector ret = new Vector();
-            //ret = p + (t * v);//
+            //ret = p + (t * v);
             ret = to * t + from;
-            
-            normalAtPoint = normal;//
             normalAtPoint = new Vector(ret.X, ret.Y, ret.Z);
             normalAtPoint.normalize();
             return t;
