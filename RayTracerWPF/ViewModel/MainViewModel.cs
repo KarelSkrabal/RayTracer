@@ -17,8 +17,26 @@ namespace RayTracerWPF.ViewModel
     public class MainViewModel
     {
         private ColorDialog _dlgColor = new ColorDialog();
-        //private IRaTracer _raTracer = new RayTracer();
         private DataProvider _dataProvider = new DataProvider(new RayTracer());
+        private ObservableCollection<Plane> _planes = new ObservableCollection<Plane>();
+        private ObservableCollection<Triangle> _triangles = new ObservableCollection<Triangle>();
+        private ObservableCollection<Sphere> _spheres = new ObservableCollection<Sphere>();
+        private Scene _scene = new Scene();
+        private Plane _selectedPlane = new Plane();
+        private Triangle _selectedTriangle = new Triangle();
+        private Sphere _selectedSphere = new Sphere();
+
+        public MainViewModel(/*IRaTracer rayTracer*/)
+        {
+            //Inject RayTracerLib default objects
+            //_raTracer = rayTracer;
+            //string exeDirectory = System.IO.Path.GetDirectory(System.Reflection.Assembly.GetEntryAssembly().Location);
+
+            _planes = _dataProvider._planes;
+            _spheres = _dataProvider._spheres;
+            _triangles = _dataProvider._triangles;
+            _scene = _dataProvider._scene;
+        }
 
         public RelayCommand<object> cmdClose;
         public RelayCommand<object> CmdClose
@@ -90,15 +108,11 @@ namespace RayTracerWPF.ViewModel
         private void RunExecute()
         {
             _dataProvider._planes = Planes;
-            Scene.ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".png");
-            //Scene.Image = Image.FromFile( Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".png"));
             _dataProvider._scene = Scene;
             _dataProvider._triangles = Triangles;
             _dataProvider._spheres = Spheres;
             _dataProvider.Run();
             Scene.Image = _dataProvider._scene.Image;
-            //Scene.ImagePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene" + string.Format("{0:yyyy-MM-dd_HH-mm-ss-fff}", DateTime.Now) + ".png");
-            Scene.ImagePath = Scene.ImagePath;
         }
 
         //TODO-implement generic command
@@ -116,27 +130,6 @@ namespace RayTracerWPF.ViewModel
                 SelectedPlane = null;
             }
         }
-
-        public MainViewModel(/*IRaTracer rayTracer*/)
-        {
-            //Inject RayTracerLib default objects
-            //_raTracer = rayTracer;
-            //string exeDirectory = System.IO.Path.GetDirectory(System.Reflection.Assembly.GetEntryAssembly().Location);
-
-            _planes = _dataProvider._planes;
-            _spheres = _dataProvider._spheres;
-            _triangles = _dataProvider._triangles;
-            _scene = _dataProvider._scene;
-        }
-
-        private ObservableCollection<Plane> _planes = new ObservableCollection<Plane>();
-        private ObservableCollection<Triangle> _triangles = new ObservableCollection<Triangle>();
-        private ObservableCollection<Sphere> _spheres = new ObservableCollection<Sphere>();
-        private Scene _scene = new Scene();
-        private Plane _selectedPlane = new Plane();
-        private Triangle _selectedTriangle = new Triangle();
-        private Sphere _selectedSphere = new Sphere();
-        //private string _imagePath;
 
         public ObservableCollection<Plane> Planes
         {
@@ -179,11 +172,5 @@ namespace RayTracerWPF.ViewModel
             get => _selectedSphere;
             set => _selectedSphere = value;
         }
-
-        //public string ImagePath
-        //{
-        //    get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "scene.png");
-        //    set => _imagePath = value;
-        //}
     }
 }

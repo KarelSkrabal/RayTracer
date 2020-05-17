@@ -18,22 +18,7 @@ namespace RayTracerWPF.Model
         double _cameraPositionY;
         double _cameraPositionZ;
         BitmapImage _image;
-        string _imagePath;
-
-        public string ImagePath{
-            get => _imagePath;
-            set
-            {
-                if(_imagePath != value)
-                {
-                    _imagePath = value;
-                    RaisePropertyChanged("ImagePath");
-                }
-            }
-        }
-
-
-
+   
         public BitmapImage Image
         {
             get => _image;
